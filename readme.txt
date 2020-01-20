@@ -4,7 +4,7 @@ Donate link: http://userswp.io/
 Tags: social, social login, login, register, social-connect, userswp
 Requires at least: 4.9
 Tested up to: 5.3
-Stable tag: 1.2.3
+Stable tag: 1.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -42,7 +42,7 @@ TBA
 
 == Changelog ==
 
-= 1.2.3 =
+= 1.3 =
 * Facebook login not able to get the user's email and showing error - FIXED
 
 = 1.2.2 =

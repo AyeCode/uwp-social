@@ -1,0 +1,546 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: UsersWP - Social 1.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-20 21:04+0530\n"
+"PO-Revision-Date: 2020-01-20 21:05+0530\n"
+"Last-Translator: \n"
+"Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;_n:1,2;_n_noop:1,2;"
+"_nx:1,2;_x;_ex;esc_attr_e;esc_attr__\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 2.2.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin/class-uwp-settings-social.php:27
+msgid "Social"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:69
+msgid "General"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:70
+msgid "Google"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:71
+msgid "Facebook"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:72
+msgid "Twitter"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:73
+msgid "LinkedIn"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:74
+msgid "Instagram"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:75
+msgid "Yahoo"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:76
+msgid "WordPress"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:77
+msgid "VKontakte"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:90
+msgid "Google Settings"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:93
+#, php-format
+msgid ""
+"<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter "
+"below. Use %s for Authorized redirect URI."
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:105
+msgid "Google APP ID"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:108
+msgid "Enter Google APP ID"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:112
+msgid "Google APP Secret"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:115
+msgid "Enter Google APP Secret"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:138
+msgid "Facebook Settings"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:141
+#: admin/class-uwp-settings-social.php:191
+#: admin/class-uwp-settings-social.php:241
+#: admin/class-uwp-settings-social.php:291
+#: admin/class-uwp-settings-social.php:341
+#: admin/class-uwp-settings-social.php:391
+#: admin/class-uwp-settings-social.php:441
+#, php-format
+msgid ""
+"<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter "
+"below. Use <code>%s</code> for Authorized redirect URI."
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:154
+msgid "Facebook API ID"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:157
+msgid "Enter Facebook API ID"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:161
+msgid "Facebook API Secret"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:164
+msgid "Enter Facebook API Secret"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:188
+msgid "Twitter Settings"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:204
+msgid "Twitter API Key"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:207
+msgid "Enter Twitter API Key"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:211
+msgid "Twitter API Secret"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:214
+msgid "Enter Twitter API Secret"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:238
+msgid "Linkedin Settings"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:254
+msgid "LinkedIn Client ID"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:257
+msgid "Enter LinkedIn Client ID"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:261
+msgid "LinkedIn Client Secret"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:264
+msgid "Enter LinkedIn Client Secret"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:288
+msgid "Instagram Settings"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:304
+msgid "Instagram APP ID"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:307
+msgid "Enter Instagram APP ID"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:311
+msgid "Instagram APP Secret"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:314
+msgid "Enter Instagram APP Secret"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:338
+#: admin/class-uwp-settings-social.php:491
+msgid "Social Settings"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:354
+msgid "Yahoo Client ID"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:357
+msgid "Enter Yahoo Client ID"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:361
+msgid "Yahoo Client Secret"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:364
+msgid "Enter Yahoo Client Secret"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:388
+msgid "WordPress Settings"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:404
+msgid "WordPress APP ID"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:407
+msgid "Enter WordPress APP ID"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:411
+msgid "WordPress APP Secret"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:414
+msgid "Enter WordPress APP Secret"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:438
+msgid "Vkontakte Settings"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:454
+msgid "Vkontakte APP ID"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:457
+msgid "Enter Vkontakte APP ID"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:461
+msgid "Vkontakte APP Secret"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:464
+msgid "Enter Vkontakte APP Secret"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:493
+#, php-format
+msgid ""
+"You can allow users to login via several social networks, once enabled the "
+"login icons will appear on most login forms and you can also use the UWP "
+"widget to add a social login buttons to widget areas. See %s Documentation %s"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:511
+msgid "UsersWP - Social"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:512
+msgid "Remove all data when deleted?"
+msgstr ""
+
+#: includes/class-uwp-social.php:176
+#, php-format
+msgid "New user registration on your site: %s"
+msgstr ""
+
+#: includes/class-uwp-social.php:177
+#, php-format
+msgid "Username: %s"
+msgstr ""
+
+#: includes/class-uwp-social.php:178
+#, php-format
+msgid "Provider: %s"
+msgstr ""
+
+#: includes/class-uwp-social.php:179
+#, php-format
+msgid "Profile: %s"
+msgstr ""
+
+#: includes/class-uwp-social.php:180
+#, php-format
+msgid "Email: %s"
+msgstr ""
+
+#: includes/class-uwp-social.php:184
+#, php-format
+msgid "[%s] New User Registration"
+msgstr ""
+
+#: includes/class-uwp-social.php:190
+#, php-format
+msgid ""
+"<strong>Breaking change: </strong> Authorized Redirect URI for all social "
+"login providers needs to be updated on apps. Go to %ssettings%s to get the "
+"new URI."
+msgstr ""
+
+#: includes/errors.php:7
+msgid "Unspecified error!"
+msgstr ""
+
+#: includes/errors.php:22
+msgid "Unspecified error."
+msgstr ""
+
+#: includes/errors.php:23
+msgid "UsersWP Social Login is not properly configured."
+msgstr ""
+
+#: includes/errors.php:24
+#, php-format
+msgid ""
+"UsersWP Social Login is not properly configured.<br /> <b>%s</b> need to be "
+"properly configured."
+msgstr ""
+
+#: includes/errors.php:25 includes/social.php:133
+msgid "Unknown or disabled provider."
+msgstr ""
+
+#: includes/errors.php:26
+#, php-format
+msgid ""
+"UsersWP Social Login is not properly configured.<br /> <b>%s</b> requires "
+"your application credentials."
+msgstr ""
+
+#: includes/errors.php:27
+#, php-format
+msgid ""
+"<b>What does this error mean ?</b><br />Most likely, you didn't setup the "
+"correct application credentials for this provider. These credentials are "
+"required in order for <b>%s</b> users to access your website and for UsersWP "
+"Social Login to work."
+msgstr ""
+
+#: includes/errors.php:27
+msgid ""
+"<br />Instructions for use can be found in the <a href=\"#\" target=\"_blank"
+"\">User Manual</a>."
+msgstr ""
+
+#: includes/errors.php:29
+#, php-format
+msgid ""
+"Authentication failed. Either you have cancelled the authentication or <b>"
+"%s</b> refused the connection."
+msgstr ""
+
+#: includes/errors.php:30
+#, php-format
+msgid ""
+"Request failed. Either you have cancelled the authentication or <b>%s</b> "
+"refused the connection."
+msgstr ""
+
+#: includes/errors.php:31
+msgid "You're not connected to the provider."
+msgstr ""
+
+#: includes/errors.php:32
+msgid "Provider does not support this feature."
+msgstr ""
+
+#: includes/errors.php:55 includes/errors.php:131
+msgid "Oops! We ran into an issue"
+msgstr ""
+
+#: includes/errors.php:155 includes/errors.php:252
+msgid "Back to home"
+msgstr ""
+
+#: includes/helpers.php:111
+msgid "Login via Social"
+msgstr ""
+
+#: includes/linking.php:281
+#, php-format
+msgid "Hi %s"
+msgstr ""
+
+#: includes/linking.php:282
+#, php-format
+msgid ""
+"You're now signed in with your %s account but you are still one step away of "
+"getting into our website"
+msgstr ""
+
+#: includes/linking.php:291 includes/linking.php:349
+msgid "Already have an account"
+msgstr ""
+
+#: includes/linking.php:292
+#, php-format
+msgid "Link your existing account on our website to your %s ID."
+msgstr ""
+
+#: includes/linking.php:297 includes/linking.php:386
+msgid "New to our website"
+msgstr ""
+
+#: includes/linking.php:298
+#, php-format
+msgid "Create a new account and it will be associated with your %s ID."
+msgstr ""
+
+#: includes/linking.php:305
+msgid "Link my account"
+msgstr ""
+
+#: includes/linking.php:311 includes/linking.php:313
+msgid "Create a new account"
+msgstr ""
+
+#: includes/linking.php:351
+msgid ""
+"Please enter your username and password of your existing account on our "
+"website. Once verified, it will linked to your % ID"
+msgstr ""
+
+#: includes/linking.php:357 includes/linking.php:396
+msgid "Username"
+msgstr ""
+
+#: includes/linking.php:363
+msgid "Password"
+msgstr ""
+
+#: includes/linking.php:368 includes/linking.php:410
+msgid "Continue"
+msgstr ""
+
+#: includes/linking.php:370 includes/linking.php:413
+msgid "Back"
+msgstr ""
+
+#: includes/linking.php:389
+#, php-format
+msgid ""
+"Please fill in your information in the form below. Once completed, you will "
+"be able to automatically sign into our website through your %s ID"
+msgstr ""
+
+#: includes/linking.php:404
+msgid "E-mail"
+msgstr ""
+
+#: includes/linking.php:427
+#, php-format
+msgid "Back to %s"
+msgstr ""
+
+#: includes/social.php:60 includes/social.php:116
+msgid "Invalid social login provider."
+msgstr ""
+
+#: includes/social.php:178
+msgid ""
+"Couldn't fetch the email address of a user. Please try again or use "
+"alternate login method!"
+msgstr ""
+
+#: includes/social.php:213
+msgid "Invalid session data. Please try again."
+msgstr ""
+
+#: includes/social.php:268
+msgid "Registration is now closed."
+msgstr ""
+
+#: includes/social.php:475
+msgid "An error occurred while creating a new user: "
+msgstr ""
+
+#: includes/social.php:478
+msgid "An error occurred while creating a new user!"
+msgstr ""
+
+#: includes/social.php:520
+#, php-format
+msgid ""
+"Sorry, we couldn't connect you with <b>%s</b>. <a href=\"%s\">Please try "
+"again</a>."
+msgstr ""
+
+#: includes/social.php:623
+msgid "Linking is not enabled. Please check the social login add on settings."
+msgstr ""
+
+#: includes/social.php:641
+#, php-format
+msgid ""
+"<strong>ERROR</strong>: Invalid username or incorrect password. <a href=\"%s"
+"\">Lost your password</a>?"
+msgstr ""
+
+#: includes/social.php:671
+msgid "<strong>ERROR</strong>: Please type your e-mail address."
+msgstr ""
+
+#: includes/social.php:676
+msgid "<strong>ERROR</strong>: Please enter a valid email address."
+msgstr ""
+
+#: includes/social.php:681
+msgid "<strong>ERROR</strong>: Sorry, that email address is already used!"
+msgstr ""
+
+#: includes/social.php:694
+msgid "<strong>ERROR</strong>: That username is not allowed."
+msgstr ""
+
+#: includes/social.php:699
+msgid "<strong>ERROR</strong>: Username must be at least 4 characters."
+msgstr ""
+
+#: includes/social.php:704
+msgid "<strong>ERROR</strong>: Sorry, usernames must have letters too!"
+msgstr ""
+
+#: includes/social.php:709
+msgid "<strong>ERROR</strong>: Sorry, that username already exists!"
+msgstr ""
+
+#: includes/social.php:757 includes/social.php:825
+msgid "Redirecting..."
+msgstr ""
+
+#: includes/social.php:800 includes/social.php:868
+msgid "Processing, please wait..."
+msgstr ""
+
+#: includes/widgets.php:21
+msgid "UWP > Social Login"
+msgstr ""
+
+#: includes/widgets.php:28
+msgid "Social widget title"
+msgstr ""
+
+#: includes/widgets.php:29
+msgid "Enter your UWP social Login widget title."
+msgstr ""
+
+#: uwp-social.php:36
+#, php-format
+msgid "%s requires %sUsersWP%s plugin to be installed and active."
+msgstr ""

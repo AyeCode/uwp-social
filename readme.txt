@@ -1,0 +1,104 @@
+=== UsersWP - Social Login ===
+Contributors: stiofansisland, paoltaia, ayecode
+Donate link: http://userswp.io/
+Tags: social, social login, login, register, social-connect, userswp
+Requires at least: 4.9
+Tested up to: 5.3
+Stable tag: 1.2.3
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+
+Social Login addon for UsersWP.
+
+== Description ==
+
+Social Login addon for UsersWP.
+
+This addon lets your user to register and login with popular sites like Facebook, Google, Twitter, LinkedIn, Instagram, Yahoo, WordPress, vkontakte etc.
+
+100% translatable.
+
+== Installation ==
+
+= Automatic installation =
+
+TBA
+
+= Manual installation =
+
+The manual installation method involves downloading UsersWP and uploading it to your webserver via your favourite FTP application. The WordPress codex will tell you more [here](http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
+
+= Updating =
+
+Automatic updates should seamlessly work. We always suggest you backup up your website before performing any automated update to avoid unforeseen problems.
+
+== Frequently Asked Questions ==
+
+No questions so far, but don't hesitate to ask!
+
+== Screenshots ==
+
+TBA
+
+== Changelog ==
+
+= 1.2.3 =
+* Facebook login not able to get the user's email and showing error - FIXED
+
+= 1.2.2 =
+* Changes to fix unknown column error for avatar usermeta - FIXED
+
+= 1.2.1 =
+* Don't create dummy email if email not returned by provider - FIXED
+
+= 1.2.0 =
+* Use Hybridauth latest library function for logout - FIXED
+* Compatibility with new UWP core style updates - ADDED
+
+= 1.0.10 =
+* Session not available when user redirects back from social site - FIXED
+
+= 1.0.9 =
+* Upgrade Hybridauth library to V3 to make compatibility with linkedIn API V2 - CHANGED
+* Auth URI changed due to change in Hybridauth V3. Auth URIs for all providers need to be changed - BREAKING CHANGE
+
+= 1.0.8 =
+* Integrate new settings interface - CHANGED
+
+= 1.0.7 =
+* Login with LinkedIn gives error due to destruct method - FIXED
+
+= 1.0.6 =
+* Social login is unable to create new user sometimes - FIXED
+* GDV2 compatibility - ADDED
+* Remove session path check as it shows error on few hostings - FIXED
+* Use core WP functions in Uninstall functionality. - CHANGED
+
+= 1.0.5 =
+* Implement widget and gutenberg blocks using super duper class - CHANGED
+
+= 1.0.4 =
+* Fix login redirect to last page - FIXED
+* Plugin uninstall functionality - ADDED
+
+= 1.0.3 =
+* Added graceful error message if session problems - ADDED
+
+= 1.0.2 =
+* Major code refactoring - CHANGED
+* Docblocks added - ADDED
+* Linked in sometimes does not connect becasue of trailing slash missing in subdomain - FIXED
+* Delete social row when the user get deleted - ADDED
+
+= 1.0.1 =
+* Renamed some files - CHANGED
+* Textdomain not being loaded correctly - FIXED
+* Post method uses incorrect action name - FIXED
+* Class names renamed from Users_WP to UsersWP for better naming and consistency - CHANGED
+
+= 1.0.0 =
+* First release.
+
+== Upgrade Notice ==
+
+TBA

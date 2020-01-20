@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: UsersWP - Social Login
-Plugin URI: https://userswp.io
+Plugin URI: https://userswp.io/
 Description: Social login add-on for UsersWP.
 Version: 1.3
 Author: AyeCode Ltd

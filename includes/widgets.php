@@ -1,11 +1,4 @@
 <?php
-add_action('widgets_init', 'uwp_social_init_login_widget');
-
-function uwp_social_init_login_widget() {
-
-    register_widget("UWP_Social_Login_Widget");
-
-}
 
 class UWP_Social_Login_Widget extends WP_Super_Duper {
 

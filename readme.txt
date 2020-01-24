@@ -44,6 +44,7 @@ TBA
 
 = 1.3 =
 * Facebook login not able to get the user's email and showing error - FIXED
+* Escaping and sanitisation where required - CHANGED
 
 = 1.2.2 =
 * Changes to fix unknown column error for avatar usermeta - FIXED

@@ -6,16 +6,9 @@ class UsersWP_Social {
 
     private static $instance;
 
-    /**
-     * Plugin Version
-     */
-    private $version = UWP_SOCIAL_VERSION;
-
-
     public static function get_instance() {
         if ( ! isset( self::$instance ) && ! ( self::$instance instanceof UsersWP_Social ) ) {
             self::$instance = new UsersWP_Social;
-            self::$instance->setup_globals();
             self::$instance->includes();
             self::$instance->setup_actions();
         }
@@ -27,31 +20,27 @@ class UsersWP_Social {
         self::$instance = $this;
     }
 
-    private function setup_globals() {
-
-    }
-
     private function setup_actions() {
       
-        add_action('login_form_middle', array($this, 'login_form_botton'));
+        add_action('login_form_middle', array($this, 'login_form_button'));
         add_action('uwp_social_fields', array($this, 'social_login_buttons_on_templates'), 30, 1);
         add_action('delete_user', array($this, 'delete_user_row'), 30, 1);
+	    add_action('widgets_init', array($this, 'register_widgets'));
+	    add_action( 'login_enqueue_scripts', array( $this,'login_styles' ) );
+	    add_action( 'init', array($this, 'load_textdomain') );
         add_action('uwp_social_after_wp_insert_user', array($this, 'admin_notification'), 10, 2);
+
         add_action('uwp_clear_user_php_session', 'uwp_social_destroy_session_data');
         add_action('wp_logout', 'uwp_social_destroy_session_data');
         add_action('login_form', 'uwp_social_login_buttons');
 
-        do_action( 'uwp_social_setup_actions' );
-
         if(is_admin()){
             add_action( 'admin_init', array( $this, 'activation_redirect' ) );
             add_action('admin_init', array($this, 'automatic_upgrade'));
-            add_filter( 'uwp_get_settings_pages', array( $this, 'uwp_socail_get_settings_pages' ), 10, 1 );
+            add_filter( 'uwp_get_settings_pages', array( $this, 'get_settings_pages' ), 10, 1 );
         }
 
-        add_action( 'login_enqueue_scripts', array( $this,'login_styles' ) );
-
-        add_action( 'init', array($this, 'load_textdomain') );
+	    do_action( 'uwp_social_setup_actions' );
     }
 
     /**
@@ -115,7 +104,11 @@ class UsersWP_Social {
         }
     }
 
-    public function uwp_socail_get_settings_pages($settings){
+    public function register_widgets(){
+	    register_widget("UWP_Social_Login_Widget");
+    }
+
+    public function get_settings_pages($settings){
         $settings[] = include( UWP_SOCIAL_PATH . '/admin/class-uwp-settings-social.php' );
         return $settings;
     }
@@ -143,7 +136,7 @@ class UsersWP_Social {
         exit;
     }
 
-    public function login_form_botton($content){
+    public function login_form_button($content){
         return $content.uwp_social_login_buttons_display();
     }
 

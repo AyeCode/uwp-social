@@ -3,7 +3,7 @@ function uwp_social_account_linking($shall_pass, $linking_data) {
     if( $shall_pass == false && !empty($linking_data) )
     {
         $provider_name = uwp_social_get_provider_name_by_id( $linking_data["provider"] );
-        $provider = $linking_data["provider"];
+        $provider = sanitize_text_field($linking_data["provider"]);
         $account_linking_errors = $linking_data['account_linking_errors'];
         $profile_completion_errors = $linking_data['profile_completion_errors'];
         $linking_enabled = $linking_data['linking_enabled'];
@@ -19,6 +19,7 @@ function uwp_social_account_linking($shall_pass, $linking_data) {
         $redirect_to = $linking_data['redirect_to'];
         ?>
         <!DOCTYPE html>
+        <html>
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             <title><?php echo get_bloginfo('name'); ?></title>
@@ -273,11 +274,11 @@ function uwp_social_account_linking($shall_pass, $linking_data) {
         <div id="login">
             <div id="login-panel">
                 <div id="avatar">
-                    <img src="<?php echo $hybridauth_user_avatar; ?>">
+                    <img src="<?php echo esc_url($hybridauth_user_avatar); ?>">
                 </div>
 
                 <div id="welcome">
-                    <img id="idp-icon" src="<?php echo $assets_base_url . strtolower($provider); ?>.png" >
+                    <img id="idp-icon" src="<?php echo esc_url($assets_base_url) . strtolower($provider); ?>.png" >
                     <b><?php printf( __( "Hi %s", 'uwp-social' ), htmlentities( $hybridauth_user_profile->displayName ) ); ?></b>
                     <p><?php printf( __( "You're now signed in with your %s account but you are still one step away of getting into our website", 'uwp-social' ), $provider ); ?>.</p>
 
@@ -372,7 +373,7 @@ function uwp_social_account_linking($shall_pass, $linking_data) {
                         </tr>
                     </table>
 
-                    <input type="hidden" id="redirect_to" name="redirect_to" value="<?php echo $redirect_to; ?>">
+                    <input type="hidden" id="redirect_to" name="redirect_to" value="<?php echo esc_url($redirect_to); ?>">
                     <input type="hidden" id="provider" name="provider" value="<?php echo $provider ?>">
                     <input type="hidden" id="action" name="action" value="uwp_social_account_linking">
                     <input type="hidden" id="account_linking" name="account_linking" value="1">
@@ -395,7 +396,7 @@ function uwp_social_account_linking($shall_pass, $linking_data) {
                                     <label>
                                         <?php echo __( "Username", 'uwp-social' ); ?>
                                         <br />
-                                        <input type="text" name="user_login" class="input" value="<?php echo $requested_user_login; ?>" size="25" placeholder="" />
+                                        <input type="text" name="user_login" class="input" value="<?php echo esc_attr($requested_user_login); ?>" size="25" placeholder="" />
                                     </label>
                                 <?php endif; ?>
 
@@ -403,7 +404,7 @@ function uwp_social_account_linking($shall_pass, $linking_data) {
                                     <label>
                                         <?php echo __( "E-mail", 'uwp-social' ); ?>
                                         <br />
-                                        <input type="text" name="user_email" class="input" value="<?php echo $requested_user_email; ?>" size="25" placeholder="" />
+                                        <input type="text" name="user_email" class="input" value="<?php echo esc_attr($requested_user_email); ?>" size="25" placeholder="" />
                                     </label>
                                 <?php endif; ?>
                                 
@@ -416,7 +417,7 @@ function uwp_social_account_linking($shall_pass, $linking_data) {
                         </tr>
                     </table>
 
-                    <input type="hidden" id="redirect_to" name="redirect_to" value="<?php echo $redirect_to; ?>">
+                    <input type="hidden" id="redirect_to" name="redirect_to" value="<?php echo esc_url($redirect_to); ?>">
                     <input type="hidden" id="provider" name="provider" value="<?php echo $provider ?>">
                     <input type="hidden" id="action" name="action" value="uwp_social_account_linking">
                     <input type="hidden" id="profile_completion" name="profile_completion" value="1">
@@ -424,7 +425,7 @@ function uwp_social_account_linking($shall_pass, $linking_data) {
             </div>
 
             <p class="back-to-home">
-                <a href="<?php echo home_url(); ?>">&#8592; <?php printf( __( "Back to %s", 'uwp-social' ), get_bloginfo('name') ); ?></a>
+                <a href="<?php echo esc_url(home_url()); ?>">&#8592; <?php printf( __( "Back to %s", 'uwp-social' ), get_bloginfo('name') ); ?></a>
             </p>
         </div>
 

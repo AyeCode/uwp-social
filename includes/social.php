@@ -29,7 +29,7 @@ add_action('init', 'uwp_social_authenticate_init');
 function uwp_social_authenticate_init() {
 
     // check for uwp actions
-    $action = isset( $_REQUEST['action'] ) ? $_REQUEST['action'] : null;
+    $action = isset( $_REQUEST['action'] ) ? sanitize_text_field($_REQUEST['action']) : null;
 
     add_rewrite_rule('^uwphauth/([^/]*)/?','index.php?hauth_done=1&provider=$matches[1]','top');
 
@@ -55,7 +55,7 @@ function uwp_social_authenticate_process() {
     }
 
     if (isset($_REQUEST['provider']) && !empty($_REQUEST['provider'])) {
-        $provider = strip_tags(esc_sql(trim($_REQUEST['provider'])));
+        $provider = sanitize_text_field($_REQUEST['provider']);
     } else {
         echo uwp_social_render_error_page(__('Invalid social login provider.', 'uwp-social'));
         die();
@@ -111,7 +111,7 @@ function uwp_social_authenticated_process()
     $redirect_to = uwp_get_social_login_redirect_url();
 
     if (isset($_REQUEST['provider']) && !empty($_REQUEST['provider'])) {
-        $provider = strip_tags(esc_sql(trim($_REQUEST['provider'])));
+        $provider = sanitize_text_field($_REQUEST['provider']);
     } else {
         echo uwp_social_render_error_page(__('Invalid social login provider.', 'uwp-social'));
         die();
@@ -221,11 +221,11 @@ function uwp_social_get_provider_adapter( $provider_id )
     try {
         $hybridauth = new Hybridauth\Hybridauth( $config );
         $adapter = $hybridauth->getAdapter( $provider_id );
-    } catch( Exception $e )
-    {
+    } catch( Exception $e ) {
         echo uwp_social_render_error( $e, $config, $provider_id, $adapter );
         die();
     }
+
     return $adapter;
 }
 
@@ -444,15 +444,15 @@ function uwp_social_create_wp_user( $provider, $hybridauth_user_profile, $reques
     }
 
     $userdata = array(
-        'user_login'    => $user_login,
-        'user_email'    => $user_email,
+        'user_login'    => sanitize_user($user_login),
+        'user_email'    => sanitize_email($user_email),
 
-        'display_name'  => $display_name,
+        'display_name'  => sanitize_text_field($display_name),
 
-        'first_name'    => $hybridauth_user_profile->firstName,
-        'last_name'     => $hybridauth_user_profile->lastName,
-        'user_url'      => "'".$hybridauth_user_profile->profileURL."'",
-        'description'   => $hybridauth_user_profile->description,
+        'first_name'    => sanitize_text_field($hybridauth_user_profile->firstName),
+        'last_name'     => sanitize_text_field($hybridauth_user_profile->lastName),
+        'user_url'      => "'".esc_url($hybridauth_user_profile->profileURL)."'",
+        'description'   => sanitize_textarea_field($hybridauth_user_profile->description),
 
         'user_pass'     => wp_generate_password()
     );
@@ -542,7 +542,6 @@ function uwp_social_update_user_data( $is_new_user, $user_id, $provider, $adapte
     
 }
 
-
 /**
  * Authenticate a user within wordpress
  *
@@ -552,12 +551,12 @@ function uwp_social_authenticate_user( $user_id, $provider, $redirect_to, $adapt
     do_action( "uwp_social_authenticate_user_start", $user_id, $provider, $redirect_to, $adapter, $hybridauth_user_profile, $wp_user );
 
     // update some fields in usermeta for the current user
-    update_user_meta( $user_id, 'uwp_current_provider', $provider );
+    update_user_meta( $user_id, 'uwp_current_provider', sanitize_text_field($provider) );
 
     if(  $hybridauth_user_profile->photoURL )
     {
-        uwp_update_usermeta($user_id, 'avatar_thumb', $hybridauth_user_profile->photoURL);
-        update_user_meta( $user_id, 'uwp_social_user_image', $hybridauth_user_profile->photoURL );
+        uwp_update_usermeta($user_id, 'avatar_thumb', esc_url($hybridauth_user_profile->photoURL));
+        update_user_meta( $user_id, 'uwp_social_user_image', esc_url($hybridauth_user_profile->photoURL) );
     }
     
     // This action runs just before logging the user in (before creating a WP cookie)
@@ -590,13 +589,13 @@ function uwp_social_new_users_gateway( $provider, $redirect_to, $hybridauth_user
 
     $hybridauth_user_email       = isset($hybridauth_user_profile->email) ? sanitize_email( $hybridauth_user_profile->email ) : '';
     $hybridauth_user_login       = isset($hybridauth_user_profile->displayName) ? sanitize_user( $hybridauth_user_profile->displayName, true ) : '';
-    $hybridauth_user_avatar      = isset($hybridauth_user_profile->photoURL) ? sanitize_text_field($hybridauth_user_profile->photoURL) : '';
+    $hybridauth_user_avatar      = isset($hybridauth_user_profile->photoURL) ? esc_url($hybridauth_user_profile->photoURL) : '';
 
     $hybridauth_user_login       = trim( str_replace( array( ' ', '.' ), '_', $hybridauth_user_login ) );
     $hybridauth_user_login       = trim( str_replace( '__', '_', $hybridauth_user_login ) );
 
-    $requested_user_email        = isset( $_REQUEST["user_email"] ) ? trim( $_REQUEST["user_email"] ) : $hybridauth_user_email;
-    $requested_user_login        = isset( $_REQUEST["user_login"] ) ? trim( $_REQUEST["user_login"] ) : $hybridauth_user_login;
+    $requested_user_email        = isset( $_REQUEST["user_email"] ) ? sanitize_email( $_REQUEST["user_email"] ) : $hybridauth_user_email;
+    $requested_user_login        = isset( $_REQUEST["user_login"] ) ? sanitize_user( $_REQUEST["user_login"] ) : $hybridauth_user_login;
 
     $requested_user_email        = apply_filters( 'uwp_new_users_gateway_alter_requested_email', $requested_user_email );
     $requested_user_login        = apply_filters( 'uwp_new_users_gateway_alter_requested_login', $requested_user_login );
@@ -625,10 +624,10 @@ function uwp_social_new_users_gateway( $provider, $redirect_to, $hybridauth_user
 
         $account_linking = true;
 
-        $username = isset( $_REQUEST["user_login"]    ) ? trim( $_REQUEST["user_login"]    ) : '';
-        $password = isset( $_REQUEST["user_password"] ) ? trim( $_REQUEST["user_password"] ) : '';
+        $username = isset( $_REQUEST["user_login"]    ) ? sanitize_user( $_REQUEST["user_login"] , true) : '';
+        $password = isset( $_REQUEST["user_password"] ) ? sanitize_text_field( $_REQUEST["user_password"] ) : '';
 
-        # http://codex.wordpress.org/Function_Reference/wp_authenticate
+        // http://codex.wordpress.org/Function_Reference/wp_authenticate
         $user = wp_authenticate( $username, $password );
 
         // WP_Error object?
@@ -792,7 +791,7 @@ function uwp_social_provider_redirect_loading_screen(){
     <body id="loading-screen" onload="init();">
     <table width="100%" border="0">
         <tr>
-            <td align="center"><img src="<?php echo $assets_base_url ?>loading.gif" /></td>
+            <td align="center"><img src="<?php echo esc_url($assets_base_url); ?>loading.gif" /></td>
         </tr>
         <tr>
             <td align="center">
@@ -860,7 +859,7 @@ function uwp_social_provider_loading_screen( $provider, $authenticated_url, $red
     <body id="loading-screen" onload="init();">
     <table width="100%" border="0">
         <tr>
-            <td align="center"><img src="<?php echo $assets_base_url ?>loading.gif" /></td>
+            <td align="center"><img src="<?php echo esc_url($assets_base_url); ?>loading.gif" /></td>
         </tr>
         <tr>
             <td align="center">
@@ -871,9 +870,9 @@ function uwp_social_provider_loading_screen( $provider, $authenticated_url, $red
         </tr>
     </table>
 
-    <form name="loginform" method="post" action="<?php echo $authenticated_url; ?>">
+    <form name="loginform" method="post" action="<?php echo esc_attr($authenticated_url); ?>">
         <input type="hidden" id="redirect_to" name="redirect_to" value="<?php echo esc_url( $redirect_to ); ?>">
-        <input type="hidden" id="provider" name="provider" value="<?php echo $provider ?>">
+        <input type="hidden" id="provider" name="provider" value="<?php echo esc_attr($provider); ?>">
         <input type="hidden" id="action" name="action" value="uwp_social_authenticated">
     </form>
     </body>
@@ -942,11 +941,13 @@ function uwp_social_check_auth_done(){
         }
 
         $config = uwp_get_provider_config_from_session_storage( $provider_id );
-        $callback_url    = $config['current_page'];
+        $callback_url    = isset($config['current_page']) ? $config['current_page'] : home_url();
 
         if(!class_exists('Hybridauth')){
             require_once UWP_SOCIAL_PATH . '/vendor/hybridauth/autoload.php';
         }
+
+	    $adapter = null;
 
         try {
             $hybridauth = new Hybridauth\Hybridauth($config);

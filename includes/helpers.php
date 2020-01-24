@@ -106,7 +106,6 @@ function uwp_social_store_user_profile( $user_id, $provider, $profile )
 
 function uwp_social_login_buttons() {
     $providers = uwp_get_available_social_providers();
-//    print_r( $providers );
     $is_bootstrap = uwp_get_option("design_style",'bootstrap') ?  true : false;
     $title = __('Login via Social','uwp-social');
     echo $is_bootstrap ? '<div class="bsui"><hr /><div class="text-muted h5 mt-n2 mb-2">'.$title.'</div>' : '<ul class="uwp_social_login_ul">';
@@ -126,7 +125,7 @@ function uwp_social_login_buttons() {
                 $url = home_url() . "/?action=uwp_social_authenticate&provider=".$provider_id;
 
                 
-                //General |Google |Facebook |Twitter |LinkedIn |Instagram |Yahoo |WordPress |VKontakte
+                //General |Facebook |Twitter |LinkedIn |Instagram |Yahoo |WordPress |VKontakte
                 $icons = array(
                     'facebook'  => 'fab fa-facebook-f',
                     'twitter'  => 'fab fa-twitter',

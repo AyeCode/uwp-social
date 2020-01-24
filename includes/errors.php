@@ -5,7 +5,6 @@ function uwp_social_render_error( $e, $config = null, $provider = null, $adapter
     do_action( "uwp_social_render_error", $e, $config, $provider, $adapter );
     
     $message  = __("Unspecified error!", 'uwp-social');
-    $notes    = "";
 
     if (is_string($e)) {
         $message = $e;
@@ -24,8 +23,8 @@ function uwp_social_render_error( $e, $config = null, $provider = null, $adapter
         case 2 : $message = sprintf( __("UsersWP Social Login is not properly configured.<br /> <b>%s</b> need to be properly configured.", 'uwp-social'), $provider_name ); break;
         case 3 : $message = __("Unknown or disabled provider.", 'uwp-social'); break;
         case 4 : $message = sprintf( __("UsersWP Social Login is not properly configured.<br /> <b>%s</b> requires your application credentials.", 'uwp-social'), $provider_name );
-            $notes   = sprintf( __("<b>What does this error mean ?</b><br />Most likely, you didn't setup the correct application credentials for this provider. These credentials are required in order for <b>%s</b> users to access your website and for UsersWP Social Login to work.", 'uwp-social'), $provider_name ) . __('<br />Instructions for use can be found in the <a href="#" target="_blank">User Manual</a>.', 'uwp-social');
-            break;
+                 $notes   = sprintf( __("<b>What does this error mean ?</b><br />Most likely, you didn't setup the correct application credentials for this provider. These credentials are required in order for <b>%s</b> users to access your website and for UsersWP Social Login to work.", 'uwp-social'), $provider_name ) . __('<br />Instructions for use can be found in the <a href="#" target="_blank">User Manual</a>.', 'uwp-social');
+                 break;
         case 5 : $message = sprintf( __("Authentication failed. Either you have cancelled the authentication or <b>%s</b> refused the connection.", 'uwp-social'), $provider_name ); break;
         case 6 : $message = sprintf( __("Request failed. Either you have cancelled the authentication or <b>%s</b> refused the connection.", 'uwp-social'), $provider_name ); break;
         case 7 : $message = __("You're not connected to the provider.", 'uwp-social'); break;
@@ -124,7 +123,7 @@ function uwp_social_render_error_page( $message, $notes = null )
     <div id="error-page">
         <table width="100%" border="0">
             <tr>
-                <td align="center"><img src="<?php echo $assets_base_url ?>alert.png" /></td>
+                <td align="center"><img src="<?php echo esc_url($assets_base_url); ?>alert.png" /></td>
             </tr>
 
             <tr>
@@ -236,7 +235,7 @@ function uwp_social_render_notice_page( $message )
     <div id="notice-page">
         <table width="100%" border="0">
             <tr>
-                <td align="center"><img src="<?php echo $assets_base_url ?>alert.png" /></td>
+                <td align="center"><img src="<?php echo esc_url($assets_base_url); ?>alert.png" /></td>
             </tr>
             <tr>
                 <td align="center">

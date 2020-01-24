@@ -288,7 +288,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'title' => __('Instagram Settings', 'uwp-social'),
                         'type' => 'title',
                         'id' => 'social_instagram_settings_options',
-                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use <code>%s</code> for Authorized redirect URI.','uwp-social'), '<a href="http://instagram.com/developer/clients/manage/" target="_blank">', '</a>', $callback),
+                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use <code>%s</code> for Authorized redirect URI.','uwp-social'), '<a href="https://developers.facebook.com/apps" target="_blank">', '</a>', $callback),
                         'desc_tip' => false,
                     ),
                     array(

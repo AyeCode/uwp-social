@@ -624,8 +624,8 @@ function uwp_social_new_users_gateway( $provider, $redirect_to, $hybridauth_user
 
         $account_linking = true;
 
-        $username = isset( $_REQUEST["user_login"]    ) ? $_REQUEST["user_login"] : '';
-        $password = isset( $_REQUEST["user_password"] ) ? $_REQUEST["user_password"] : '';
+        $username = isset( $_REQUEST["user_login"]    ) ? sanitize_user($_REQUEST["user_login"]) : '';
+        $password = isset( $_REQUEST["user_password"] ) ? trim($_REQUEST["user_password"]) : '';
 
         // http://codex.wordpress.org/Function_Reference/wp_authenticate
         $user = wp_authenticate( $username, $password );

@@ -4,7 +4,7 @@ Donate link: http://userswp.io/
 Tags: social, social login, login, register, social-connect, userswp
 Requires at least: 4.9
 Tested up to: 5.3
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,7 @@ Social Login addon for UsersWP.
 
 == Description ==
 
-Social Login addon for UsersWP.
+Social Login addon for [UsersWP](https://wordpress.org/plugins/userswp/).
 
 This addon lets your user to register and login with popular sites like Facebook, Google, Twitter, LinkedIn, Instagram, Yahoo, WordPress, vkontakte etc.
 
@@ -22,7 +22,8 @@ This addon lets your user to register and login with popular sites like Facebook
 
 = Automatic installation =
 
-TBA
+Automatic installation is the easiest option. To do an automatic install of UsersWP - Social Login, log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
+Search for "UsersWP Social Login" and click Install.
 
 = Manual installation =
 
@@ -38,9 +39,13 @@ No questions so far, but don't hesitate to ask!
 
 == Screenshots ==
 
-TBA
+1. UWP Login (brand icons removed in screenshots due to WP rules).
+2. WP Login (brand icons removed in screenshots due to WP rules).
 
 == Changelog ==
+
+= 1.3.2 =
+* First WP.org release - YAY
 
 = 1.3.1 =
 * Facebook login not able to get the user's email and showing error - FIXED

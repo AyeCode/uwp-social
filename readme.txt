@@ -4,7 +4,7 @@ Donate link: http://userswp.io/
 Tags: social, social login, login, register, social-connect, userswp
 Requires at least: 4.9
 Tested up to: 5.3
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -43,6 +43,9 @@ No questions so far, but don't hesitate to ask!
 2. WP Login (brand icons removed in screenshots due to WP rules).
 
 == Changelog ==
+
+= 1.3.3 =
+* Social login add on runs before UsersWP on some sites causing issue - FIXED
 
 = 1.3.2 =
 * First WP.org release - YAY

@@ -3,7 +3,7 @@
 Plugin Name: UsersWP - Social Login
 Plugin URI: https://userswp.io/
 Description: Social login add-on for UsersWP.
-Version: 1.3.2
+Version: 1.3.3
 Author: AyeCode Ltd
 Author URI: https://userswp.io
 License: GPL-2.0+
@@ -14,7 +14,7 @@ Domain Path: /languages
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'UWP_SOCIAL_VERSION', '1.3.2' );
+define( 'UWP_SOCIAL_VERSION', '1.3.3' );
 
 define( 'UWP_SOCIAL_PATH', plugin_dir_path( __FILE__ ) );
 
@@ -29,7 +29,7 @@ if ( is_admin() ) {
     }
 
     // Check UsersWP class exists or not.
-    if ( !class_exists( 'UsersWP' ) ) {
+    if ( !is_plugin_active( 'userswp/userswp.php' ) ) {
 
         deactivate_plugins( plugin_basename( __FILE__ ) );
         function uwp_social_requires_userswp_plugin() {

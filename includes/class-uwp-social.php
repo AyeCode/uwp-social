@@ -24,6 +24,7 @@ class UsersWP_Social {
       
         add_action('login_form_middle', array($this, 'login_form_button'));
         add_action('uwp_social_fields', array($this, 'social_login_buttons_on_templates'), 30, 1);
+	    add_action('wpmu_delete_user', array($this, 'delete_user_row'), 30, 1);
         add_action('delete_user', array($this, 'delete_user_row'), 30, 1);
 	    add_action('widgets_init', array($this, 'register_widgets'));
 	    add_action( 'login_enqueue_scripts', array( $this,'login_styles' ) );

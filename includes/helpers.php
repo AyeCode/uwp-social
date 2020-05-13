@@ -108,61 +108,85 @@ function uwp_social_login_buttons() {
     $providers = uwp_get_available_social_providers();
     $is_bootstrap = uwp_get_option("design_style",'bootstrap') ?  true : false;
     $title = __('Login via Social','uwp-social');
-    echo $is_bootstrap ? '<div class="bsui"><hr /><div class="text-muted h5 mt-n2 mb-2">'.$title.'</div>' : '<ul class="uwp_social_login_ul">';
 
-        foreach ($providers as $array_key => $provider) {
-            $provider_id   = isset( $provider["provider_id"]   ) ? $provider["provider_id"]   : '';
-            $provider_name = isset( $provider["provider_name"] ) ? $provider["provider_name"] : '';
+	ob_start();
+    foreach ($providers as $array_key => $provider) {
+        $provider_id   = isset( $provider["provider_id"]   ) ? $provider["provider_id"]   : '';
+        $provider_name = isset( $provider["provider_name"] ) ? $provider["provider_name"] : '';
 
-            $enable = uwp_get_option('enable_uwp_social_'.$array_key, "0");
-            if ($enable == "1") {
-                if (isset($provider["require_client_id"]) && $provider["require_client_id"]) {
-                    $key = uwp_get_option('uwp_social_'.$array_key.'_id', "");
-                } else {
-                    $key = uwp_get_option('uwp_social_'.$array_key.'_key', "");
-                }
-                $secret = uwp_get_option('uwp_social_'.$array_key.'_secret', "");
-                $url = home_url() . "/?action=uwp_social_authenticate&provider=".$provider_id;
+        $enable = uwp_get_option('enable_uwp_social_'.$array_key, "0");
+        if ($enable == "1") {
+            if (isset($provider["require_client_id"]) && $provider["require_client_id"]) {
+                $key = uwp_get_option('uwp_social_'.$array_key.'_id', "");
+            } else {
+                $key = uwp_get_option('uwp_social_'.$array_key.'_key', "");
+            }
+            $secret = uwp_get_option('uwp_social_'.$array_key.'_secret', "");
+            $url = home_url() . "/?action=uwp_social_authenticate&provider=".$provider_id;
 
-                
-                //General |Facebook |Twitter |LinkedIn |Instagram |Yahoo |WordPress |VKontakte
-                $icons = array(
-                    'facebook'  => 'fab fa-facebook-f',
-                    'twitter'  => 'fab fa-twitter',
-                    'instagram'  => 'fab fa-instagram',
-                    'linkedin'  => 'fab fa-linkedin-in',
-                    'wordpress'  => 'fab fa-wordpress-simple',
-                    'vkontakte'  => 'fab fa-vk',
 
-                );
+            //General |Facebook |Twitter |LinkedIn |Instagram |Yahoo |WordPress |VKontakte
+            $icons = array(
+                'facebook'  => 'fab fa-facebook-f',
+                'twitter'  => 'fab fa-twitter',
+                'instagram'  => 'fab fa-instagram',
+                'linkedin'  => 'fab fa-linkedin-in',
+                'wordpress'  => 'fab fa-wordpress-simple',
+                'vkontakte'  => 'fab fa-vk',
 
-                $social_name_class = strtolower($provider_id);
-                $social_icon_class = isset($icons[$social_name_class]) ? $icons[$social_name_class] : "fab fa-". $social_name_class;
+            );
 
-                if (!empty($key) && !empty($secret)) {
+            $social_name_class = strtolower($provider_id);
+            $social_icon_class = isset($icons[$social_name_class]) ? $icons[$social_name_class] : "fab fa-". $social_name_class;
 
-                    if( $is_bootstrap && class_exists("AUI") ){
-                        echo aui()->button( array(
-                            'href'  => $url,
-                            'class'     => 'ml-1 mb-1 border-0 btn  btn-'. $social_name_class.' btn-sm btn-circle',
-                            'content' => '<i class="'. $social_icon_class.'  fa-fw fa-lg"></i>',
-                            'data-toggle' => 'tooltip',
-                            'title' => $provider_name,
-                        ) );
-                    }else{
-                        ?>
+            if (!empty($key) && !empty($secret)) {
+                if( $is_bootstrap && class_exists("AUI") ){
+	                if('google' == strtolower($provider_id)){
+	                    ?>
+                        <br/>
+                        <a href="<?php echo $url; ?>">
+                            <img src="<?php echo esc_url(UWP_SOCIAL_PLUGIN_URL . 'assets/images/btn_google_signin_dark_normal_web.png'); ?>" alt="Sign in with Google" class="w-auto">
+                        </a>
+                        <?php
+	                } else {
+		                echo aui()->button( array(
+			                'href'  => $url,
+			                'class'     => 'ml-1 mb-1 border-0 btn  btn-'. $social_name_class.' btn-sm btn-circle',
+			                'content' => '<i class="'. $social_icon_class.'  fa-fw fa-lg"></i>',
+			                'data-toggle' => 'tooltip',
+			                'title' => $provider_name,
+		                ) );
+                    }
+                }else{
+	                if('google' == strtolower($provider_id)){
+		                ?>
+                        <br/>
+                        <li class="uwp_social_login_icon">
+                            <a href="<?php echo $url; ?>">
+                                <img src="<?php echo esc_url(UWP_SOCIAL_PLUGIN_URL . 'assets/images/btn_google_signin_dark_normal_web.png'); ?>" alt="Sign in with Google" class="w-auto">
+                            </a>
+                        </li>
+		                <?php
+	                } else {
+		                ?>
                         <li class="uwp_social_login_icon">
                             <a href="<?php echo $url; ?>">
                                 <i class="<?php echo $social_icon_class; ?>  fa-fw fa-lg" title="<?php echo $provider_name; ?>"></i>
                             </a>
                         </li>
-                        <?php
-                    }
-
+		                <?php
+	                }
                 }
+
             }
         }
-    echo $is_bootstrap ? '</div>' : '</ul><style>.uwp_social_login_ul {
+    }
+
+	$output = ob_get_clean();
+    if($output){
+	    echo $is_bootstrap ? '<div class="bsui"><hr /><div class="text-muted h5 mt-n2 mb-2">'.$title.'</div>' : '<ul class="uwp_social_login_ul">';
+        echo $output;
+	    echo $is_bootstrap ? '</div>' : '</ul><style>.uwp_social_login_ul {
   margin: 0;
   list-style-type: none;
   padding: 0;
@@ -180,7 +204,7 @@ function uwp_social_login_buttons() {
     .uwp_social_login_ul li a, .uwp_social_login_ul li a:hover, .uwp_social_login_ul li img {
       box-shadow: none !important;
       -moz-box-shadow: none !important; }</style>';
-
+    }
 }
 
 function uwp_social_build_provider_config( $provider )
@@ -192,7 +216,7 @@ function uwp_social_build_provider_config( $provider )
 
     $config = array();
     $config["current_page"] = Hybridauth\HttpClient\Util::getCurrentUrl(true);
-    $config["base_url"] = site_url();
+    $config["base_url"] = home_url();
     $config["callback"] = uwp_get_callback_url($provider);
     $config["providers"] = array();
     $config["providers"][$provider] = array();
@@ -263,11 +287,6 @@ function uwp_get_available_social_providers() {
             "provider_name"     => "Facebook",
             "require_client_id" => true,
         ),
-        "google" => array(
-            "provider_id"       => "google",
-            "provider_name"     => "Google",
-            "require_client_id" => true,
-        ),
         "twitter" => array(
             "provider_id"       => "twitter",
             "provider_name"     => "Twitter",
@@ -297,6 +316,11 @@ function uwp_get_available_social_providers() {
             "provider_id"       => "Vkontakte",
             "provider_name"     => "ВКонтакте",
             "require_client_id" => true,
+        ),
+        "google" => array(
+	        "provider_id"       => "google",
+	        "provider_name"     => "Google",
+	        "require_client_id" => true,
         ),
     );
 
@@ -352,9 +376,9 @@ function uwp_get_callback_url($provider){
 
     if(isset($provider) & !empty($provider)){
         if('yahoo' == $provider){
-            $callback = site_url() . '/uwphauth/yaho';
+            $callback = home_url() . '/uwphauth/yaho';
         } else {
-            $callback = site_url() . '/uwphauth/' . $provider;
+            $callback = home_url() . '/uwphauth/' . $provider;
         }
     }
 

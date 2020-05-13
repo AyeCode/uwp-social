@@ -44,6 +44,10 @@ No questions so far, but don't hesitate to ask!
 
 == Changelog ==
 
+= 1.3.5 =
+* Don't show 'Login via Social' label if no social login configured or active - FIXED
+* Change google icon as per their guideline - CHANGED
+
 = 1.3.4 =
 * Update readme file for tested up to version 5.4
 

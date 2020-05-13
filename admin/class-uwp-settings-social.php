@@ -98,7 +98,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'name' => 'Enable Google',
                         'desc' => '',
                         'type' => 'checkbox',
-                        'default'  => '1',
+                        'default'  => '0',
                     ),
                     array(
                         'id' => 'uwp_social_google_id',
@@ -146,7 +146,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'name' => 'Enable Facebook',
                         'desc' => '',
                         'type' => 'checkbox',
-                        'default'  => '1',
+                        'default'  => '0',
                         'class' => 'uwp_label_inline',
                     ),
                     array(
@@ -196,7 +196,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'name' => 'Enable Twitter',
                         'desc' => '',
                         'type' => 'checkbox',
-                        'default'  => '1',
+                        'default'  => '0',
                         'class' => 'uwp_label_inline',
                     ),
                     array(
@@ -246,7 +246,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'name' => 'Enable LinkedIn',
                         'desc' => '',
                         'type' => 'checkbox',
-                        'default'  => '1',
+                        'default'  => '0',
                         'class' => 'uwp_label_inline',
                     ),
                     array(
@@ -296,7 +296,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'name' => 'Enable Instagram',
                         'desc' => '',
                         'type' => 'checkbox',
-                        'default'  => '1',
+                        'default'  => '0',
                         'class' => 'uwp_label_inline',
                     ),
                     array(
@@ -346,7 +346,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'name' => 'Enable Yahoo',
                         'desc' => '',
                         'type' => 'checkbox',
-                        'default'  => '1',
+                        'default'  => '0',
                         'class' => 'uwp_label_inline',
                     ),
                     array(
@@ -396,7 +396,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'name' => 'Enable WordPress',
                         'desc' => '',
                         'type' => 'checkbox',
-                        'default'  => '1',
+                        'default'  => '0',
                         'class' => 'uwp_label_inline',
                     ),
                     array(
@@ -446,7 +446,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'name' => 'Enable Vkontakte',
                         'desc' => '',
                         'type' => 'checkbox',
-                        'default'  => '1',
+                        'default'  => '0',
                         'class' => 'uwp_label_inline',
                     ),
                     array(

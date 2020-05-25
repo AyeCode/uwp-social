@@ -260,7 +260,7 @@ function uwp_social_build_provider_config( $provider )
     if( $provider_key == "google" )
     {
         // set the default google scope
-        $config["providers"][$provider]["scope"] = "profile https://www.googleapis.com/auth/plus.profile.emails.read";
+        $config["providers"][$provider]["scope"] = "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email";
     }
 
     if( $provider_key == "instagram" )

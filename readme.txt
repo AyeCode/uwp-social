@@ -4,7 +4,7 @@ Donate link: http://userswp.io/
 Tags: social, social login, login, register, social-connect, userswp
 Requires at least: 4.9
 Tested up to: 5.4
-Stable tag: 1.3.5
+Stable tag: 1.3.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -43,6 +43,9 @@ No questions so far, but don't hesitate to ask!
 2. WP Login (brand icons removed in screenshots due to WP rules).
 
 == Changelog ==
+
+= 1.3.6 =
+* Change the scopes for google social login - FIXED
 
 = 1.3.5 =
 * Don't show 'Login via Social' label if no social login configured or active - FIXED

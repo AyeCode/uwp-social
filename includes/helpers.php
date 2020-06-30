@@ -111,9 +111,10 @@ function uwp_social_login_buttons() {
 
 	ob_start();
     foreach ($providers as $array_key => $provider) {
+        $btn_output = '';
         $provider_id   = isset( $provider["provider_id"]   ) ? $provider["provider_id"]   : '';
         $provider_name = isset( $provider["provider_name"] ) ? $provider["provider_name"] : '';
-
+        $url = '';
         $enable = uwp_get_option('enable_uwp_social_'.$array_key, "0");
         if ($enable == "1") {
             if (isset($provider["require_client_id"]) && $provider["require_client_id"]) {
@@ -142,14 +143,14 @@ function uwp_social_login_buttons() {
             if (!empty($key) && !empty($secret)) {
                 if( $is_bootstrap && class_exists("AUI") ){
 	                if('google' == strtolower($provider_id)){
-	                    ?>
-                        <br/>
-                        <a href="<?php echo $url; ?>">
-                            <img src="<?php echo esc_url(UWP_SOCIAL_PLUGIN_URL . 'assets/images/btn_google_signin_dark_normal_web.png'); ?>" alt="Sign in with Google" class="w-auto">
-                        </a>
-                        <?php
+
+                        $btn_output .= "<br/>";
+                        $btn_output .= "<a href=\"$url\">";
+                        $btn_output .= '<img src="'.esc_url(UWP_SOCIAL_PLUGIN_URL . 'assets/images/btn_google_signin_dark_normal_web.png').'" alt="Sign in with Google" class="w-auto">';
+                        $btn_output .= "</a>";
+
 	                } else {
-		                echo aui()->button( array(
+                        $btn_output .=  aui()->button( array(
 			                'href'  => $url,
 			                'class'     => 'ml-1 mb-1 border-0 btn  btn-'. $social_name_class.' btn-sm btn-circle',
 			                'content' => '<i class="'. $social_icon_class.'  fa-fw fa-lg"></i>',
@@ -159,27 +160,25 @@ function uwp_social_login_buttons() {
                     }
                 }else{
 	                if('google' == strtolower($provider_id)){
-		                ?>
-                        <br/>
-                        <li class="uwp_social_login_icon">
-                            <a href="<?php echo $url; ?>">
-                                <img src="<?php echo esc_url(UWP_SOCIAL_PLUGIN_URL . 'assets/images/btn_google_signin_dark_normal_web.png'); ?>" alt="Sign in with Google" class="w-auto">
-                            </a>
-                        </li>
-		                <?php
+                        $btn_output .= "<br/>";
+                        $btn_output .= '<li class="uwp_social_login_icon">';
+                        $btn_output .= "<a href=\"$url\">";
+                        $btn_output .= '<img src="'.esc_url(UWP_SOCIAL_PLUGIN_URL . 'assets/images/btn_google_signin_dark_normal_web.png').'" alt="Sign in with Google" class="w-auto">';
+                        $btn_output .= "</a>";
+                        $btn_output .= "</li>";
 	                } else {
-		                ?>
-                        <li class="uwp_social_login_icon">
-                            <a href="<?php echo $url; ?>">
-                                <i class="<?php echo $social_icon_class; ?>  fa-fw fa-lg" title="<?php echo $provider_name; ?>"></i>
-                            </a>
-                        </li>
-		                <?php
+                        $btn_output .= '<li class="uwp_social_login_icon">';
+                        $btn_output .= "<a href=\"$url\">";
+                        $btn_output .= '<i class="'.$social_icon_class.'  fa-fw fa-lg" title="'.$provider_name.'"></i>';
+                        $btn_output .= "</a>";
+                        $btn_output .= "</li>";
 	                }
                 }
 
             }
         }
+
+        echo apply_filters("uwp_social_login_button_html",$btn_output,strtolower($provider_id),$url);
     }
 
 	$output = ob_get_clean();

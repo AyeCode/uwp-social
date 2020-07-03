@@ -33,7 +33,12 @@ class UsersWP_Social {
 
         add_action('uwp_clear_user_php_session', 'uwp_social_destroy_session_data');
         add_action('wp_logout', 'uwp_social_destroy_session_data');
-        add_action('login_form', 'uwp_social_login_buttons');
+
+        $disable_admin_login = uwp_get_option('disable_admin_social_login');
+
+        if(empty($disable_admin_login)) {
+            add_action('login_form', 'uwp_social_login_buttons');
+        }
 
         if(is_admin()){
             add_action( 'admin_init', array( $this, 'activation_redirect' ) );

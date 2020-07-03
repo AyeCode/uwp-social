@@ -95,7 +95,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id'   => 'enable_uwp_social_google',
-                        'name' => 'Enable Google',
+                        'name' => __('Enable Google', 'uwp-social'),
                         'desc' => '',
                         'type' => 'checkbox',
                         'default'  => '0',
@@ -116,16 +116,16 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id'   => 'uwp_social_google_pick_username',
-                        'name' => 'Let the user enter username?',
-                        'desc' => 'By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.',
+                        'name' => __('Let the user enter username?', 'uwp-social'),
+                        'desc' => __('By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.', 'uwp-social'),
                         'type' => 'checkbox',
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
                     ),
                     array(
                         'id'   => 'uwp_social_google_pick_email',
-                        'name' => 'Let the user enter email?',
-                        'desc' => 'By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.',
+                        'name' => __('Let the user enter email?', 'uwp-social'),
+                        'desc' => __('By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.', 'uwp-social'),
                         'type' => 'checkbox',
                         'default'  => '0',
                     ),
@@ -143,7 +143,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id'   => 'enable_uwp_social_facebook',
-                        'name' => 'Enable Facebook',
+                        'name' => __('Enable Facebook', 'uwp-social'),
                         'desc' => '',
                         'type' => 'checkbox',
                         'default'  => '0',
@@ -165,16 +165,16 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id'   => 'uwp_social_facebook_pick_username',
-                        'name' => 'Let the user enter username?',
-                        'desc' => 'By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.',
+                        'name' => __('Let the user enter username?', 'uwp-social'),
+                        'desc' => __('By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.', 'uwp-social'),
                         'type' => 'checkbox',
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
                     ),
                     array(
                         'id'   => 'uwp_social_facebook_pick_email',
-                        'name' => 'Let the user enter email?',
-                        'desc' => 'By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.',
+                        'name' => __('Let the user enter email?', 'uwp-social'),
+                        'desc' => __('By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.', 'uwp-social'),
                         'type' => 'checkbox',
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
@@ -193,7 +193,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id'   => 'enable_uwp_social_twitter',
-                        'name' => 'Enable Twitter',
+                        'name' => __('Enable Twitter', 'uwp-social'),
                         'desc' => '',
                         'type' => 'checkbox',
                         'default'  => '0',
@@ -215,16 +215,16 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id'   => 'uwp_social_twitter_pick_username',
-                        'name' => 'Let the user enter username?',
-                        'desc' => 'By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.',
+                        'name' => __('Let the user enter username?', 'uwp-social'),
+                        'desc' => __('By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.', 'uwp-social'),
                         'type' => 'checkbox',
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
                     ),
                     array(
                         'id'   => 'uwp_social_twitter_pick_email',
-                        'name' => 'Let the user enter email?',
-                        'desc' => 'By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.',
+                        'name' => __('Let the user enter email?', 'uwp-social'),
+                        'desc' => __('By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.', 'uwp-social'),
                         'type' => 'checkbox',
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
@@ -243,7 +243,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id'   => 'enable_uwp_social_linkedin',
-                        'name' => 'Enable LinkedIn',
+                        'name' => __('Enable LinkedIn', 'uwp-social'),
                         'desc' => '',
                         'type' => 'checkbox',
                         'default'  => '0',
@@ -265,16 +265,16 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id'   => 'uwp_social_linkedin_pick_username',
-                        'name' => 'Let the user enter username?',
-                        'desc' => 'By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.',
+                        'name' => __('Let the user enter username?', 'uwp-social'),
+                        'desc' => __('By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.', 'uwp-social'),
                         'type' => 'checkbox',
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
                     ),
                     array(
                         'id'   => 'uwp_social_linkedin_pick_email',
-                        'name' => 'Let the user enter email?',
-                        'desc' => 'By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.',
+                        'name' => __('Let the user enter email?', 'uwp-social'),
+                        'desc' => __('By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.', 'uwp-social'),
                         'type' => 'checkbox',
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
@@ -293,7 +293,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id'   => 'enable_uwp_social_instagram',
-                        'name' => 'Enable Instagram',
+                        'name' => __('Enable Instagram', 'uwp-social'),
                         'desc' => '',
                         'type' => 'checkbox',
                         'default'  => '0',
@@ -315,16 +315,16 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id'   => 'uwp_social_instagram_pick_username',
-                        'name' => 'Let the user enter username?',
-                        'desc' => 'By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.',
+                        'name' => __('Let the user enter username?', 'uwp-social'),
+                        'desc' => __('By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.', 'uwp-social'),
                         'type' => 'checkbox',
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
                     ),
                     array(
                         'id'   => 'uwp_social_instagram_pick_email',
-                        'name' => 'Let the user enter email?',
-                        'desc' => 'By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.',
+                        'name' => __('Let the user enter email?', 'uwp-social'),
+                        'desc' => __('By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.', 'uwp-social'),
                         'type' => 'checkbox',
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
@@ -343,7 +343,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id'   => 'enable_uwp_social_yahoo',
-                        'name' => 'Enable Yahoo',
+                        'name' => __('Enable Yahoo', 'uwp-social'),
                         'desc' => '',
                         'type' => 'checkbox',
                         'default'  => '0',
@@ -365,16 +365,16 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id'   => 'uwp_social_yahoo_pick_username',
-                        'name' => 'Let the user enter username?',
-                        'desc' => 'By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.',
+                        'name' => __('Let the user enter username?', 'uwp-social'),
+                        'desc' => __('By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.', 'uwp-social'),
                         'type' => 'checkbox',
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
                     ),
                     array(
                         'id'   => 'uwp_social_yahoo_pick_email',
-                        'name' => 'Let the user enter email?',
-                        'desc' => 'By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.',
+                        'name' => __('Let the user enter email?', 'uwp-social'),
+                        'desc' => __('By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.', 'uwp-social'),
                         'type' => 'checkbox',
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
@@ -393,7 +393,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id'   => 'enable_uwp_social_wordpress',
-                        'name' => 'Enable WordPress',
+                        'name' => __('Enable WordPress', 'uwp-social'),
                         'desc' => '',
                         'type' => 'checkbox',
                         'default'  => '0',
@@ -415,16 +415,16 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id'   => 'uwp_social_wordpress_pick_username',
-                        'name' => 'Let the user enter username?',
-                        'desc' => 'By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.',
+                        'name' => __('Let the user enter username?', 'uwp-social'),
+                        'desc' => __('By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.', 'uwp-social'),
                         'type' => 'checkbox',
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
                     ),
                     array(
                         'id'   => 'uwp_social_wordpress_pick_email',
-                        'name' => 'Let the user enter email?',
-                        'desc' => 'By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.',
+                        'name' => __('Let the user enter email?', 'uwp-social'),
+                        'desc' => __('By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.', 'uwp-social'),
                         'type' => 'checkbox',
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
@@ -443,7 +443,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id'   => 'enable_uwp_social_vkontakte',
-                        'name' => 'Enable Vkontakte',
+                        'name' => __('Enable Vkontakte', 'uwp-social'),
                         'desc' => '',
                         'type' => 'checkbox',
                         'default'  => '0',
@@ -465,16 +465,16 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id'   => 'uwp_social_vkontakte_pick_username',
-                        'name' => 'Let the user enter username?',
-                        'desc' => 'By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.',
+                        'name' => __('Let the user enter username?', 'uwp-social'),
+                        'desc' => __('By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.', 'uwp-social'),
                         'type' => 'checkbox',
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
                     ),
                     array(
                         'id'   => 'uwp_social_vkontakte_pick_email',
-                        'name' => 'Let the user enter email?',
-                        'desc' => 'By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.',
+                        'name' => __('Let the user enter email?', 'uwp-social'),
+                        'desc' => __('By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.', 'uwp-social'),
                         'type' => 'checkbox',
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
@@ -482,9 +482,6 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                 ));
 
             } else{
-
-                global $hide_save_button;
-                $hide_save_button = true;
 
                 $settings = apply_filters('uwp_social_options', array(
                     array(
@@ -494,8 +491,15 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'id' => 'social_general_settings_options',
                         'desc_tip' => false,
                     ),
+                    array(
+                        'id'   => 'disable_admin_social_login',
+                        'name' => __( 'Disable on admin login page?', 'uwp-social' ),
+                        'desc' => '',
+                        'type' => 'checkbox',
+                        'default'  => '0',
+                        'class' => '',
+                    ),
                 ));
-
             }
 
             $settings = apply_filters('uwp_get_settings_' . $this->id, $settings, $current_section);

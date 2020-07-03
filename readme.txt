@@ -44,6 +44,10 @@ No questions so far, but don't hesitate to ask!
 
 == Changelog ==
 
+= 1.3.8 =
+* Send WP default registration email on new user login via social login - ADDED
+* Allow to disable social login on wp-admin login form - ADDED
+
 = 1.3.7 =
 * Filter 'uwp_social_login_button_html' added to be able to adjust the icon buttons output - ADDED
 

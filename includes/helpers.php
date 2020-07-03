@@ -268,6 +268,11 @@ function uwp_social_build_provider_config( $provider )
         $config["providers"][$provider]["scope"] = "basic";
     }
 
+	if( $provider_key == "twitter" )
+	{
+		$config["providers"][$provider]["includeEmail"] = true;
+	}
+
     $provider_scope = isset( $config["providers"][$provider]["scope"] ) ? $config["providers"][$provider]["scope"] : '' ;
 
     // allow to overwrite scopes

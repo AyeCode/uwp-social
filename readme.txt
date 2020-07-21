@@ -47,6 +47,7 @@ No questions so far, but don't hesitate to ask!
 = 1.3.8 =
 * Send WP default registration email on new user login via social login - ADDED
 * Allow to disable social login on wp-admin login form - ADDED
+* Hybridauth library upgraded to v3.4.0 - CHANGED
 
 = 1.3.7 =
 * Filter 'uwp_social_login_button_html' added to be able to adjust the icon buttons output - ADDED

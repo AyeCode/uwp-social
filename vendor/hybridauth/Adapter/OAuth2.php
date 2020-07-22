@@ -126,9 +126,18 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
     /**
     * Authorization Url Parameters
     *
-    * @var boolean
+    * @var array
     */
     protected $AuthorizeUrlParameters = [];
+
+
+    /**
+     * Authorization Url Parameter encoding type
+     * @see https://www.php.net/manual/de/function.http-build-query.php
+     *
+     * @var string
+     */
+    protected $AuthorizeUrlParametersEncType = PHP_QUERY_RFC1738;
 
     /**
     * Authorization Request State
@@ -298,7 +307,7 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
         try {
             $this->authenticateCheckError();
 
-            $code = filter_input(INPUT_GET, 'code');
+            $code = filter_input($_SERVER['REQUEST_METHOD'] === 'POST' ? INPUT_POST : INPUT_GET, 'code');
 
             if (empty($code)) {
                 $this->authenticateBegin();
@@ -367,8 +376,8 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
             [HttpClient\Util::getCurrentUrl(true)]
         );
 
-        $state = filter_input(INPUT_GET, 'state');
-        $code = filter_input(INPUT_GET, 'code');
+        $state = filter_input($_SERVER['REQUEST_METHOD'] === 'POST' ? INPUT_POST : INPUT_GET, 'state');
+        $code = filter_input($_SERVER['REQUEST_METHOD'] === 'POST' ? INPUT_POST : INPUT_GET, 'code');
 
         /**
         * Authorization Request State
@@ -440,7 +449,8 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
             $this->storeData('authorization_state', $this->AuthorizeUrlParameters['state']);
         }
 
-        return $this->authorizeUrl . '?' . http_build_query($this->AuthorizeUrlParameters, '', '&');
+        $queryParams = http_build_query($this->AuthorizeUrlParameters, '', '&', $this->AuthorizeUrlParametersEncType);
+        return $this->authorizeUrl . '?' . $queryParams;
     }
 
     /**
@@ -594,19 +604,16 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
     /**
     * Check whether access token has expired
     *
-    * @return string Raw Provider API response
+    * @return bool|null
     */
     public function hasAccessTokenExpired()
     {
-        if (! $this->getStoredData('expires_at')) {
+        $expires_at = $this->getStoredData('expires_at');
+        if (!$expires_at) {
             return null;
         }
 
-        if ($this->getStoredData('expires_at') <= time()) {
-            return true;
-        }
-
-        return false;
+        return $expires_at <= time();
     }
 
     /**
@@ -652,13 +659,14 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
     * @param string $method
     * @param array $parameters
     * @param array $headers
+    * @param bool $multipart
     *
     * @return mixed
     * @throws \Hybridauth\Exception\HttpClientFailureException
     * @throws \Hybridauth\Exception\HttpRequestFailedException
     * @throws InvalidAccessTokenException
     */
-    public function apiRequest($url, $method = 'GET', $parameters = [], $headers = [])
+    public function apiRequest($url, $method = 'GET', $parameters = [], $headers = [], $multipart = false)
     {
         // refresh tokens if needed
         if ($this->hasAccessTokenExpired() === true) {
@@ -676,7 +684,8 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
             $url,
             $method,     // HTTP Request Method. Defaults to GET.
             $parameters, // Request Parameters
-            $headers     // Request Headers
+            $headers,    // Request Headers
+            $multipart   // Is request multipart
         );
 
         $this->validateApiResponse('Signed API request has returned an error');

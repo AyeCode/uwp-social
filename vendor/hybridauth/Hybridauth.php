@@ -73,7 +73,7 @@ class Hybridauth
         }
 
         $this->config = $config + [
-            'debug_mode'   => 'none',
+            'debug_mode'   => Logger::NONE,
             'debug_file'   => '',
             'curl_options' => null,
             'providers'    => []
@@ -166,6 +166,10 @@ class Hybridauth
         }
 
         $config = $providersConfig[$name];
+        $config += [
+            'debug_mode' => $this->config['debug_mode'],
+            'debug_file' => $this->config['debug_file'],
+        ];
 
         if (! isset($config['callback']) && isset($this->config['callback'])) {
             $config['callback'] = $this->config['callback'];

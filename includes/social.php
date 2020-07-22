@@ -479,7 +479,7 @@ function uwp_social_create_wp_user( $provider, $hybridauth_user_profile, $reques
     }
 
     // wp_insert_user may fail on first and last name meta, expliciting setting to correct.
-    update_user_meta($user_id, 'first_name', apply_filters( 'uwp_social_pre_user_first_name',$userdata['first_name']));
+    update_user_meta($user_id, 'first_name', apply_filters( 'uwp_social_pre_user_first_name', $userdata['first_name']));
     update_user_meta($user_id, 'last_name', apply_filters( 'uwp_social_pre_user_last_name', $userdata['last_name']));
 
     wp_new_user_notification($user_id);
@@ -524,7 +524,7 @@ function uwp_request_user_social_profile( $provider )
         }
     }
 
-        // if things didn't go as expected, we dispay the appropriate error message
+    // if things doesn't go as expected, we display the appropriate error message
     catch( Exception $e )
     {
         return array(

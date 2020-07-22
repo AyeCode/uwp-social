@@ -1,6 +1,6 @@
 <?php
 /**
- * UsersWP import export Settings
+ * UsersWP Social Admin settings
  *
  * @author      AyeCode
  * @category    Admin
@@ -491,12 +491,20 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'id' => 'social_general_settings_options',
                         'desc_tip' => false,
                     ),
+	                array(
+		                'id'   => 'label_for_social_login',
+		                'name' => __( 'Label for Social Login', 'uwp-social' ),
+		                'desc' => '',
+		                'type' => 'text',
+		                'default'  => __('Login via Social','uwp-social'),
+		                'class' => '',
+	                ),
                     array(
                         'id'   => 'disable_admin_social_login',
                         'name' => __( 'Disable on admin login page?', 'uwp-social' ),
                         'desc' => '',
                         'type' => 'checkbox',
-                        'default'  => '0',
+                        'default'  => 0,
                         'class' => '',
                     ),
                 ));

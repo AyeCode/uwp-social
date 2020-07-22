@@ -1,15 +1,5 @@
 <?php
 /**
- * Fired during plugin activation
- *
- * @link       http://wpgeodirectory.com
- * @since      1.0.0
- *
- * @package    uwp_social
- * @subpackage uwp_social/includes
- */
-
-/**
  * Fired during plugin activation.
  *
  * This class defines all code necessary to run during the plugin's activation.

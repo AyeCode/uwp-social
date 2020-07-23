@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: UsersWP - Social 1.3.6\n"
+"Project-Id-Version: UsersWP - Social 1.3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-25 17:54+0530\n"
-"PO-Revision-Date: 2020-05-25 17:54+0530\n"
+"POT-Creation-Date: 2020-07-23 14:43+0530\n"
+"PO-Revision-Date: 2020-07-23 14:44+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -69,6 +69,10 @@ msgid ""
 "below. Use %s for Authorized redirect URI."
 msgstr ""
 
+#: admin/class-uwp-settings-social.php:98
+msgid "Enable Google"
+msgstr ""
+
 #: admin/class-uwp-settings-social.php:105
 msgid "Google APP ID"
 msgstr ""
@@ -83,6 +87,54 @@ msgstr ""
 
 #: admin/class-uwp-settings-social.php:115
 msgid "Enter Google APP Secret"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:119
+#: admin/class-uwp-settings-social.php:168
+#: admin/class-uwp-settings-social.php:218
+#: admin/class-uwp-settings-social.php:268
+#: admin/class-uwp-settings-social.php:318
+#: admin/class-uwp-settings-social.php:368
+#: admin/class-uwp-settings-social.php:418
+#: admin/class-uwp-settings-social.php:468
+msgid "Let the user enter username?"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:120
+#: admin/class-uwp-settings-social.php:169
+#: admin/class-uwp-settings-social.php:219
+#: admin/class-uwp-settings-social.php:269
+#: admin/class-uwp-settings-social.php:319
+#: admin/class-uwp-settings-social.php:369
+#: admin/class-uwp-settings-social.php:419
+#: admin/class-uwp-settings-social.php:469
+msgid ""
+"By default, the username is auto generated. If this option enabled then we "
+"would ask the user to pick the username by displaying a form."
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:127
+#: admin/class-uwp-settings-social.php:176
+#: admin/class-uwp-settings-social.php:226
+#: admin/class-uwp-settings-social.php:276
+#: admin/class-uwp-settings-social.php:326
+#: admin/class-uwp-settings-social.php:376
+#: admin/class-uwp-settings-social.php:426
+#: admin/class-uwp-settings-social.php:476
+msgid "Let the user enter email?"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:128
+#: admin/class-uwp-settings-social.php:177
+#: admin/class-uwp-settings-social.php:227
+#: admin/class-uwp-settings-social.php:277
+#: admin/class-uwp-settings-social.php:327
+#: admin/class-uwp-settings-social.php:377
+#: admin/class-uwp-settings-social.php:427
+#: admin/class-uwp-settings-social.php:477
+msgid ""
+"By default, the email returned by the provider is used. If this option "
+"enabled then we would ask the user to enter the email by displaying a form."
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:138
@@ -100,6 +152,10 @@ msgstr ""
 msgid ""
 "<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter "
 "below. Use <code>%s</code> for Authorized redirect URI."
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:146
+msgid "Enable Facebook"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:154
@@ -122,6 +178,10 @@ msgstr ""
 msgid "Twitter Settings"
 msgstr ""
 
+#: admin/class-uwp-settings-social.php:196
+msgid "Enable Twitter"
+msgstr ""
+
 #: admin/class-uwp-settings-social.php:204
 msgid "Twitter API Key"
 msgstr ""
@@ -140,6 +200,10 @@ msgstr ""
 
 #: admin/class-uwp-settings-social.php:238
 msgid "Linkedin Settings"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:246
+msgid "Enable LinkedIn"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:254
@@ -162,6 +226,10 @@ msgstr ""
 msgid "Instagram Settings"
 msgstr ""
 
+#: admin/class-uwp-settings-social.php:296
+msgid "Enable Instagram"
+msgstr ""
+
 #: admin/class-uwp-settings-social.php:304
 msgid "Instagram APP ID"
 msgstr ""
@@ -179,8 +247,12 @@ msgid "Enter Instagram APP Secret"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:338
-#: admin/class-uwp-settings-social.php:491
+#: admin/class-uwp-settings-social.php:488
 msgid "Social Settings"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:346
+msgid "Enable Yahoo"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:354
@@ -203,6 +275,10 @@ msgstr ""
 msgid "WordPress Settings"
 msgstr ""
 
+#: admin/class-uwp-settings-social.php:396
+msgid "Enable WordPress"
+msgstr ""
+
 #: admin/class-uwp-settings-social.php:404
 msgid "WordPress APP ID"
 msgstr ""
@@ -223,6 +299,10 @@ msgstr ""
 msgid "Vkontakte Settings"
 msgstr ""
 
+#: admin/class-uwp-settings-social.php:446
+msgid "Enable Vkontakte"
+msgstr ""
+
 #: admin/class-uwp-settings-social.php:454
 msgid "Vkontakte APP ID"
 msgstr ""
@@ -239,7 +319,7 @@ msgstr ""
 msgid "Enter Vkontakte APP Secret"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:493
+#: admin/class-uwp-settings-social.php:490
 #, php-format
 msgid ""
 "You can allow users to login via several social networks, once enabled the "
@@ -247,45 +327,57 @@ msgid ""
 "widget to add a social login buttons to widget areas. See %s Documentation %s"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:511
+#: admin/class-uwp-settings-social.php:496
+msgid "Label for Social Login"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:499
+msgid "Login via Social"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:504
+msgid "Disable on admin login page?"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:523
 msgid "UsersWP - Social"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:512
+#: admin/class-uwp-settings-social.php:524
 msgid "Remove all data when deleted?"
 msgstr ""
 
-#: includes/class-uwp-social.php:170
+#: includes/class-uwp-social.php:175
 #, php-format
 msgid "New user registration on your site: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:171
+#: includes/class-uwp-social.php:176
 #, php-format
 msgid "Username: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:172
+#: includes/class-uwp-social.php:177
 #, php-format
 msgid "Provider: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:173
+#: includes/class-uwp-social.php:178
 #, php-format
 msgid "Profile: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:174
+#: includes/class-uwp-social.php:179
 #, php-format
 msgid "Email: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:178
+#: includes/class-uwp-social.php:183
 #, php-format
 msgid "[%s] New User Registration"
 msgstr ""
 
-#: includes/class-uwp-social.php:184
+#: includes/class-uwp-social.php:189
 #, php-format
 msgid ""
 "<strong>Breaking change: </strong> Authorized Redirect URI for all social "
@@ -369,7 +461,7 @@ msgid "Back to home"
 msgstr ""
 
 #: includes/helpers.php:110
-msgid "Login via Social"
+msgid "Login via Social 1"
 msgstr ""
 
 #: includes/linking.php:282
@@ -474,57 +566,57 @@ msgstr ""
 msgid "An error occurred while creating a new user!"
 msgstr ""
 
-#: includes/social.php:520
+#: includes/social.php:522
 #, php-format
 msgid ""
 "Sorry, we couldn't connect you with <b>%s</b>. <a href=\"%s\">Please try "
 "again</a>."
 msgstr ""
 
-#: includes/social.php:622
+#: includes/social.php:624
 msgid "Linking is not enabled. Please check the social login add on settings."
 msgstr ""
 
-#: includes/social.php:640
+#: includes/social.php:642
 #, php-format
 msgid ""
 "<strong>ERROR</strong>: Invalid username or incorrect password. <a href=\"%s"
 "\">Lost your password</a>?"
 msgstr ""
 
-#: includes/social.php:670
+#: includes/social.php:672
 msgid "<strong>ERROR</strong>: Please type your e-mail address."
 msgstr ""
 
-#: includes/social.php:675
+#: includes/social.php:677
 msgid "<strong>ERROR</strong>: Please enter a valid email address."
 msgstr ""
 
-#: includes/social.php:680
+#: includes/social.php:682
 msgid "<strong>ERROR</strong>: Sorry, that email address is already used!"
 msgstr ""
 
-#: includes/social.php:693
+#: includes/social.php:695
 msgid "<strong>ERROR</strong>: That username is not allowed."
 msgstr ""
 
-#: includes/social.php:698
+#: includes/social.php:700
 msgid "<strong>ERROR</strong>: Username must be at least 4 characters."
 msgstr ""
 
-#: includes/social.php:703
+#: includes/social.php:705
 msgid "<strong>ERROR</strong>: Sorry, usernames must have letters too!"
 msgstr ""
 
-#: includes/social.php:708
+#: includes/social.php:710
 msgid "<strong>ERROR</strong>: Sorry, that username already exists!"
 msgstr ""
 
-#: includes/social.php:756 includes/social.php:824
+#: includes/social.php:758 includes/social.php:826
 msgid "Redirecting..."
 msgstr ""
 
-#: includes/social.php:799 includes/social.php:867
+#: includes/social.php:801 includes/social.php:869
 msgid "Processing, please wait..."
 msgstr ""
 

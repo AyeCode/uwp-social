@@ -4,7 +4,7 @@ Donate link: http://userswp.io/
 Tags: social, social login, login, register, social-connect, userswp
 Requires at least: 4.9
 Tested up to: 5.4
-Stable tag: 1.3.7
+Stable tag: 1.3.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 

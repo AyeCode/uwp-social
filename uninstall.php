@@ -12,7 +12,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 $settings = get_option('uwp_settings', array());
-if ( 1 == $settings[ 'uwp_uninstall_social_data' ] ) {
+if ( isset($settings[ 'uwp_uninstall_social_data' ]) && 1 == $settings[ 'uwp_uninstall_social_data' ] ) {
     global $wpdb;
     $wpdb->hide_errors();
     

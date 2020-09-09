@@ -15,7 +15,6 @@ function uwp_social_account_linking($shall_pass, $linking_data) {
         $requested_user_login = $linking_data['requested_user_login'];
         $hybridauth_user_profile = $linking_data['hybridauth_user_profile'];
         $hybridauth_user_avatar = $linking_data['hybridauth_user_avatar'];
-        $assets_base_url = $linking_data['assets_base_url'];
         $redirect_to = $linking_data['redirect_to'];
         ?>
         <!DOCTYPE html>
@@ -79,15 +78,6 @@ function uwp_social_account_linking($shall_pass, $linking_data) {
                 #welcome {
                     height: 55px;
                     margin: 15px 20px 35px;
-                }
-                #idp-icon {
-                    position: absolute;
-                    margin-top: 2px;
-                    margin-left: -19px;
-                }
-                #login-form{
-                    margin: 0;
-                    padding: 0;
                 }
                 .button-primary {
                     background-color: #21759b;
@@ -278,7 +268,6 @@ function uwp_social_account_linking($shall_pass, $linking_data) {
                 </div>
 
                 <div id="welcome">
-                    <img id="idp-icon" src="<?php echo esc_url($assets_base_url) . strtolower($provider); ?>.png" >
                     <b><?php printf( __( "Hi %s", 'uwp-social' ), htmlentities( $hybridauth_user_profile->displayName ) ); ?></b>
                     <p><?php printf( __( "You're now signed in with your %s account but you are still one step away of getting into our website", 'uwp-social' ), $provider ); ?>.</p>
 

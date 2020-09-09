@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: UsersWP - Social 1.3.9\n"
+"Project-Id-Version: UsersWP - Social 1.3.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-11 18:20+0530\n"
-"PO-Revision-Date: 2020-08-11 18:20+0530\n"
+"POT-Creation-Date: 2020-09-09 17:23+0530\n"
+"PO-Revision-Date: 2020-09-09 17:23+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -331,7 +331,7 @@ msgstr ""
 msgid "Label for Social Login"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:499
+#: admin/class-uwp-settings-social.php:499 includes/helpers.php:110
 msgid "Login via Social"
 msgstr ""
 
@@ -460,82 +460,78 @@ msgstr ""
 msgid "Back to home"
 msgstr ""
 
-#: includes/helpers.php:110
-msgid "Login via Social 1"
-msgstr ""
-
-#: includes/linking.php:282
+#: includes/linking.php:271
 #, php-format
 msgid "Hi %s"
 msgstr ""
 
-#: includes/linking.php:283
+#: includes/linking.php:272
 #, php-format
 msgid ""
 "You're now signed in with your %s account but you are still one step away of "
 "getting into our website"
 msgstr ""
 
-#: includes/linking.php:292 includes/linking.php:350
+#: includes/linking.php:281 includes/linking.php:339
 msgid "Already have an account"
 msgstr ""
 
-#: includes/linking.php:293
+#: includes/linking.php:282
 #, php-format
 msgid "Link your existing account on our website to your %s ID."
 msgstr ""
 
-#: includes/linking.php:298 includes/linking.php:387
+#: includes/linking.php:287 includes/linking.php:376
 msgid "New to our website"
 msgstr ""
 
-#: includes/linking.php:299
+#: includes/linking.php:288
 #, php-format
 msgid "Create a new account and it will be associated with your %s ID."
 msgstr ""
 
-#: includes/linking.php:306
+#: includes/linking.php:295
 msgid "Link my account"
 msgstr ""
 
-#: includes/linking.php:312 includes/linking.php:314
+#: includes/linking.php:301 includes/linking.php:303
 msgid "Create a new account"
 msgstr ""
 
-#: includes/linking.php:352
+#: includes/linking.php:341
 msgid ""
 "Please enter your username and password of your existing account on our "
 "website. Once verified, it will linked to your % ID"
 msgstr ""
 
-#: includes/linking.php:358 includes/linking.php:397
+#: includes/linking.php:347 includes/linking.php:386
 msgid "Username"
 msgstr ""
 
-#: includes/linking.php:364
+#: includes/linking.php:353
 msgid "Password"
 msgstr ""
 
-#: includes/linking.php:369 includes/linking.php:411
+#: includes/linking.php:358 includes/linking.php:400
 msgid "Continue"
 msgstr ""
 
-#: includes/linking.php:371 includes/linking.php:414
+#: includes/linking.php:360 includes/linking.php:403
 msgid "Back"
 msgstr ""
 
-#: includes/linking.php:390
+#: includes/linking.php:379
 #, php-format
 msgid ""
 "Please fill in your information in the form below. Once completed, you will "
 "be able to automatically sign into our website through your %s ID"
 msgstr ""
 
-#: includes/linking.php:405
+#: includes/linking.php:394
 msgid "E-mail"
 msgstr ""
 
-#: includes/linking.php:428
+#: includes/linking.php:417
 #, php-format
 msgid "Back to %s"
 msgstr ""

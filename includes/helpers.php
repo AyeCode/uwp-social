@@ -107,7 +107,7 @@ function uwp_social_store_user_profile( $user_id, $provider, $profile )
 function uwp_social_login_buttons() {
     $providers = uwp_get_available_social_providers();
     $is_bootstrap = uwp_get_option("design_style",'bootstrap') ?  true : false;
-	$title = uwp_get_option('label_for_social_login',__('Login via Social 1','uwp-social'));
+	$title = uwp_get_option('label_for_social_login',__('Login via Social','uwp-social'));
 	$title = apply_filters('uwp_social_login_buttons_label', $title);
 
 	ob_start();

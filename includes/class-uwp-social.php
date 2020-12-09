@@ -30,15 +30,11 @@ class UsersWP_Social {
 	    add_action( 'login_enqueue_scripts', array( $this,'login_styles' ) );
 	    add_action( 'init', array($this, 'load_textdomain') );
         add_action('uwp_social_after_wp_insert_user', array($this, 'admin_notification'), 10, 2);
+        add_action('login_form', array($this, 'admin_login_form'));
+        add_action('register_form', array($this, 'admin_register_form'));
 
         add_action('uwp_clear_user_php_session', 'uwp_social_destroy_session_data');
         add_action('wp_logout', 'uwp_social_destroy_session_data');
-
-        $disable_admin_login = uwp_get_option('disable_admin_social_login');
-
-        if(empty($disable_admin_login)) {
-            add_action('login_form', 'uwp_social_login_buttons');
-        }
 
         if(is_admin()){
             add_action( 'admin_init', array( $this, 'activation_redirect' ) );
@@ -212,5 +208,17 @@ class UsersWP_Social {
         update_option( 'uwp-social-authuri-notice-dismissed', 1 );
         wp_die(1);
     }
+
+    public function admin_login_form(){
+	    if(1 != uwp_get_option('disable_admin_social_login')) {
+		    uwp_social_login_buttons();
+	    }
+    }
+
+	public function admin_register_form(){
+		if(1 != uwp_get_option('disable_admin_register_social_login')) {
+			uwp_social_login_buttons();
+		}
+	}
 
 }

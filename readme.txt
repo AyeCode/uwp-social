@@ -3,8 +3,8 @@ Contributors: stiofansisland, paoltaia, ayecode
 Donate link: http://userswp.io/
 Tags: social, social login, login, register, social-connect, userswp
 Requires at least: 4.9
-Tested up to: 5.5
-Stable tag: 1.3.10
+Tested up to: 5.6
+Stable tag: 1.3.11
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -43,6 +43,9 @@ No questions so far, but don't hesitate to ask!
 2. WP Login (brand icons removed in screenshots due to WP rules).
 
 == Changelog ==
+
+= 1.3.11 =
+* Setting to disable social login on the WP admin register form - ADDED
 
 = 1.3.10 =
 * Remove icon on link user account form - FIXED

@@ -555,7 +555,9 @@ function uwp_social_authenticate_user( $user_id, $provider, $redirect_to, $adapt
     // update some fields in usermeta for the current user
     update_user_meta( $user_id, 'uwp_current_provider', sanitize_text_field($provider) );
 
-    if(  $hybridauth_user_profile->photoURL )
+    $allow_profile_image = apply_filters('uwp_social_enable_avatar_update', true);
+
+    if(  $hybridauth_user_profile->photoURL && $allow_profile_image )
     {
         uwp_update_usermeta($user_id, 'avatar_thumb', esc_url($hybridauth_user_profile->photoURL));
         update_user_meta( $user_id, 'uwp_social_user_image', esc_url($hybridauth_user_profile->photoURL) );

@@ -105,6 +105,9 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'name' => __( 'Google APP ID', 'uwp-social' ),
                         'desc' => "",
                         'type' => 'text',
+                        'custom_attributes' => array(
+                            'required'      => true,
+                        ),
                         'placeholder' => __( 'Enter Google APP ID', 'uwp-social' )
                     ),
                     array(
@@ -112,6 +115,9 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'name' => __( 'Google APP Secret', 'uwp-social' ),
                         'desc' => "",
                         'type' => 'text',
+                        'custom_attributes' => array(
+                            'required'      => true,
+                        ),
                         'placeholder' => __( 'Enter Google APP Secret', 'uwp-social' )
                     ),
                     array(

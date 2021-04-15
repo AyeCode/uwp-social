@@ -945,6 +945,11 @@ function uwp_social_check_auth_done(){
         }
 
         $config = uwp_get_provider_config_from_session_storage( $provider_id );
+
+        if(!$config){
+            return;
+        }
+
         $callback_url    = isset($config['current_page']) ? $config['current_page'] : home_url();
 
         if(!class_exists('Hybridauth')){

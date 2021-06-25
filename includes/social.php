@@ -556,8 +556,9 @@ function uwp_social_authenticate_user( $user_id, $provider, $redirect_to, $adapt
     update_user_meta( $user_id, 'uwp_current_provider', sanitize_text_field($provider) );
 
     $allow_profile_image = apply_filters('uwp_social_enable_avatar_update', true);
+	$avatar_thumb = uwp_get_usermeta( $user_id, 'avatar_thumb', '' );
 
-    if(  $hybridauth_user_profile->photoURL && $allow_profile_image )
+    if(  $hybridauth_user_profile->photoURL && $allow_profile_image && empty( $avatar_thumb ) )
     {
         uwp_update_usermeta($user_id, 'avatar_thumb', esc_url($hybridauth_user_profile->photoURL));
         update_user_meta( $user_id, 'uwp_social_user_image', esc_url($hybridauth_user_profile->photoURL) );

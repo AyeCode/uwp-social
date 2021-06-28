@@ -4,7 +4,7 @@ Donate link: http://userswp.io/
 Tags: social, social login, login, register, social-connect, userswp
 Requires at least: 4.9
 Tested up to: 5.7
-Stable tag: 1.3.12
+Stable tag: 1.3.13
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -46,6 +46,9 @@ No questions so far, but don't hesitate to ask!
 
 = 1.3.13 =
 * Social login always redirects to home page when last login redirect is set - FIXED
+* Don't allow to access auth URL directly - FIXED
+* Allow copy auth URL on click in settings. - CHANGED
+* Update avatar from social profile only if not set in UWP profile - CHANGED
 
 = 1.3.12 =
 * Update readme file for tested up to version 5.7

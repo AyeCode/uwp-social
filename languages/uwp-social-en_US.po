@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: UsersWP - Social 1.3.12\n"
+"Project-Id-Version: UsersWP - Social 1.3.13\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-04 15:52+0530\n"
-"PO-Revision-Date: 2021-03-04 15:52+0530\n"
+"POT-Creation-Date: 2021-06-28 18:58+0530\n"
+"PO-Revision-Date: 2021-06-28 18:58+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -63,6 +63,13 @@ msgid "Google Settings"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:93
+#: admin/class-uwp-settings-social.php:141
+#: admin/class-uwp-settings-social.php:191
+#: admin/class-uwp-settings-social.php:241
+#: admin/class-uwp-settings-social.php:291
+#: admin/class-uwp-settings-social.php:341
+#: admin/class-uwp-settings-social.php:391
+#: admin/class-uwp-settings-social.php:441
 #, php-format
 msgid ""
 "<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter "
@@ -139,19 +146,6 @@ msgstr ""
 
 #: admin/class-uwp-settings-social.php:138
 msgid "Facebook Settings"
-msgstr ""
-
-#: admin/class-uwp-settings-social.php:141
-#: admin/class-uwp-settings-social.php:191
-#: admin/class-uwp-settings-social.php:241
-#: admin/class-uwp-settings-social.php:291
-#: admin/class-uwp-settings-social.php:341
-#: admin/class-uwp-settings-social.php:391
-#: admin/class-uwp-settings-social.php:441
-#, php-format
-msgid ""
-"<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter "
-"below. Use <code>%s</code> for Authorized redirect URI."
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:146
@@ -573,50 +567,50 @@ msgid ""
 "again</a>."
 msgstr ""
 
-#: includes/social.php:626
+#: includes/social.php:627
 msgid "Linking is not enabled. Please check the social login add on settings."
 msgstr ""
 
-#: includes/social.php:644
+#: includes/social.php:645
 #, php-format
 msgid ""
 "<strong>ERROR</strong>: Invalid username or incorrect password. <a href=\"%s"
 "\">Lost your password</a>?"
 msgstr ""
 
-#: includes/social.php:674
+#: includes/social.php:675
 msgid "<strong>ERROR</strong>: Please type your e-mail address."
 msgstr ""
 
-#: includes/social.php:679
+#: includes/social.php:680
 msgid "<strong>ERROR</strong>: Please enter a valid email address."
 msgstr ""
 
-#: includes/social.php:684
+#: includes/social.php:685
 msgid "<strong>ERROR</strong>: Sorry, that email address is already used!"
 msgstr ""
 
-#: includes/social.php:697
+#: includes/social.php:698
 msgid "<strong>ERROR</strong>: That username is not allowed."
 msgstr ""
 
-#: includes/social.php:702
+#: includes/social.php:703
 msgid "<strong>ERROR</strong>: Username must be at least 4 characters."
 msgstr ""
 
-#: includes/social.php:707
+#: includes/social.php:708
 msgid "<strong>ERROR</strong>: Sorry, usernames must have letters too!"
 msgstr ""
 
-#: includes/social.php:712
+#: includes/social.php:713
 msgid "<strong>ERROR</strong>: Sorry, that username already exists!"
 msgstr ""
 
-#: includes/social.php:760 includes/social.php:828
+#: includes/social.php:761 includes/social.php:829
 msgid "Redirecting..."
 msgstr ""
 
-#: includes/social.php:803 includes/social.php:871
+#: includes/social.php:804 includes/social.php:872
 msgid "Processing, please wait..."
 msgstr ""
 

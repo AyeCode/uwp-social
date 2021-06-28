@@ -44,6 +44,9 @@ No questions so far, but don't hesitate to ask!
 
 == Changelog ==
 
+= 1.3.13 =
+* Social login always redirects to home page when last login redirect is set - FIXED
+
 = 1.3.12 =
 * Update readme file for tested up to version 5.7
 

@@ -124,7 +124,11 @@ function uwp_social_login_buttons() {
                 $key = uwp_get_option('uwp_social_'.$array_key.'_key', "");
             }
             $secret = uwp_get_option('uwp_social_'.$array_key.'_secret', "");
-            $url = home_url() . "/?action=uwp_social_authenticate&provider=".$provider_id;
+	        $url = home_url() . "/?action=uwp_social_authenticate&provider=".$provider_id;
+	        $redirect_to = uwp_get_social_login_redirect_url();
+	        if(isset($redirect_to) && !empty($redirect_to)){
+		        $url .= '&redirect_to='.$redirect_to;
+	        }
 
 
             //General |Facebook |Twitter |LinkedIn |Instagram |Yahoo |WordPress |VKontakte
@@ -215,7 +219,7 @@ function uwp_social_build_provider_config( $provider )
     }
 
     $config = array();
-    $config["current_page"] = Hybridauth\HttpClient\Util::getCurrentUrl(true);
+    $config["current_page"] = uwp_get_social_login_redirect_url();
     $config["base_url"] = home_url();
     $config["callback"] = uwp_get_callback_url($provider);
     $config["providers"] = array();

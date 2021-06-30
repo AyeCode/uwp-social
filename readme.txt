@@ -1,7 +1,7 @@
 === UsersWP - Social Login ===
 Contributors: stiofansisland, paoltaia, ayecode
 Donate link: http://userswp.io/
-Tags: social, social login, login, register, social-connect, userswp
+Tags: social login, facebook login, google login, twitter login, linkedIn login, vkontakte login, woocommerce login, facebook, twitter, google, social network login, social plugin, userswp
 Requires at least: 4.9
 Tested up to: 5.7
 Stable tag: 1.3.13

@@ -44,6 +44,11 @@ No questions so far, but don't hesitate to ask!
 
 == Changelog ==
 
+= 1.3.15 =
+* Social login redirection issue for facebook login - FIXED
+* Template for displaying social login which can be override in the theme - CHANGED
+* Hybridauth library upgraded to v3.7.1 - CHANGED
+
 = 1.3.14 =
 * Update readme file for tested up to version 5.7
 

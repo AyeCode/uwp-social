@@ -3,19 +3,9 @@ function uwp_social_login_buttons_display() {
 
     ob_start();
 
-    ?>
+	uwp_social_login_buttons();
 
-    <div class="uwp-social-login-wrap">
-        <?php uwp_social_login_buttons(); ?>
-    </div>
-
-    <?php
-
-    $output = ob_get_contents();
-
-    ob_end_clean();
-
-    return $output;
+    return ob_get_clean();
 }
 
 add_filter( 'query_vars', 'uwp_social_query_vars');
@@ -482,7 +472,7 @@ function uwp_social_create_wp_user( $provider, $hybridauth_user_profile, $reques
     update_user_meta($user_id, 'first_name', apply_filters( 'uwp_social_pre_user_first_name', $userdata['first_name']));
     update_user_meta($user_id, 'last_name', apply_filters( 'uwp_social_pre_user_last_name', $userdata['last_name']));
 
-    wp_new_user_notification($user_id, '', 'both');
+    wp_new_user_notification($user_id, null, 'both');
 
     // Send notifications
     do_action( 'uwp_social_after_wp_insert_user', $user_id, $provider, $hybridauth_user_profile );

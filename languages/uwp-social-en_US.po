@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: UsersWP - Social 1.3.14\n"
+"Project-Id-Version: UsersWP - Social 1.3.15\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-22 15:43+0530\n"
-"PO-Revision-Date: 2021-07-22 15:43+0530\n"
+"POT-Creation-Date: 2021-08-19 19:18+0530\n"
+"PO-Revision-Date: 2021-08-19 19:18+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -220,6 +220,15 @@ msgstr ""
 msgid "Instagram Settings"
 msgstr ""
 
+#: admin/class-uwp-settings-social.php:291
+msgid ""
+"As per the Facebook guideline, Data returned by the API cannot be used to "
+"authenticate your app users or log them into your app. If your app uses API "
+"data to authenticate users, it will be rejected during App Review. If you "
+"need an authentication solution, use Facebook Login instead of Instagram "
+"Login."
+msgstr ""
+
 #: admin/class-uwp-settings-social.php:296
 msgid "Enable Instagram"
 msgstr ""
@@ -325,7 +334,7 @@ msgstr ""
 msgid "Label for Social Login"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:499 includes/helpers.php:110
+#: admin/class-uwp-settings-social.php:499 templates/bootstrap/social.php:6
 msgid "Login via Social"
 msgstr ""
 
@@ -402,7 +411,7 @@ msgid ""
 "properly configured."
 msgstr ""
 
-#: includes/errors.php:24 includes/social.php:133
+#: includes/errors.php:24 includes/social.php:123
 msgid "Unknown or disabled provider."
 msgstr ""
 
@@ -534,99 +543,99 @@ msgstr ""
 msgid "Back to %s"
 msgstr ""
 
-#: includes/social.php:60 includes/social.php:116
+#: includes/social.php:50 includes/social.php:106
 msgid "Invalid social login provider."
 msgstr ""
 
-#: includes/social.php:178
+#: includes/social.php:168
 msgid ""
 "Couldn't fetch the email address of a user. Please try again or use "
 "alternate login method!"
 msgstr ""
 
-#: includes/social.php:213
+#: includes/social.php:203
 msgid "Invalid session data. Please try again."
 msgstr ""
 
-#: includes/social.php:268
+#: includes/social.php:258
 msgid "Registration is now closed."
 msgstr ""
 
-#: includes/social.php:475
+#: includes/social.php:465
 msgid "An error occurred while creating a new user: "
 msgstr ""
 
-#: includes/social.php:478
+#: includes/social.php:468
 msgid "An error occurred while creating a new user!"
 msgstr ""
 
-#: includes/social.php:522
+#: includes/social.php:512
 #, php-format
 msgid ""
 "Sorry, we couldn't connect you with <b>%s</b>. <a href=\"%s\">Please try "
 "again</a>."
 msgstr ""
 
-#: includes/social.php:627
+#: includes/social.php:617
 msgid "Linking is not enabled. Please check the social login add on settings."
 msgstr ""
 
-#: includes/social.php:645
+#: includes/social.php:635
 #, php-format
 msgid ""
 "<strong>ERROR</strong>: Invalid username or incorrect password. <a href=\"%s"
 "\">Lost your password</a>?"
 msgstr ""
 
-#: includes/social.php:675
+#: includes/social.php:665
 msgid "<strong>ERROR</strong>: Please type your e-mail address."
 msgstr ""
 
-#: includes/social.php:680
+#: includes/social.php:670
 msgid "<strong>ERROR</strong>: Please enter a valid email address."
 msgstr ""
 
-#: includes/social.php:685
+#: includes/social.php:675
 msgid "<strong>ERROR</strong>: Sorry, that email address is already used!"
 msgstr ""
 
-#: includes/social.php:698
+#: includes/social.php:688
 msgid "<strong>ERROR</strong>: That username is not allowed."
 msgstr ""
 
-#: includes/social.php:703
+#: includes/social.php:693
 msgid "<strong>ERROR</strong>: Username must be at least 4 characters."
 msgstr ""
 
-#: includes/social.php:708
+#: includes/social.php:698
 msgid "<strong>ERROR</strong>: Sorry, usernames must have letters too!"
 msgstr ""
 
-#: includes/social.php:713
+#: includes/social.php:703
 msgid "<strong>ERROR</strong>: Sorry, that username already exists!"
 msgstr ""
 
-#: includes/social.php:761 includes/social.php:829
+#: includes/social.php:751 includes/social.php:819
 msgid "Redirecting..."
 msgstr ""
 
-#: includes/social.php:804 includes/social.php:872
+#: includes/social.php:794 includes/social.php:862
 msgid "Processing, please wait..."
-msgstr ""
-
-#: includes/widgets.php:14
-msgid "UWP > Social Login"
-msgstr ""
-
-#: includes/widgets.php:21
-msgid "Social widget title"
-msgstr ""
-
-#: includes/widgets.php:22
-msgid "Enter your UWP social Login widget title."
 msgstr ""
 
 #: uwp-social.php:36
 #, php-format
 msgid "%s requires %sUsersWP%s plugin to be installed and active."
+msgstr ""
+
+#: widgets/social.php:14
+msgid "UWP > Social Login"
+msgstr ""
+
+#: widgets/social.php:21
+msgid "Social widget title"
+msgstr ""
+
+#: widgets/social.php:22
+msgid "Enter your UWP social Login widget title."
 msgstr ""

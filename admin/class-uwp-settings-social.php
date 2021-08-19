@@ -288,7 +288,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'title' => __('Instagram Settings', 'uwp-social'),
                         'type' => 'title',
                         'id' => 'social_instagram_settings_options',
-                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI.','uwp-social'), '<a href="https://developers.facebook.com/apps" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>'),
+                        'desc' => '<b style="color:red;">'.__('As per the Facebook guideline, Data returned by the API cannot be used to authenticate your app users or log them into your app. If your app uses API data to authenticate users, it will be rejected during App Review. If you need an authentication solution, use Facebook Login instead of Instagram Login.','uwp-social').'</b><br>'.sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI.','uwp-social'), '<a href="https://developers.facebook.com/apps" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>'),
                         'desc_tip' => false,
                     ),
                     array(

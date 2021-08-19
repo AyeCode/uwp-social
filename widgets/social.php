@@ -34,21 +34,22 @@ class UWP_Social_Login_Widget extends WP_Super_Duper {
 
     public function output( $args = array(), $widget_args = array(), $content = '' ) {
 
-        ob_start();
-
         if (is_user_logged_in()) {
             return;
         }
 
+	    ob_start();
+
         echo '<div class="uwp_widgets uwp_widget_social_login">';
 
-        echo uwp_social_login_buttons_display();
+	    $design_style = !empty($args['design_style']) ? esc_attr($args['design_style']) : uwp_get_option("design_style",'bootstrap');
+	    $template = $design_style ? $design_style."/social.php" : "social.php";
+
+	    uwp_get_template($template, $args, '', UWP_SOCIAL_PATH.'templates');
 
         echo '</div>';
 
-        $output = ob_get_contents();
-
-        ob_end_clean();
+        $output = ob_get_clean();
 
         return trim($output);
 

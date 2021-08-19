@@ -4,7 +4,7 @@ Donate link: http://userswp.io/
 Tags: social login, facebook login, google login, twitter login, linkedIn login, vkontakte login, woocommerce login, facebook, twitter, google, social network login, social plugin, userswp
 Requires at least: 4.9
 Tested up to: 5.8
-Stable tag: 1.3.14
+Stable tag: 1.3.15
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -43,6 +43,11 @@ No questions so far, but don't hesitate to ask!
 2. WP Login (brand icons removed in screenshots due to WP rules).
 
 == Changelog ==
+
+= 1.3.15 =
+* Social login redirection issue for facebook login - FIXED
+* Template for displaying social login which can be override in the theme - CHANGED
+* Hybridauth library upgraded to v3.7.1 - CHANGED
 
 = 1.3.14 =
 * Update readme file for tested up to version 5.7

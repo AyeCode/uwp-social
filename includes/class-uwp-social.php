@@ -26,7 +26,7 @@ class UsersWP_Social {
         add_action('uwp_social_fields', array($this, 'social_login_buttons_on_templates'), 30, 1);
 	    add_action('wpmu_delete_user', array($this, 'delete_user_row'), 30, 1);
         add_action('delete_user', array($this, 'delete_user_row'), 30, 1);
-	    add_action('widgets_init', array($this, 'register_widgets'));
+	    add_action('uwp_get_widgets', array($this, 'register_widgets'));
 	    add_action( 'login_enqueue_scripts', array( $this,'login_styles' ) );
 	    add_action( 'init', array($this, 'load_textdomain') );
         add_action('uwp_social_after_wp_insert_user', array($this, 'admin_notification'), 10, 2);
@@ -106,8 +106,9 @@ class UsersWP_Social {
         }
     }
 
-    public function register_widgets(){
-	    register_widget("UWP_Social_Login_Widget");
+    public function register_widgets($widgets){
+	    $widgets[] = 'UWP_Social_Login_Widget';
+	    return $widgets;
     }
 
     public function get_settings_pages($settings){

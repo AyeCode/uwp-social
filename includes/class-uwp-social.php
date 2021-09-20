@@ -140,12 +140,12 @@ class UsersWP_Social {
     }
 
     public function login_form_button($content){
-        return $content.uwp_social_login_buttons_display();
+        return $content.uwp_social_login_buttons('login', false);
     }
 
     public function social_login_buttons_on_templates($type) {
         if ($type == 'login' || $type == 'register') {
-            uwp_social_login_buttons();
+            uwp_social_login_buttons($type);
         }
     }
 
@@ -212,13 +212,13 @@ class UsersWP_Social {
 
     public function admin_login_form(){
 	    if(1 != uwp_get_option('disable_admin_social_login')) {
-		    uwp_social_login_buttons();
+		    uwp_social_login_buttons('admin_login');
 	    }
     }
 
 	public function admin_register_form(){
 		if(1 != uwp_get_option('disable_admin_register_social_login')) {
-			uwp_social_login_buttons();
+			uwp_social_login_buttons('admin_register');
 		}
 	}
 

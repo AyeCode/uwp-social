@@ -104,8 +104,16 @@ function uwp_social_store_user_profile( $user_id, $provider, $profile )
     return $wpdb->insert_id;
 }
 
-function uwp_social_login_buttons() {
-	echo do_shortcode('[uwp_social]');
+function uwp_social_login_buttons($type = 'login', $echo = true) {
+	ob_start();
+	echo do_shortcode('[uwp_social type="'.$type.'"]');
+	$output = ob_get_clean();
+
+	if($echo){
+		echo $output;
+	} else {
+		return $output;
+	}
 }
 
 function uwp_social_build_provider_config( $provider )

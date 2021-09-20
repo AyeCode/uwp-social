@@ -1,13 +1,4 @@
 <?php
-function uwp_social_login_buttons_display() {
-
-    ob_start();
-
-	uwp_social_login_buttons();
-
-    return ob_get_clean();
-}
-
 add_filter( 'query_vars', 'uwp_social_query_vars');
 function uwp_social_query_vars($vars){
     $vars[] = "hauth_done";

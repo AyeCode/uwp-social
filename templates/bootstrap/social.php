@@ -1,13 +1,16 @@
 <?php
 $providers = uwp_get_available_social_providers();
+global $wp_query;
 
 if(isset($providers) && count($providers) > 0) {
 
 	$title = uwp_get_option('label_for_social_login',__('Login via Social','uwp-social'));
 	$title = apply_filters('uwp_social_login_buttons_label', $title);
 
+	echo '<div class="bsui"><hr />';
+
 	if ( $title ) {
-		echo '<div class="bsui"><hr /><div class="text-muted h5 mt-n2 mb-2">' . esc_attr($title) . '</div>';
+		echo '<div class="text-muted h5 mt-n2 mb-2">' . esc_attr($title) . '</div>';
 	}
 
 	foreach ( $providers as $array_key => $provider ) {

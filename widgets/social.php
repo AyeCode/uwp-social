@@ -25,6 +25,20 @@ class UWP_Social_Login_Widget extends WP_Super_Duper {
                     'default'     => '',
                     'advanced'    => false
                 ),
+                'type'  => array(
+	                'title' => __('Form Type', 'uwp-social'),
+	                'desc' => __('Select form type where displaying the social login.', 'uwp-social'),
+	                'type' => 'select',
+	                'options'   =>  array(
+		                ""        =>  __('Login', 'uwp-social'),
+		                "register" =>  __('Register', 'uwp-social'),
+		                "admin_login" =>  __('Admin Login', 'uwp-social'),
+		                "admin_register" =>  __('Admin Register', 'uwp-social'),
+	                ),
+	                'default'  => '',
+	                'desc_tip' => true,
+	                'advanced' => true
+                ),
             )
 
         );

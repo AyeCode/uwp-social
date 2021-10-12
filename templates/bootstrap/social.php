@@ -1,16 +1,17 @@
 <?php
 $providers = uwp_get_available_social_providers();
-global $wp_query;
 
-if(isset($providers) && count($providers) > 0) {
+if ( isset( $providers ) && count( $providers ) > 0 ) {
 
-	$title = uwp_get_option('label_for_social_login',__('Login via Social','uwp-social'));
-	$title = apply_filters('uwp_social_login_buttons_label', $title);
+	$title       = uwp_get_option( 'label_for_social_login', __( 'Login via Social', 'uwp-social' ) );
+	$title       = apply_filters( 'uwp_social_login_buttons_label', $title );
+	$redirect_to = ! empty( $args['redirect_to'] ) ? esc_url( $args['redirect_to'] ) : '';
+	$type = ! empty( $args['type'] ) ? esc_url( $args['type'] ) : '';
 
 	echo '<div class="bsui"><hr />';
 
 	if ( $title ) {
-		echo '<div class="text-muted h5 mt-n2 mb-2">' . esc_attr($title) . '</div>';
+		echo '<div class="text-muted h5 mt-n2 mb-2">' . esc_attr( $title ) . '</div>';
 	}
 
 	foreach ( $providers as $array_key => $provider ) {
@@ -25,14 +26,12 @@ if(isset($providers) && count($providers) > 0) {
 			} else {
 				$key = uwp_get_option( 'uwp_social_' . $array_key . '_key', "" );
 			}
-			$secret      = uwp_get_option( 'uwp_social_' . $array_key . '_secret', "" );
-			$url         = home_url() . "/?action=uwp_social_authenticate&provider=" . $provider_id;
-			$redirect_to = uwp_get_social_login_redirect_url();
+			$secret = uwp_get_option( 'uwp_social_' . $array_key . '_secret', "" );
+			$url    = home_url() . "/?action=uwp_social_authenticate&provider=" . $provider_id . '&type=' . $type;
 			if ( isset( $redirect_to ) && ! empty( $redirect_to ) ) {
 				$url .= '&redirect_to=' . $redirect_to;
 			}
 
-			//General |Facebook |Twitter |LinkedIn |Instagram |Yahoo |WordPress |VKontakte
 			$icons = array(
 				'facebook'  => 'fab fa-facebook-f',
 				'twitter'   => 'fab fa-twitter',
@@ -42,6 +41,8 @@ if(isset($providers) && count($providers) > 0) {
 				'vkontakte' => 'fab fa-vk',
 
 			);
+
+			$icons = apply_filters('uwp_social_fa_icons', $provider, $args);
 
 			$social_name_class = strtolower( $provider_id );
 			$social_icon_class = isset( $icons[ $social_name_class ] ) ? $icons[ $social_name_class ] : "fab fa-" . $social_name_class;

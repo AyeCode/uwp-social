@@ -104,7 +104,7 @@ function uwp_social_store_user_profile( $user_id, $provider, $profile )
     return $wpdb->insert_id;
 }
 
-function uwp_social_login_buttons($type = 'login', $echo = true) {
+function uwp_social_login_buttons($type = '', $echo = true) {
 	ob_start();
 	echo do_shortcode('[uwp_social type="'.$type.'"]');
 	$output = ob_get_clean();
@@ -270,18 +270,11 @@ function uwp_social_destroy_session_data() {
 
 }
 
-function uwp_get_social_login_redirect_url(){
-    $redirect_page_id = uwp_get_option('login_redirect_to', -1);
-    if(isset( $_REQUEST['redirect_to'] )) {
-        $redirect_to = esc_url($_REQUEST['redirect_to']);
-    } elseif (isset($redirect_page_id) && (int)$redirect_page_id > 0) {
-        $redirect_to = esc_url(get_permalink($redirect_page_id));
-    } elseif(isset($redirect_page_id) && (int)$redirect_page_id == -1 && wp_get_referer()) {
-        $redirect_to = esc_url(wp_get_referer());
-    } else {
-        $redirect_to = home_url('/');
-    }
-    return apply_filters('uwp_login_redirect', $redirect_to);
+function uwp_get_social_login_redirect_url($data = array(), $user = false){
+	$data = array();
+	$uwp_forms = new UsersWP_Forms();
+	$redirect_to = $uwp_forms->get_login_redirect_url( $data, $user );
+    return $redirect_to;
 }
 
 function uwp_get_callback_url($provider){

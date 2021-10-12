@@ -481,7 +481,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                 ));
 
-            } else{
+            } else {
 
                 $settings = apply_filters('uwp_social_options', array(
                     array(
@@ -515,6 +515,16 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
 		                'default'  => 0,
 		                'class' => '',
 	                ),
+	                array(
+		                'id' => 'uwp_social_default_role',
+		                'name' => __( 'User role to assign', 'uwp-social' ),
+		                'desc' => __( 'User role to assign after social login.', 'uwp-social' ),
+		                'type' => 'select',
+		                'options' => uwp_get_user_roles(),
+		                'default'  => 'subscriber',
+		                'desc_tip' => true,
+	                ),
+
                 ));
             }
 

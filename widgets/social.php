@@ -39,6 +39,15 @@ class UWP_Social_Login_Widget extends WP_Super_Duper {
 	                'desc_tip' => true,
 	                'advanced' => true
                 ),
+                'redirect_to' => array(
+	                'type' => 'text',
+	                'title' => __('Redirect to:', 'uwp-social'),
+	                'desc' => __('Enter the url you want to redirect after login.', 'uwp-social'),
+	                'placeholder' => '',
+	                'default' => '',
+	                'desc_tip' => true,
+	                'advanced' => true
+                ),
             )
 
         );

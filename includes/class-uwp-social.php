@@ -75,8 +75,6 @@ class UsersWP_Social {
 
         require_once UWP_SOCIAL_PATH . '/includes/helpers.php';
         require_once UWP_SOCIAL_PATH . '/includes/social.php';
-        require_once UWP_SOCIAL_PATH . '/includes/errors.php';
-        require_once UWP_SOCIAL_PATH . '/includes/linking.php';
 	    require_once UWP_SOCIAL_PATH . '/widgets/social.php';
 
         do_action( 'uwp_social_include_files' );

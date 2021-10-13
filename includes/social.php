@@ -82,7 +82,13 @@ function uwp_social_authenticate_process() {
 	);
 
 	// display a loading screen
-	uwp_social_provider_loading_screen( $provider, $authenticated_url, $redirect_to );
+	$args = array(
+		'provider'          => $provider,
+		'authenticated_url' => $authenticated_url,
+		'redirect_to'       => $redirect_to,
+	);
+
+	uwp_social_provider_loading_screen( $args );
 }
 
 function uwp_social_authenticated_process() {
@@ -634,12 +640,15 @@ function uwp_social_new_users_gateway( $provider, $redirect_to, $hybridauth_user
 
 				$illegal_names = apply_filters( 'uwp_new_users_gateway_alter_illegal_names', $illegal_names );
 
-				if ( in_array( $requested_user_login, $illegal_names ) == true ) {
+				if ( ! validate_username( $requested_user_login ) || in_array( $requested_user_login, $illegal_names ) == true ) {
 					$profile_completion_errors[] = __( '<strong>ERROR</strong>: That username is not allowed.', 'uwp-social' );
 				}
 
-				if ( strlen( $requested_user_login ) < 4 ) {
-					$profile_completion_errors[] = __( '<strong>ERROR</strong>: Username must be at least 4 characters.', 'uwp-social' );
+				$username_length = uwp_get_option( 'register_username_length' );
+				$username_length = ! empty( $username_length ) ? (int) $username_length : 4;
+
+				if ( strlen( $requested_user_login ) < $username_length ) {
+					$profile_completion_errors[] = sprintf( __( '<strong>ERROR</strong>: Username must be at least %s characters.', 'uwp-social' ), $username_length );
 				}
 
 				if ( preg_match( '/^[0-9]*$/', $requested_user_login ) ) {
@@ -650,7 +659,6 @@ function uwp_social_new_users_gateway( $provider, $redirect_to, $hybridauth_user
 					$profile_completion_errors[] = __( '<strong>ERROR</strong>: Sorry, that username already exists!', 'uwp-social' );
 				}
 			}
-
 
 			$profile_completion_errors = apply_filters( 'uwp_new_users_gateway_alter_profile_completion_errors', $profile_completion_errors );
 
@@ -685,149 +693,101 @@ function uwp_social_new_users_gateway( $provider, $redirect_to, $hybridauth_user
 	return array( $shall_pass, $user_id, $requested_user_login, $requested_user_email );
 }
 
-function uwp_social_provider_redirect_loading_screen() {
-	$assets_base_url = UWP_SOCIAL_PLUGIN_URL . 'assets/images/';
+function uwp_social_account_linking( $shall_pass, $args ) {
+	if ( $shall_pass == false && ! empty( $args ) ) {
+		uwp_get_template( "linking.php", $args, '', UWP_SOCIAL_PATH . 'templates' );
+		die();
+	}
+}
+
+function uwp_social_provider_redirect_loading_screen( $args = array() ) {
 	ob_start();
-	?>
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta name="robots" content="NOINDEX, NOFOLLOW">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <title><?php _e( "Redirecting...", 'uwp-social' ) ?> - <?php bloginfo( 'name' ); ?></title>
-        <style type="text/css">
-            html {
-                background: #f1f1f1;
-            }
-
-            body {
-                background: #fff;
-                color: #444;
-                font-family: "Open Sans", sans-serif;
-                margin: 2em auto;
-                padding: 1em 2em;
-                max-width: 700px;
-                -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.13);
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.13);
-            }
-
-            #loading-screen {
-                margin-top: 50px;
-            }
-
-            #loading-screen div {
-                line-height: 20px;
-                background-color: #f2f2f2;
-                border: 1px solid #ccc;
-                padding: 10px;
-                text-align: center;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.13);
-                margin-top: 25px;
-            }
-        </style>
-        <script>
-            function init() {
-                setTimeout(function () {
-                    window.location.replace(window.location.href + "&uwp_redirect_to_provider=true");
-                }, 250);
-            }
-        </script>
-    </head>
-    <body id="loading-screen" onload="init();">
-    <table width="100%" border="0">
-        <tr>
-            <td align="center"><img src="<?php echo esc_url( $assets_base_url ); ?>loading.gif"/></td>
-        </tr>
-        <tr>
-            <td align="center">
-                <div>
-					<?php _e( "Processing, please wait...", 'uwp-social' ); ?>
-                </div>
-            </td>
-        </tr>
-    </table>
-    </body>
-    </html>
-	<?php
-	$output = ob_get_contents();
-	ob_end_clean();
-	echo $output;
+	uwp_get_template( "linking.php", $args, '', UWP_SOCIAL_PATH . 'templates' );
+	echo ob_get_clean();
 	die();
 }
 
-function uwp_social_provider_loading_screen( $provider, $authenticated_url, $redirect_to ) {
-
-	$assets_base_url = UWP_SOCIAL_PLUGIN_URL . 'assets/images/';
+function uwp_social_provider_loading_screen( $args ) {
 	ob_start();
-	?>
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta name="robots" content="NOINDEX, NOFOLLOW">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <title><?php _e( "Redirecting...", 'uwp-social' ) ?> - <?php bloginfo( 'name' ); ?></title>
-        <style type="text/css">
-            html {
-                background: #f1f1f1;
-            }
-
-            body {
-                background: #fff;
-                color: #444;
-                font-family: "Open Sans", sans-serif;
-                margin: 2em auto;
-                padding: 1em 2em;
-                max-width: 700px;
-                -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.13);
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.13);
-            }
-
-            #loading-screen {
-                margin-top: 50px;
-            }
-
-            #loading-screen div {
-                line-height: 20px;
-                background-color: #f2f2f2;
-                border: 1px solid #ccc;
-                padding: 10px;
-                text-align: center;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.13);
-                margin-top: 25px;
-            }
-        </style>
-        <script>
-            function init() {
-                document.loginform.submit();
-            }
-        </script>
-    </head>
-    <body id="loading-screen" onload="init();">
-    <table width="100%" border="0">
-        <tr>
-            <td align="center"><img src="<?php echo esc_url( $assets_base_url ); ?>loading.gif"/></td>
-        </tr>
-        <tr>
-            <td align="center">
-                <div>
-					<?php _e( "Processing, please wait...", 'uwp-social' ); ?>
-                </div>
-            </td>
-        </tr>
-    </table>
-
-    <form name="loginform" method="post" action="<?php echo esc_attr( $authenticated_url ); ?>">
-        <input type="hidden" id="redirect_to" name="redirect_to" value="<?php echo esc_url( $redirect_to ); ?>">
-        <input type="hidden" id="provider" name="provider" value="<?php echo esc_attr( $provider ); ?>">
-        <input type="hidden" id="action" name="action" value="uwp_social_authenticated">
-    </form>
-    </body>
-    </html>
-	<?php
-	$output = ob_get_contents();
-	ob_end_clean();
-	echo $output;
+	uwp_get_template( "provider_loading_screen.php", $args, '', UWP_SOCIAL_PATH . 'templates' );
+	echo ob_get_clean();
 	die();
+}
+
+function uwp_social_render_error_page( $message ) {
+	ob_start();
+	uwp_get_template( "render_error_page.php", $message, '', UWP_SOCIAL_PATH . 'templates' );
+	return ob_get_clean();
+}
+
+function uwp_social_render_notice_page( $message ) {
+	ob_start();
+	uwp_get_template( "render_notice_page.php", $message, '', UWP_SOCIAL_PATH . 'templates' );
+	return ob_get_clean();
+}
+
+function uwp_social_render_notice( $message ) {
+	do_action( "uwp_social_render_notice_page_before", $message );
+
+	return uwp_social_render_notice_page( $message );
+}
+
+function uwp_social_render_error( $e, $config = null, $provider = null, $adapter = null ) {
+
+	do_action( "uwp_social_render_error", $e, $config, $provider, $adapter );
+
+	$message = __( "Unspecified error!", 'uwp-social' );
+
+	if ( is_string( $e ) ) {
+		$message  = $e;
+		$apierror = $e;
+	} else {
+		$apierror = substr( $e->getMessage(), 0, 145 );
+	}
+
+	$provider_name = uwp_social_get_provider_name_by_id( $provider );
+	$notes         = $e->getMessage();
+
+	switch ( $e->getCode() ) {
+		case 0 :
+			! empty( $apierror ) ? $message = $apierror : $message = __( "Unspecified error.", 'uwp-social' );
+			break;
+		case 1 :
+			$message = __( "UsersWP Social Login is not properly configured.", 'uwp-social' );
+			break;
+		case 2 :
+			$message = sprintf( __( "UsersWP Social Login is not properly configured.<br /> <b>%s</b> need to be properly configured.", 'uwp-social' ), $provider_name );
+			break;
+		case 3 :
+			$message = __( "Unknown or disabled provider.", 'uwp-social' );
+			break;
+		case 4 :
+			$message = sprintf( __( "UsersWP Social Login is not properly configured.<br /> <b>%s</b> requires your application credentials.", 'uwp-social' ), $provider_name );
+			$notes   = sprintf( __( "<b>What does this error mean ?</b><br />Most likely, you didn't setup the correct application credentials for this provider. These credentials are required in order for <b>%s</b> users to access your website and for UsersWP Social Login to work.", 'uwp-social' ), $provider_name ) . __( '<br />Instructions for use can be found in the <a href="#" target="_blank">User Manual</a>.', 'uwp-social' );
+			break;
+		case 5 :
+			$message = sprintf( __( "Authentication failed. Either you have cancelled the authentication or <b>%s</b> refused the connection.", 'uwp-social' ), $provider_name );
+			break;
+		case 6 :
+			$message = sprintf( __( "Request failed. Either you have cancelled the authentication or <b>%s</b> refused the connection.", 'uwp-social' ), $provider_name );
+			break;
+		case 7 :
+			$message = __( "You're not connected to the provider.", 'uwp-social' );
+			break;
+		case 8 :
+			$message = __( "Provider does not support this feature.", 'uwp-social' );
+			break;
+	}
+
+	$message = apply_filters('uwp_social_error_messages', $message, $e, $config, $provider, $adapter);
+
+	if ( ! empty( $provider ) ) {
+		$config     = uwp_social_build_provider_config( $provider );
+		$hybridauth = new Hybridauth\Hybridauth( $config );
+		$hybridauth->disconnectAllAdapters();
+	}
+
+	return uwp_social_render_error_page( $message );
 }
 
 add_filter( 'uwp_social_require_email', 'uwp_social_require_email_value', 10, 2 );

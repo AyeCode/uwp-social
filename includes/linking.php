@@ -20,6 +20,7 @@ function uwp_social_account_linking( $shall_pass, $linking_data ) {
         <html>
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title><?php echo get_bloginfo( 'name' ); ?></title>
             <style type="text/css">
                 html, body {

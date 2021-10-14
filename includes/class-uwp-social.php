@@ -23,7 +23,7 @@ class UsersWP_Social {
     private function setup_actions() {
       
         add_action('login_form_middle', array($this, 'login_form_button'));
-        add_action('uwp_social_fields', array($this, 'social_login_buttons_on_templates'), 30, 1);
+        add_action('uwp_social_fields', array($this, 'social_login_buttons_on_templates'), 30, 2);
 	    add_action('wpmu_delete_user', array($this, 'delete_user_row'), 30, 1);
         add_action('delete_user', array($this, 'delete_user_row'), 30, 1);
 	    add_action('uwp_get_widgets', array($this, 'register_widgets'));
@@ -75,8 +75,6 @@ class UsersWP_Social {
 
         require_once UWP_SOCIAL_PATH . '/includes/helpers.php';
         require_once UWP_SOCIAL_PATH . '/includes/social.php';
-        require_once UWP_SOCIAL_PATH . '/includes/errors.php';
-        require_once UWP_SOCIAL_PATH . '/includes/linking.php';
 	    require_once UWP_SOCIAL_PATH . '/widgets/social.php';
 
         do_action( 'uwp_social_include_files' );
@@ -143,9 +141,22 @@ class UsersWP_Social {
         return $content.uwp_social_login_buttons('login', false);
     }
 
-    public function social_login_buttons_on_templates($type) {
-        if ($type == 'login' || $type == 'register') {
-            uwp_social_login_buttons($type);
+    public function social_login_buttons_on_templates($type, $args) {
+	    if ($type == 'register') {
+		    $data = array();
+		    $data['uwp_register_form_id'] = ! empty( $args['id'] ) ? $args['id'] : 1;
+		    $uwp_forms = new UsersWP_Forms();
+	        $redirect_to = $uwp_forms->get_register_redirect_url( $data, false );
+		    ob_start();
+		    echo do_shortcode('[uwp_social type="register" redirect_to="'.$redirect_to.'"]');
+		    echo ob_get_clean();
+	    } else {
+		    $data = array();
+		    $uwp_forms = new UsersWP_Forms();
+		    $redirect_to = $uwp_forms->get_login_redirect_url( $data, false );
+		    ob_start();
+		    echo do_shortcode('[uwp_social type="" redirect_to="'.$redirect_to.'"]');
+		    echo ob_get_clean();
         }
     }
 

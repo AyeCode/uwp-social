@@ -3,6 +3,9 @@ $providers = uwp_get_available_social_providers();
 
 if(isset($providers) && count($providers) > 0) {
 
+	$redirect_to = ! empty( $args['redirect_to'] ) ? esc_url( $args['redirect_to'] ) : '';
+	$type = ! empty( $args['type'] ) ? esc_url( $args['type'] ) : '';
+
 	echo '<ul class="uwp_social_login_ul">';
 
 	foreach ( $providers as $array_key => $provider ) {
@@ -18,8 +21,8 @@ if(isset($providers) && count($providers) > 0) {
 				$key = uwp_get_option( 'uwp_social_' . $array_key . '_key', "" );
 			}
 			$secret      = uwp_get_option( 'uwp_social_' . $array_key . '_secret', "" );
-			$url         = home_url() . "/?action=uwp_social_authenticate&provider=" . $provider_id;
-			$redirect_to = uwp_get_social_login_redirect_url();
+			$url         = home_url() . "/?action=uwp_social_authenticate&provider=" . $provider_id. '&type=' . $type;
+
 			if ( isset( $redirect_to ) && ! empty( $redirect_to ) ) {
 				$url .= '&redirect_to=' . $redirect_to;
 			}

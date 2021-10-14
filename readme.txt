@@ -44,6 +44,13 @@ No questions so far, but don't hesitate to ask!
 
 == Changelog ==
 
+= 1.3.18 =
+* Setting for user moderation in social login - ADDED
+* Setting for assigning user role after successful social login - ADDED
+* Redirection based on form from where the social login initiated - CHANGED
+* Error page templates to override - ADDED
+* Restrict addon compatibility - ADDED
+
 = 1.3.17 =
 * Social login design breaks when no title added from the settings - FIXED
 * Form type argument to differentiate where the social login is displaying - ADDED

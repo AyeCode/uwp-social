@@ -231,14 +231,16 @@ function uwp_get_available_social_providers() {
             "provider_name"     => "ВКонтакте",
             "require_client_id" => true,
         ),
-        "google" => array(
-	        "provider_id"       => "google",
-	        "provider_name"     => "Google",
-	        "require_client_id" => true,
-        ),
     );
 
     $providers = apply_filters('uwp_get_available_social_providers', $providers);
+
+	$providers['google'] = array(
+		"provider_id"       => "google",
+		"provider_name"     => "Google",
+		"require_client_id" => true,
+	);
+
     return $providers;
 }
 

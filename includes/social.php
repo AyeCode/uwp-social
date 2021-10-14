@@ -71,7 +71,7 @@ function uwp_social_authenticate_process() {
 		die();
 	}
 
-	$redirect_to = isset( $_REQUEST['redirect_to'] ) ? $_REQUEST['redirect_to'] : home_url();
+	$redirect_to = isset( $_REQUEST['redirect_to'] ) ? esc_url($_REQUEST['redirect_to']) : home_url();
 
 	$authenticated_url = add_query_arg(
 		array(
@@ -702,7 +702,7 @@ function uwp_social_account_linking( $shall_pass, $args ) {
 
 function uwp_social_provider_redirect_loading_screen( $args = array() ) {
 	ob_start();
-	uwp_get_template( "linking.php", $args, '', UWP_SOCIAL_PATH . 'templates' );
+	uwp_get_template( "loading_screen.php", $args, '', UWP_SOCIAL_PATH . 'templates' );
 	echo ob_get_clean();
 	die();
 }

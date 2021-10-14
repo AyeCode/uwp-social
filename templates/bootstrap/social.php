@@ -42,7 +42,7 @@ if ( isset( $providers ) && count( $providers ) > 0 ) {
 
 			);
 
-			$icons = apply_filters('uwp_social_fa_icons', $provider, $args);
+			$icons = apply_filters('uwp_social_fa_icons', $icons, $provider, $args);
 
 			$social_name_class = strtolower( $provider_id );
 			$social_icon_class = isset( $icons[ $social_name_class ] ) ? $icons[ $social_name_class ] : "fab fa-" . $social_name_class;

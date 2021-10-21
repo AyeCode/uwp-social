@@ -102,14 +102,14 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id' => 'uwp_social_google_id',
-                        'name' => __( 'Google APP ID', 'uwp-social' ),
+                        'name' => __( 'Google Client ID', 'uwp-social' ),
                         'desc' => "",
                         'type' => 'text',
                         'placeholder' => __( 'Enter Google APP ID', 'uwp-social' )
                     ),
                     array(
                         'id' => 'uwp_social_google_secret',
-                        'name' => __( 'Google APP Secret', 'uwp-social' ),
+                        'name' => __( 'Google Client Secret', 'uwp-social' ),
                         'desc' => "",
                         'type' => 'text',
                         'placeholder' => __( 'Enter Google APP Secret', 'uwp-social' )
@@ -487,7 +487,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     array(
                         'title' => __('Social Settings', 'uwp-social'),
                         'type' => 'title',
-                        'desc' => sprintf(__('You can allow users to login via several social networks, once enabled the login icons will appear on most login forms and you can also use the UWP widget to add a social login buttons to widget areas. See %s Documentation %s','uwp-social'), '<a href="https://userswp.io/docs/social-login/" target="_blank">', '</a>'),
+                        'desc' => sprintf(__('You can allow users to login via several social networks, once enabled the login icons will appear on most login forms and you can also use the UWP widget to add a social login buttons to widget areas. See %s Documentation %s','uwp-social'), '<a href="https://docs.userswp.io/category/350-social-login" target="_blank">', '</a>'),
                         'id' => 'social_general_settings_options',
                         'desc_tip' => false,
                     ),

@@ -318,13 +318,13 @@ $redirect_to               = isset($args['redirect_to']) ? $args['redirect_to'] 
             <tr>
                 <?php if ( $linking_enabled ): ?>
                     <td valign="top" width="50%" style="text-align:center;">
-                        <h4><?php echo __( "Already have an account", 'uwp-social' ); ?>?</h4>
+                        <h4><?php _e( "Already have an account", 'uwp-social' ); ?>?</h4>
                         <p style="font-size: 12px;"><?php printf( __( "Link your existing account on our website to your %s ID.", 'uwp-social' ), $provider ); ?></p>
                     </td>
                 <?php endif; ?>
 
                 <td valign="top" width="50%" style="text-align:center;">
-                    <h4><?php echo __( "New to our website", 'uwp-social' ); ?>?</h4>
+                    <h4><?php _e( "New to our website", 'uwp-social' ); ?>?</h4>
                     <p style="font-size: 12px;"><?php printf( __( "Create a new account and it will be associated with your %s ID.", 'uwp-social' ), $provider ); ?></p>
                 </td>
             </tr>
@@ -354,7 +354,7 @@ $redirect_to               = isset($args['redirect_to']) ? $args['redirect_to'] 
             echo '<div id="errors-account-linking" class="error">';
 
             foreach ( $account_linking_errors as $error ) {
-                ?><p><?php echo $error; ?></p><?php
+                ?><p><?php echo esc_html($error); ?></p><?php
             }
 
             echo '</div>';
@@ -364,7 +364,7 @@ $redirect_to               = isset($args['redirect_to']) ? $args['redirect_to'] 
             echo '<div id="errors-profile-completion" class="error">';
 
             foreach ( $profile_completion_errors as $error ) {
-                ?><p><?php echo $error; ?></p><?php
+                ?><p><?php echo esc_html($error); ?></p><?php
             }
 
             echo '</div>';
@@ -375,7 +375,7 @@ $redirect_to               = isset($args['redirect_to']) ? $args['redirect_to'] 
             <table id="mapping-authenticate" border="0">
                 <tr>
                     <td valign="top" width="50%" style="text-align:center;">
-                        <h4><?php echo __( "Already have an account", 'uwp-social' ); ?>?</h4>
+                        <h4><?php _e( "Already have an account", 'uwp-social' ); ?>?</h4>
 
                         <p><?php printf( __( "Please enter your username and password of your existing account on our website. Once verified, it will linked to your % ID", 'uwp-social' ), ucfirst( $provider ) ); ?>
                             .</p>

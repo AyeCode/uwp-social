@@ -59,14 +59,19 @@
 		<tr>
 			<td align="center"><img src="<?php echo esc_url(UWP_SOCIAL_PLUGIN_URL . 'assets/images/alert.png'); ?>" /></td>
 		</tr>
-		<tr>
-			<td align="center">
-				<div class="notice-message">
-					<?php echo nl2br( $message ); ?>
-				</div>
-			</td>
-		</tr>
-
+		<?php
+		if ( isset( $args['message'] ) && ! empty( $args['message'] ) ) {
+			?>
+            <tr>
+                <td align="center">
+                    <div class="notice-message">
+						<?php echo nl2br( $args['message'] ); ?>
+                    </div>
+                </td>
+            </tr>
+			<?php
+		}
+		?>
 		<tr>
 			<td>
 				<p style="padding: 0;">

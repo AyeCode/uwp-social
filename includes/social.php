@@ -42,7 +42,7 @@ function uwp_social_authenticate_process() {
 	if ( isset( $_REQUEST['provider'] ) && ! empty( $_REQUEST['provider'] ) ) {
 		$provider = sanitize_text_field( $_REQUEST['provider'] );
 	} else {
-		echo uwp_social_render_error_page( __( 'Invalid social login provider.', 'uwp-social' ) );
+		echo uwp_social_render_error_page( array('message' => __( 'Invalid social login provider.', 'uwp-social' )) );
 		die();
 	}
 
@@ -98,7 +98,7 @@ function uwp_social_authenticated_process() {
 	if ( isset( $_REQUEST['provider'] ) && ! empty( $_REQUEST['provider'] ) ) {
 		$provider = sanitize_text_field( $_REQUEST['provider'] );
 	} else {
-		echo uwp_social_render_error_page( __( 'Invalid social login provider.', 'uwp-social' ) );
+		echo uwp_social_render_error_page( array('message' => __( 'Invalid social login provider.', 'uwp-social' )) );
 		die();
 	}
 
@@ -158,7 +158,7 @@ function uwp_social_authenticated_process() {
 				// For other networks we may need email verification to make sure they are using the correct address.
 
 				if ( ! $requested_user_email ) {
-					echo uwp_social_render_notice( __( "Couldn't fetch the email address of a user. Please try again or use alternate login method!", 'uwp-social' ) );
+					echo uwp_social_render_notice( array('message' => __( "Couldn't fetch the email address of a user. Please try again or use alternate login method!", 'uwp-social' )) );
 					die();
 				}
 
@@ -204,7 +204,7 @@ function uwp_social_get_provider_adapter( $provider_id ) {
 	$config  = uwp_get_provider_config_from_session_storage( $provider_id );
 
 	if ( ! $config ) {
-		echo uwp_social_render_notice( __( "Invalid session data. Please try again.", 'uwp-social' ) );
+		echo uwp_social_render_notice( array('message' => __( "Invalid session data. Please try again.", 'uwp-social' )) );
 		die();
 	}
 
@@ -273,13 +273,13 @@ function uwp_social_get_user_data( $provider, $redirect_to ) {
 	if ( ! $user_id ) {
 		// Accept new registrations?
 		if ( ! get_option( 'users_can_register' ) ) {
-			return uwp_social_render_notice( __( "Registration is now closed.", 'uwp-social' ) );
+			return uwp_social_render_notice( array('message' => __( "Registration is now closed.", 'uwp-social' )) );
 		}
 
 		if ( ! is_email( $hybridauth_user_email_verified ) ) {
 			$incorrect_email_error_msg = apply_filters( 'uwp_incorrect_email_error_msg', __( 'The email address isn&#8217;t correct.', 'uwp-social' ) );
 
-			return uwp_social_render_notice( $incorrect_email_error_msg );
+			return uwp_social_render_notice( array('message' => $incorrect_email_error_msg) );
 		}
 
 		$linking_enabled = apply_filters( 'uwp_social_linking_enabled', true, $provider );
@@ -436,10 +436,10 @@ function uwp_social_create_wp_user( $provider, $hybridauth_user_profile, $reques
 	// do not continue without user_id
 	if ( ! $user_id || ! is_integer( $user_id ) ) {
 		if ( is_wp_error( $user_id ) ) {
-			return uwp_social_render_notice( __( "An error occurred while creating a new user: ", 'uwp-social' ) . $user_id->get_error_message() );
+			return uwp_social_render_notice( array('message' => __( "An error occurred while creating a new user: ", 'uwp-social' ) . $user_id->get_error_message()) );
 		}
 
-		return uwp_social_render_notice( __( "An error occurred while creating a new user!", 'uwp-social' ) );
+		return uwp_social_render_notice( array('message' => __( "An error occurred while creating a new user!", 'uwp-social' )) );
 	}
 
 	// wp_insert_user may fail on first and last name meta, expliciting setting to correct.
@@ -482,7 +482,7 @@ function uwp_request_user_social_profile( $provider ) {
 		} // if user not connected to provider (ie: session lost, url forged)
 		else {
 			return array(
-				uwp_social_render_notice( sprintf( __( "Sorry, we couldn't connect you with <b>%s</b>. <a href=\"%s\">Please try again</a>.", 'uwp-social' ), $provider, site_url( 'wp-login.php', 'login_post' ) ) )
+				uwp_social_render_notice( array('message' => sprintf( __( "Sorry, we couldn't connect you with <b>%s</b>. <a href=\"%s\">Please try again</a>.", 'uwp-social' ), $provider, site_url( 'wp-login.php', 'login_post' ) )) )
 			);
 		}
 	} // if things doesn't go as expected, we display the appropriate error message
@@ -522,7 +522,7 @@ function uwp_social_authenticate_user( $user_id, $provider, $redirect_to, $adapt
 	}
 
 	if ( 1 == uwp_get_option( 'uwp_social_require_moderation' ) && 1 == get_user_meta( $user_id, 'uwp_mod', true ) ) {
-		echo uwp_social_render_notice( __( "Your account is under moderation. We will email you once its approved.", 'uwp-social' ) );
+		echo uwp_social_render_notice( array('message' => __( "Your account is under moderation. We will email you once its approved.", 'uwp-social' )) );
 		die();
 	}
 
@@ -584,7 +584,7 @@ function uwp_social_new_users_gateway( $provider, $redirect_to, $hybridauth_user
 
 	if ( isset( $_REQUEST["account_linking"] ) ) {
 		if ( ! $linking_enabled ) {
-			return uwp_social_render_notice( __( "Linking is not enabled. Please check the social login add on settings.", 'uwp-social' ) );
+			return uwp_social_render_notice( array('message' => __( "Linking is not enabled. Please check the social login add on settings.", 'uwp-social' )) );
 		}
 
 		$account_linking = true;
@@ -714,22 +714,22 @@ function uwp_social_provider_loading_screen( $args ) {
 	die();
 }
 
-function uwp_social_render_error_page( $message ) {
+function uwp_social_render_error_page( $args ) {
 	ob_start();
-	uwp_get_template( "render_error_page.php", $message, '', UWP_SOCIAL_PATH . 'templates' );
+	uwp_get_template( "render_error_page.php", $args, '', UWP_SOCIAL_PATH . 'templates' );
 	return ob_get_clean();
 }
 
-function uwp_social_render_notice_page( $message ) {
+function uwp_social_render_notice_page( $args ) {
 	ob_start();
-	uwp_get_template( "render_notice_page.php", $message, '', UWP_SOCIAL_PATH . 'templates' );
+	uwp_get_template( "render_notice_page.php", $args, '', UWP_SOCIAL_PATH . 'templates' );
 	return ob_get_clean();
 }
 
-function uwp_social_render_notice( $message ) {
-	do_action( "uwp_social_render_notice_page_before", $message );
+function uwp_social_render_notice( $args ) {
+	do_action( "uwp_social_render_notice_page_before", $args );
 
-	return uwp_social_render_notice_page( $message );
+	return uwp_social_render_notice_page( $args );
 }
 
 function uwp_social_render_error( $e, $config = null, $provider = null, $adapter = null ) {
@@ -787,7 +787,7 @@ function uwp_social_render_error( $e, $config = null, $provider = null, $adapter
 		$hybridauth->disconnectAllAdapters();
 	}
 
-	return uwp_social_render_error_page( $message );
+	return uwp_social_render_error_page( array('message' => $message) );
 }
 
 add_filter( 'uwp_social_require_email', 'uwp_social_require_email_value', 10, 2 );

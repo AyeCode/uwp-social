@@ -94,12 +94,12 @@
         </tr>
 
 		<?php
-		if ( isset( $message ) && ! empty( $message ) ) {
+		if ( isset( $args['message'] ) && ! empty( $args['message'] ) ) {
 			?>
             <tr>
                 <td>
                     <div class="error-message">
-						<?php echo esc_html( $message ); ?>
+						<?php echo esc_html( $args['message'] ); ?>
                     </div>
                 </td>
             </tr>

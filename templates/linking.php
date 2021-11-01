@@ -354,7 +354,7 @@ $redirect_to               = isset($args['redirect_to']) ? $args['redirect_to'] 
             echo '<div id="errors-account-linking" class="error">';
 
             foreach ( $account_linking_errors as $error ) {
-                ?><p><?php echo esc_html($error); ?></p><?php
+                ?><p><?php echo $error; ?></p><?php
             }
 
             echo '</div>';
@@ -364,7 +364,7 @@ $redirect_to               = isset($args['redirect_to']) ? $args['redirect_to'] 
             echo '<div id="errors-profile-completion" class="error">';
 
             foreach ( $profile_completion_errors as $error ) {
-                ?><p><?php echo esc_html($error); ?></p><?php
+                ?><p><?php echo $error; ?></p><?php
             }
 
             echo '</div>';

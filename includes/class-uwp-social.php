@@ -145,15 +145,27 @@ class UsersWP_Social {
 	    if ($type == 'register') {
 		    $data = array();
 		    $data['uwp_register_form_id'] = ! empty( $args['id'] ) ? $args['id'] : 1;
-		    $uwp_forms = new UsersWP_Forms();
-	        $redirect_to = $uwp_forms->get_register_redirect_url( $data, false );
+		    $redirect_page_id = uwp_get_option( 'register_redirect_to' );
+		    if ( !isset( $_REQUEST['redirect_to'] ) && isset( $redirect_page_id ) && (int) $redirect_page_id == - 1 && wp_get_referer() ) {
+			    $redirect_to = esc_url( wp_get_referer() );
+		    } else {
+			    $uwp_forms = new UsersWP_Forms();
+			    $redirect_to = $uwp_forms->get_register_redirect_url( $data, false );
+		    }
+
 		    ob_start();
 		    echo do_shortcode('[uwp_social type="register" redirect_to="'.$redirect_to.'"]');
 		    echo ob_get_clean();
 	    } else {
 		    $data = array();
-		    $uwp_forms = new UsersWP_Forms();
-		    $redirect_to = $uwp_forms->get_login_redirect_url( $data, false );
+		    $redirect_page_id = uwp_get_option( 'login_redirect_to' );
+		    if ( !isset( $_REQUEST['redirect_to'] ) && isset( $redirect_page_id ) && (int) $redirect_page_id == - 1 && wp_get_referer() ) {
+			    $redirect_to = esc_url( wp_get_referer() );
+		    } else {
+			    $uwp_forms = new UsersWP_Forms();
+			    $redirect_to = $uwp_forms->get_login_redirect_url( $data, false );
+            }
+
 		    ob_start();
 		    echo do_shortcode('[uwp_social type="" redirect_to="'.$redirect_to.'"]');
 		    echo ob_get_clean();

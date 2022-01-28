@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: UsersWP - Social 1.3.18\n"
+"Project-Id-Version: UsersWP - Social 1.3.19\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-01 14:59+0530\n"
-"PO-Revision-Date: 2021-11-01 14:59+0530\n"
+"POT-Creation-Date: 2022-01-28 13:57+0530\n"
+"PO-Revision-Date: 2022-01-28 13:57+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -368,37 +368,37 @@ msgstr ""
 msgid "Remove all data when deleted?"
 msgstr ""
 
-#: includes/class-uwp-social.php:183
+#: includes/class-uwp-social.php:195
 #, php-format
 msgid "New user registration on your site: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:184
+#: includes/class-uwp-social.php:196
 #, php-format
 msgid "Username: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:185
+#: includes/class-uwp-social.php:197
 #, php-format
 msgid "Provider: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:186
+#: includes/class-uwp-social.php:198
 #, php-format
 msgid "Profile: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:187
+#: includes/class-uwp-social.php:199
 #, php-format
 msgid "Email: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:191
+#: includes/class-uwp-social.php:203
 #, php-format
 msgid "[%s] New User Registration"
 msgstr ""
 
-#: includes/class-uwp-social.php:197
+#: includes/class-uwp-social.php:209
 #, php-format
 msgid ""
 "<strong>Breaking change: </strong> Authorized Redirect URI for all social "
@@ -492,7 +492,7 @@ msgstr ""
 msgid "Invalid social login provider."
 msgstr ""
 
-#: includes/social.php:118 includes/social.php:762
+#: includes/social.php:118 includes/social.php:764
 msgid "Unknown or disabled provider."
 msgstr ""
 
@@ -522,84 +522,84 @@ msgstr ""
 msgid "An error occurred while creating a new user!"
 msgstr ""
 
-#: includes/social.php:485
+#: includes/social.php:487
 #, php-format
 msgid ""
 "Sorry, we couldn't connect you with <b>%s</b>. <a href=\"%s\">Please try "
 "again</a>."
 msgstr ""
 
-#: includes/social.php:525
+#: includes/social.php:527
 msgid "Your account is under moderation. We will email you once its approved."
 msgstr ""
 
-#: includes/social.php:587
+#: includes/social.php:589
 msgid "Linking is not enabled. Please check the social login add on settings."
 msgstr ""
 
-#: includes/social.php:604
+#: includes/social.php:606
 #, php-format
 msgid ""
 "<strong>ERROR</strong>: Invalid username or incorrect password. <a href=\"%s"
 "\">Lost your password</a>?"
 msgstr ""
 
-#: includes/social.php:625
+#: includes/social.php:627
 msgid "<strong>ERROR</strong>: Please type your e-mail address."
 msgstr ""
 
-#: includes/social.php:629
+#: includes/social.php:631
 msgid "<strong>ERROR</strong>: Please enter a valid email address."
 msgstr ""
 
-#: includes/social.php:633
+#: includes/social.php:635
 msgid "<strong>ERROR</strong>: Sorry, that email address is already used!"
 msgstr ""
 
-#: includes/social.php:644
+#: includes/social.php:646
 msgid "<strong>ERROR</strong>: That username is not allowed."
 msgstr ""
 
-#: includes/social.php:651
+#: includes/social.php:653
 #, php-format
 msgid "<strong>ERROR</strong>: Username must be at least %s characters."
 msgstr ""
 
-#: includes/social.php:655
+#: includes/social.php:657
 msgid "<strong>ERROR</strong>: Sorry, usernames must have letters too!"
 msgstr ""
 
-#: includes/social.php:659
+#: includes/social.php:661
 msgid "<strong>ERROR</strong>: Sorry, that username already exists!"
 msgstr ""
 
-#: includes/social.php:739
+#: includes/social.php:741
 msgid "Unspecified error!"
 msgstr ""
 
-#: includes/social.php:753
+#: includes/social.php:755
 msgid "Unspecified error."
 msgstr ""
 
-#: includes/social.php:756
+#: includes/social.php:758
 msgid "UsersWP Social Login is not properly configured."
 msgstr ""
 
-#: includes/social.php:759
+#: includes/social.php:761
 #, php-format
 msgid ""
 "UsersWP Social Login is not properly configured.<br /> <b>%s</b> need to be "
 "properly configured."
 msgstr ""
 
-#: includes/social.php:765
+#: includes/social.php:767
 #, php-format
 msgid ""
 "UsersWP Social Login is not properly configured.<br /> <b>%s</b> requires "
 "your application credentials."
 msgstr ""
 
-#: includes/social.php:766
+#: includes/social.php:768
 #, php-format
 msgid ""
 "<b>What does this error mean ?</b><br />Most likely, you didn't setup the "
@@ -608,31 +608,31 @@ msgid ""
 "Social Login to work."
 msgstr ""
 
-#: includes/social.php:766
+#: includes/social.php:768
 msgid ""
 "<br />Instructions for use can be found in the <a href=\"#\" target=\"_blank"
 "\">User Manual</a>."
 msgstr ""
 
-#: includes/social.php:769
+#: includes/social.php:771
 #, php-format
 msgid ""
 "Authentication failed. Either you have cancelled the authentication or <b>"
 "%s</b> refused the connection."
 msgstr ""
 
-#: includes/social.php:772
+#: includes/social.php:774
 #, php-format
 msgid ""
 "Request failed. Either you have cancelled the authentication or <b>%s</b> "
 "refused the connection."
 msgstr ""
 
-#: includes/social.php:775
+#: includes/social.php:777
 msgid "You're not connected to the provider."
 msgstr ""
 
-#: includes/social.php:778
+#: includes/social.php:780
 msgid "Provider does not support this feature."
 msgstr ""
 

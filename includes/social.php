@@ -247,7 +247,7 @@ function uwp_social_get_user_data( $provider, $redirect_to ) {
 	$adapter = uwp_social_get_provider_adapter( $provider );
 
 	$hybridauth_user_email          = isset( $hybridauth_user_profile->email ) ? sanitize_email( $hybridauth_user_profile->email ) : '';
-	$hybridauth_user_email_verified = isset( $hybridauth_user_profile->emailVerified ) ? sanitize_email( $hybridauth_user_profile->emailVerified ) : '';
+	$hybridauth_user_email_verified = isset( $hybridauth_user_profile->emailVerified ) ? sanitize_email( $hybridauth_user_profile->emailVerified ) : $hybridauth_user_email;
 
 	// check if user already exist in uwp social profiles
 	if ( ! empty( $hybridauth_user_profile->identifier ) ) {
@@ -298,7 +298,7 @@ function uwp_social_get_user_data( $provider, $redirect_to ) {
 					= uwp_social_new_users_gateway( $provider, $redirect_to, $hybridauth_user_profile );
 			} while ( ! $shall_pass );
 			$wordpress_user_id = $user_id;
-		} elseif ( ( $require_email && empty( $hybridauth_user_email ) ) || $change_username ) {
+		} elseif ( ( $require_email && empty( $hybridauth_user_email_verified ) ) || $change_username ) {
 			do {
 				list
 					(
@@ -556,14 +556,14 @@ function uwp_social_new_users_gateway( $provider, $redirect_to, $hybridauth_user
 	remove_action( 'register_form', 'uwp_render_auth_widget_in_wp_register_form' );
 
 	$hybridauth_user_email          = isset( $hybridauth_user_profile->email ) ? sanitize_email( $hybridauth_user_profile->email ) : '';
-	$hybridauth_user_email_verified = isset( $hybridauth_user_profile->emailVerified ) ? sanitize_email( $hybridauth_user_profile->emailVerified ) : '';
+	$hybridauth_user_email_verified = isset( $hybridauth_user_profile->emailVerified ) ? sanitize_email( $hybridauth_user_profile->emailVerified ) : $hybridauth_user_email;
 	$hybridauth_user_login          = isset( $hybridauth_user_profile->displayName ) ? sanitize_user( $hybridauth_user_profile->displayName, true ) : '';
 	$hybridauth_user_avatar         = isset( $hybridauth_user_profile->photoURL ) ? esc_url( $hybridauth_user_profile->photoURL ) : '';
 
 	$hybridauth_user_login = trim( str_replace( array( ' ', '.' ), '_', $hybridauth_user_login ) );
 	$hybridauth_user_login = trim( str_replace( '__', '_', $hybridauth_user_login ) );
 
-	$requested_user_email = isset( $_REQUEST["user_email"] ) ? sanitize_email( $_REQUEST["user_email"] ) : $hybridauth_user_email;
+	$requested_user_email = isset( $_REQUEST["user_email"] ) ? sanitize_email( $_REQUEST["user_email"] ) : $hybridauth_user_email_verified;
 	$requested_user_login = isset( $_REQUEST["user_login"] ) ? sanitize_user( $_REQUEST["user_login"] ) : $hybridauth_user_login;
 
 	$requested_user_email = apply_filters( 'uwp_new_users_gateway_alter_requested_email', $requested_user_email );

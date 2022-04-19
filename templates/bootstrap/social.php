@@ -11,7 +11,7 @@ if ( isset( $providers ) && count( $providers ) > 0 ) {
 	echo '<div class="bsui"><hr />';
 
 	if ( $title ) {
-		echo '<div class="text-muted h5 mt-n2 mb-2">' . esc_attr( $title ) . '</div>';
+		echo '<div class="text-muted h5 mt-n2 mb-2">' . esc_attr_e( $title, 'uwp-social' ) . '</div>';
 	}
 
 	foreach ( $providers as $array_key => $provider ) {

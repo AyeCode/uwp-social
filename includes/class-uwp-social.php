@@ -32,6 +32,7 @@ class UsersWP_Social {
         add_action('uwp_social_after_wp_insert_user', array($this, 'admin_notification'), 10, 2);
         add_action('login_form', array($this, 'admin_login_form'));
         add_action('register_form', array($this, 'admin_register_form'));
+        add_action('uwp_options_for_translation', array($this, 'uwp_add_options_for_translation'));
 
         add_action('uwp_clear_user_php_session', 'uwp_social_destroy_session_data');
         add_action('wp_logout', 'uwp_social_destroy_session_data');
@@ -243,6 +244,22 @@ class UsersWP_Social {
 		if(1 != uwp_get_option('disable_admin_register_social_login')) {
 			uwp_social_login_buttons('admin_register');
 		}
+	}
+
+	/**
+	 * Get the settings texts for translation.
+	 *
+	 * @param  array $uwp_options Array of text strings.
+	 * @return array Translation texts.
+	 */
+	public function uwp_add_options_for_translation($uwp_options) {
+		$uwp_options = !empty( $uwp_options ) && is_array( $uwp_options ) ? $uwp_options : array();
+
+		$add_uwp_options = array(
+			'label_for_social_login',
+		);
+
+		return array_merge($uwp_options, $add_uwp_options);
 	}
 
 }

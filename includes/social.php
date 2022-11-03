@@ -446,6 +446,7 @@ function uwp_social_create_wp_user( $provider, $hybridauth_user_profile, $reques
 	update_user_meta( $user_id, 'first_name', apply_filters( 'uwp_social_pre_user_first_name', $userdata['first_name'] ) );
 	update_user_meta( $user_id, 'last_name', apply_filters( 'uwp_social_pre_user_last_name', $userdata['last_name'] ) );
 	update_user_meta( $user_id, 'is_uwp_social_login', 1 );
+	update_user_meta( $user_id, 'is_uwp_social_login_no_password', 1 );
 	update_user_meta( $user_id, 'uwp_social_login_provider', $provider );
 
 	if ( 1 == uwp_get_option( 'uwp_social_require_moderation' ) ) {

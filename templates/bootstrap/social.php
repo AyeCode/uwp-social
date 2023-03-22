@@ -58,7 +58,7 @@ if ( isset( $providers ) && count( $providers ) > 0 ) {
 				} else {
 					$btn_output .= aui()->button( array(
 						'href'        => $url,
-						'class'       => 'ml-1 mb-1 border-0 btn  btn-' . $social_name_class . ' btn-sm btn-circle',
+						'class'       => 'ml-1 ms-1 mb-1 border-0 btn  btn-' . $social_name_class . ' btn-sm btn-circle',
 						'content'     => '<i class="' . $social_icon_class . '  fa-fw fa-lg"></i>',
 						'data-toggle' => 'tooltip',
 						'title'       => $provider_name,

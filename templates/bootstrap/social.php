@@ -6,7 +6,7 @@ if ( isset( $providers ) && count( $providers ) > 0 ) {
 	$title       = uwp_get_option( 'label_for_social_login', __( 'Login via Social', 'uwp-social' ) );
 	$title       = apply_filters( 'uwp_social_login_buttons_label', $title );
 	$redirect_to = ! empty( $args['redirect_to'] ) ? esc_url( $args['redirect_to'] ) : '';
-	$type = ! empty( $args['type'] ) ? esc_url( $args['type'] ) : '';
+	$type = ! empty( $args['type'] ) ? sanitize_text_field( $args['type'] ) : '';
 
 	echo '<div class="bsui"><hr />';
 

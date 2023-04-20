@@ -377,7 +377,7 @@ $redirect_to               = isset($args['redirect_to']) ? $args['redirect_to'] 
                     <td valign="top" width="50%" style="text-align:center;">
                         <h4><?php _e( "Already have an account", 'uwp-social' ); ?>?</h4>
 
-                        <p><?php printf( __( "Please enter your username and password of your existing account on our website. Once verified, it will linked to your % ID", 'uwp-social' ), ucfirst( $provider ) ); ?>
+                        <p><?php printf( __( "Please enter your username and password of your existing account on our website. Once verified, it will linked to your %s ID", 'uwp-social' ), ucfirst( $provider ) ); ?>
                             .</p>
                     </td>
                 </tr>

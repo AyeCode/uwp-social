@@ -4,7 +4,7 @@ Donate link: http://userswp.io/
 Tags: social login, facebook login, google login, twitter login, linkedIn login, vkontakte login, woocommerce login, facebook, twitter, google, social network login, social plugin, userswp
 Requires at least: 4.9
 Tested up to: 6.2
-Stable tag: 1.3.24
+Stable tag: 1.3.25
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -43,6 +43,9 @@ No questions so far, but don't hesitate to ask!
 2. WP Login (brand icons removed in screenshots due to WP rules).
 
 == Changelog ==
+
+= 1.3.25 =
+* Social Google Returns Blank Screen after authentication - FIXED
 
 = 1.3.24 =
 * Social login URL was not working in register popup - FIXED

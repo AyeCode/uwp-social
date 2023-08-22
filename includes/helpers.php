@@ -181,7 +181,7 @@ function uwp_social_build_provider_config( $provider )
 	if( $provider_key == "twitter" )
 	{
 		$config["providers"][$provider]["includeEmail"] = true;
-		$config["providers"][$provider]["scope"] = "users.read";
+		$config["providers"][$provider]["scope"] = "users.read tweet.read offline.access";
 		$config["providers"][$provider]["authorize"] = true;
 		$config["providers"][$provider]['authorize_url_parameters']["code_challenge"] = 'challenge';
 		$config["providers"][$provider]['authorize_url_parameters']["code_challenge_method"] = 'plain';

@@ -740,13 +740,6 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
             $headers,    // Request Headers
             $multipart   // Is request multipart
         );
-
-//		pre( [$url,
-//			$method,     // HTTP Request Method. Defaults to GET.
-//			$parameters, // Request Parameters
-//			$headers,    // Request Headers
-//			$multipart   // Is request multipart
-//	    ] );
 //		pre( $response );
 //		die;
         $this->validateApiResponse('Signed API request to ' . $url . ' has returned an error');

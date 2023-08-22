@@ -89,7 +89,7 @@ class Twitter extends OAuth2
 		// The Instagram API requires an access_token from authenticated users
 		// for each endpoint.
 		$accessToken = $this->getStoredData($this->accessTokenName);
-		$this->apiRequestParameters[$this->accessTokenName] = $accessToken;
+//		$this->apiRequestParameters[$this->accessTokenName] = $accessToken;
 	}
 
     /**
@@ -108,19 +108,20 @@ class Twitter extends OAuth2
      */
     public function getUserProfile()
     {
-        $response = $this->apiRequest('https://api.twitter.com/2/users/me', 'GET', [
-            'user.fields'
-        ]);
+        $response = $this->apiRequest('https://api.twitter.com/2/users/me', 'GET');
 
-        $data = new Data\Collection($response);
+		pre( $response->data );
+        $data = new Data\Collection($response->data);
 
-        if (!$data->exists('id_str')) {
+		pre( $data, $data->exists('id') );
+		die;
+        if (!$data->exists('id')) {
             throw new UnexpectedApiResponseException('Provider API returned an unexpected response.');
         }
 
         $userProfile = new User\Profile();
 
-        $userProfile->identifier = $data->get('id_str');
+        $userProfile->identifier = $data->get('id');
         $userProfile->displayName = $data->get('screen_name');
         $userProfile->description = $data->get('description');
         $userProfile->firstName = $data->get('name');
@@ -143,6 +144,8 @@ class Twitter extends OAuth2
             'followed_by' => $data->get('followers_count'),
             'follows' => $data->get('friends_count'),
         ];
+
+		pre( $userProfile ); die;
 
         return $userProfile;
     }

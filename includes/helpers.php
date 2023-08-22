@@ -34,9 +34,9 @@ function uwp_get_social_profile_by_email_verified( $email_verified )
 
 function uwp_social_store_user_profile( $user_id, $provider, $profile )
 {
-    
+
     global $wpdb;
-    
+
     $wpdb->show_errors();
 
     $sql = "SELECT id, object_sha FROM `{$wpdb->base_prefix}uwp_social_profiles` where user_id = %d and provider = %s and identifier = %s";
@@ -88,7 +88,7 @@ function uwp_social_store_user_profile( $user_id, $provider, $profile )
         'city',
         'zip'
     );
-    
+
     foreach( $profile as $key => $value )
     {
         $key = strtolower($key);
@@ -181,6 +181,10 @@ function uwp_social_build_provider_config( $provider )
 	if( $provider_key == "twitter" )
 	{
 		$config["providers"][$provider]["includeEmail"] = true;
+		$config["providers"][$provider]["scope"] = "users.read";
+		$config["providers"][$provider]["authorize"] = true;
+		$config["providers"][$provider]['authorize_url_parameters']["code_challenge"] = 'challenge';
+		$config["providers"][$provider]['authorize_url_parameters']["code_challenge_method"] = 'plain';
 	}
 
     $provider_scope = isset( $config["providers"][$provider]["scope"] ) ? $config["providers"][$provider]["scope"] : '' ;

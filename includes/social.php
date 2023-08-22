@@ -120,7 +120,6 @@ function uwp_social_authenticated_process() {
 		die();
 	}
 
-
 	if ( $auth_mode == 'login' ) {
 
 		$data = uwp_social_get_user_data( $provider, $redirect_to );
@@ -478,6 +477,7 @@ function uwp_request_user_social_profile( $provider ) {
 		$adapter = uwp_social_get_provider_adapter( $provider );
 
 		$config = uwp_get_provider_config_from_session_storage( $provider );
+
 		// if user authenticated successfully with social network
 		if ( $adapter->isConnected() ) {
 			// grab user profile via hybridauth api

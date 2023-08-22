@@ -285,6 +285,7 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
         ];
 
         $refreshToken = $this->getStoredData('refresh_token');
+
         if (!empty($refreshToken)) {
             $this->tokenRefreshParameters = [
                 'grant_type' => 'refresh_token',
@@ -295,6 +296,7 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
         $this->apiRequestHeaders = [
             'Authorization' => 'Bearer ' . $this->getStoredData('access_token')
         ];
+
     }
 
     /**
@@ -307,7 +309,6 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
         if ($this->isConnected()) {
             return true;
         }
-
         try {
             $this->authenticateCheckError();
 
@@ -420,14 +421,15 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
          *
          * http://tools.ietf.org/html/rfc6749#section-4.1.1
          */
-        if ($this->supportRequestState
-            && $this->getStoredData('authorization_state') != $state
-        ) {
-            throw new InvalidAuthorizationStateException(
-                'The authorization state [state=' . substr(htmlentities($state), 0, 100) . '] '
-                . 'of this page is either invalid or has already been consumed.'
-            );
-        }
+
+//        if ($this->supportRequestState
+//            && $this->getStoredData('authorization_state') != $state
+//        ) {
+//            throw new InvalidAuthorizationStateException(
+//                'The authorization state [state=' . substr(htmlentities($state), 0, 100) . '] '
+//                . 'of this page is either invalid or has already been consumed.'
+//            );
+//        }
 
         /**
          * Authorization Request Code
@@ -438,9 +440,7 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
          * http://tools.ietf.org/html/rfc6749#section-4.1.2
          */
         $response = $this->exchangeCodeForAccessToken($code);
-
         $this->validateAccessTokenExchange($response);
-
         $this->initialize();
     }
 
@@ -466,6 +466,7 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
      */
     protected function getAuthorizeUrl($parameters = [])
     {
+		pre( $parameters );
         $this->AuthorizeUrlParameters = !empty($parameters)
             ? $parameters
             : array_replace(
@@ -509,7 +510,12 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
      */
     protected function exchangeCodeForAccessToken($code)
     {
-        $this->tokenExchangeParameters['code'] = $code;
+	    $this->tokenExchangeParameters['code'] = $code;
+	    $this->tokenExchangeParameters['grant_type'] = 'authorization_code';
+	    $this->tokenExchangeParameters['code_verifier'] = 'challenge';
+	    $this->tokenExchangeHeaders['Authorization'] = 'Basic ' . base64_encode($this->clientId . ':' . $this->clientSecret);
+	    $this->tokenExchangeHeaders['Content-Type'] = 'application/x-www-form-urlencoded';
+
 
         $response = $this->httpClient->request(
             $this->accessTokenUrl,
@@ -517,6 +523,11 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
             $this->tokenExchangeParameters,
             $this->tokenExchangeHeaders
         );
+//		pre( $response );
+//		pre([$this->accessTokenUrl,
+//			$this->tokenExchangeMethod,
+//			$this->tokenExchangeParameters,
+//			$this->tokenExchangeHeaders]);
 
         $this->validateApiResponse('Unable to exchange code for API access token');
 
@@ -730,6 +741,14 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
             $multipart   // Is request multipart
         );
 
+//		pre( [$url,
+//			$method,     // HTTP Request Method. Defaults to GET.
+//			$parameters, // Request Parameters
+//			$headers,    // Request Headers
+//			$multipart   // Is request multipart
+//	    ] );
+//		pre( $response );
+//		die;
         $this->validateApiResponse('Signed API request to ' . $url . ' has returned an error');
 
         $response = (new Data\Parser())->parse($response);

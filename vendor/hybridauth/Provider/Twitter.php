@@ -71,27 +71,6 @@ class Twitter extends OAuth2
 	protected $tokenRefreshHeaders = [
 	];
 
-
-	protected function initialize()
-	{
-		parent::initialize();
-
-//		$this->tokenRefreshHeaders = [
-//			'Content-Type' => 'application/x-www-form-urlencoded',
-//			'Authorization' => 'Basic ' .$this->getStoredData('access_token'),
-//		];
-//
-//		$this->tokenRefreshParameters = [
-//			'grant_type' => 'refresh_token',
-//			'refresh_token' => $this->getStoredData('refresh_token'),
-//		];
-
-		// The Instagram API requires an access_token from authenticated users
-		// for each endpoint.
-		$accessToken = $this->getStoredData($this->accessTokenName);
-//		$this->apiRequestParameters[$this->accessTokenName] = $accessToken;
-	}
-
     /**
      * {@inheritdoc}
      */
@@ -110,11 +89,9 @@ class Twitter extends OAuth2
     {
         $response = $this->apiRequest('https://api.twitter.com/2/users/me', 'GET');
 
-		pre( $response->data );
+		//This need to be fixed. Sending a formatted data is needed. Email may not be avilable.
         $data = new Data\Collection($response->data);
 
-		pre( $data, $data->exists('id') );
-		die;
         if (!$data->exists('id')) {
             throw new UnexpectedApiResponseException('Provider API returned an unexpected response.');
         }

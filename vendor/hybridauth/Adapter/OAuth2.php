@@ -466,7 +466,6 @@ abstract class OAuth2 extends AbstractAdapter implements AdapterInterface
      */
     protected function getAuthorizeUrl($parameters = [])
     {
-		pre( $parameters );
         $this->AuthorizeUrlParameters = !empty($parameters)
             ? $parameters
             : array_replace(

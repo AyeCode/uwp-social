@@ -19,7 +19,6 @@ function uwp_get_social_profile( $provider, $provider_uid )
     global $wpdb;
 
     $sql = "SELECT user_id FROM `{$wpdb->base_prefix}uwp_social_profiles` WHERE provider = %s AND identifier = %s";
-
     return $wpdb->get_var( $wpdb->prepare( $sql, $provider, $provider_uid ) );
 }
 
@@ -34,9 +33,9 @@ function uwp_get_social_profile_by_email_verified( $email_verified )
 
 function uwp_social_store_user_profile( $user_id, $provider, $profile )
 {
-    
+
     global $wpdb;
-    
+
     $wpdb->show_errors();
 
     $sql = "SELECT id, object_sha FROM `{$wpdb->base_prefix}uwp_social_profiles` where user_id = %d and provider = %s and identifier = %s";
@@ -88,7 +87,7 @@ function uwp_social_store_user_profile( $user_id, $provider, $profile )
         'city',
         'zip'
     );
-    
+
     foreach( $profile as $key => $value )
     {
         $key = strtolower($key);
@@ -162,7 +161,7 @@ function uwp_social_build_provider_config( $provider )
 
     if( $provider_key == "linkedin" )
     {
-        $config["providers"][$provider]["scope"] = "r_liteprofile r_emailaddress";
+        $config["providers"][$provider]["scope"] = "profile email openid w_member_social";
     }
 
     // set custom config for google

@@ -7,7 +7,7 @@
 
 namespace Hybridauth\Provider;
 
-use Hybridauth\Adapter\OAuth1;
+use Hybridauth\Adapter\OAuth2;
 use Hybridauth\Exception\UnexpectedApiResponseException;
 use Hybridauth\Data;
 use Hybridauth\User;
@@ -38,12 +38,12 @@ use Hybridauth\User;
  *       echo $e->getMessage() ;
  *   }
  */
-class Twitter extends OAuth1
+class Twitter extends OAuth2
 {
     /**
      * {@inheritdoc}
      */
-    protected $apiBaseUrl = 'https://api.twitter.com/1.1/';
+    protected $apiBaseUrl = 'https://api.twitter.com/2/';
 
     /**
      * {@inheritdoc}
@@ -58,12 +58,18 @@ class Twitter extends OAuth1
     /**
      * {@inheritdoc}
      */
-    protected $accessTokenUrl = 'https://api.twitter.com/oauth/access_token';
+    protected $accessTokenUrl = 'https://api.twitter.com/2/oauth2/token';
 
     /**
      * {@inheritdoc}
      */
     protected $apiDocumentation = 'https://dev.twitter.com/web/sign-in/implementing';
+
+	protected $tokenRefreshParameters = [
+
+	];
+	protected $tokenRefreshHeaders = [
+	];
 
     /**
      * {@inheritdoc}
@@ -71,9 +77,8 @@ class Twitter extends OAuth1
     protected function getAuthorizeUrl($parameters = [])
     {
         if ($this->config->get('authorize') === true) {
-            $this->authorizeUrl = 'https://api.twitter.com/oauth/authorize';
+            $this->authorizeUrl = 'https://twitter.com/i/oauth2/authorize';
         }
-
         return parent::getAuthorizeUrl($parameters);
     }
 
@@ -82,19 +87,18 @@ class Twitter extends OAuth1
      */
     public function getUserProfile()
     {
-        $response = $this->apiRequest('account/verify_credentials.json', 'GET', [
-            'include_email' => $this->config->get('include_email') === false ? 'false' : 'true',
-        ]);
+        $response = $this->apiRequest('https://api.twitter.com/2/users/me', 'GET');
 
-        $data = new Data\Collection($response);
+		//This need to be fixed. Sending a formatted data is needed. Email may not be avilable.
+        $data = new Data\Collection($response->data);
 
-        if (!$data->exists('id_str')) {
+        if (!$data->exists('id')) {
             throw new UnexpectedApiResponseException('Provider API returned an unexpected response.');
         }
 
         $userProfile = new User\Profile();
 
-        $userProfile->identifier = $data->get('id_str');
+        $userProfile->identifier = $data->get('id');
         $userProfile->displayName = $data->get('screen_name');
         $userProfile->description = $data->get('description');
         $userProfile->firstName = $data->get('name');
@@ -117,6 +121,8 @@ class Twitter extends OAuth1
             'followed_by' => $data->get('followers_count'),
             'follows' => $data->get('friends_count'),
         ];
+
+		pre( $userProfile ); die;
 
         return $userProfile;
     }

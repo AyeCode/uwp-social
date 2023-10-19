@@ -19,7 +19,6 @@ function uwp_get_social_profile( $provider, $provider_uid )
     global $wpdb;
 
     $sql = "SELECT user_id FROM `{$wpdb->base_prefix}uwp_social_profiles` WHERE provider = %s AND identifier = %s";
-
     return $wpdb->get_var( $wpdb->prepare( $sql, $provider, $provider_uid ) );
 }
 
@@ -162,7 +161,7 @@ function uwp_social_build_provider_config( $provider )
 
     if( $provider_key == "linkedin" )
     {
-        $config["providers"][$provider]["scope"] = "r_liteprofile r_emailaddress";
+        $config["providers"][$provider]["scope"] = "profile email openid w_member_social";
     }
 
     // set custom config for google

@@ -246,7 +246,8 @@ function uwp_social_get_user_data( $provider, $redirect_to ) {
 	$adapter = uwp_social_get_provider_adapter( $provider );
 
 	$hybridauth_user_email          = isset( $hybridauth_user_profile->email ) ? sanitize_email( $hybridauth_user_profile->email ) : '';
-	$hybridauth_user_email_verified = isset( $hybridauth_user_profile->emailVerified ) ? sanitize_email( $hybridauth_user_profile->emailVerified ) : $hybridauth_user_email;
+	$hybridauth_user_email_verified = isset( $hybridauth_user_profile->emailVerified ) ? boolval( $hybridauth_user_profile->emailVerified ) : $hybridauth_user_email;
+
 
 	// check if user already exist in uwp social profiles
 	if ( ! empty( $hybridauth_user_profile->identifier ) ) {
@@ -258,9 +259,9 @@ function uwp_social_get_user_data( $provider, $redirect_to ) {
 	// if not found in uwp social profiles, then check his verified email
 	if ( ! $user_id && ! empty( $hybridauth_user_email_verified ) ) {
 		// check if the verified email exist in wp_users
-		$user_id = (int) uwp_email_exists( $hybridauth_user_email_verified );
+		$user_id = (int) uwp_email_exists( $hybridauth_user_email );
 
-		// the user exists in Wordpress
+		// the user exists in WordPress
 		$wordpress_user_id = $user_id;
 
 		// check if the verified email exist in uwp social profiles
@@ -478,7 +479,8 @@ function uwp_request_user_social_profile( $provider ) {
 
 		$config = uwp_get_provider_config_from_session_storage( $provider );
 
-		// if user authenticated successfully with social network
+
+        // if user authenticated successfully with social network
 		if ( $adapter->isConnected() ) {
 			// grab user profile via hybridauth api
 			$hybridauth_user_profile = $adapter->getUserProfile();

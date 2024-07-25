@@ -47,44 +47,27 @@ class LinkedIn extends OAuth2
      */
     public function getUserProfile()
     {
-        $fields = [
-            'id',
-            'firstName',
-            'lastName',
-            'profilePicture(displayImage~:playableStreams)',
-        ];
+        $response = $this->apiRequest('userinfo', 'GET' );
 
-
-        $response = $this->apiRequest('me', 'GET', ['projection' => '(' . implode(',', $fields) . ')']);
         $data = new Data\Collection($response);
 
-        if (!$data->exists('id')) {
+        if (!$data->exists('sub')) {
             throw new UnexpectedApiResponseException('Provider API returned an unexpected response.');
         }
 
         $userProfile = new User\Profile();
 
         // Handle localized names.
-        $userProfile->firstName = $data
-            ->filter('firstName')
-            ->filter('localized')
-            ->get($this->getPreferredLocale($data, 'firstName'));
+        $userProfile->firstName = $data->get('given_name');
 
-        $userProfile->lastName = $data
-            ->filter('lastName')
-            ->filter('localized')
-            ->get($this->getPreferredLocale($data, 'lastName'));
+        $userProfile->lastName = $data->get('family_name');
 
-        $userProfile->identifier = $data->get('id');
-        $userProfile->email = $this->getUserEmail();
-        $userProfile->emailVerified = $userProfile->email;
-        $userProfile->displayName = trim($userProfile->firstName . ' ' . $userProfile->lastName);
+        $userProfile->identifier = $data->get('sub');
+        $userProfile->email = $data->get('email');
+        $userProfile->emailVerified = $data->get('email_verified');
+        $userProfile->displayName = $data->get('name');
 
-        $photo_elements = $data
-            ->filter('profilePicture')
-            ->filter('displayImage~')
-            ->get('elements');
-        $userProfile->photoURL = $this->getUserPhotoUrl($photo_elements);
+        $userProfile->photoURL = $data->get('picture');
 
         return $userProfile;
     }
@@ -127,6 +110,7 @@ class LinkedIn extends OAuth2
             'q' => 'members',
             'projection' => '(elements*(handle~))',
         ]);
+
         $data = new Data\Collection($response);
 
         foreach ($data->filter('elements')->toArray() as $element) {

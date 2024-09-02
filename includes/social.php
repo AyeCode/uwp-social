@@ -247,7 +247,7 @@ function uwp_social_get_user_data( $provider, $redirect_to ) {
 	$adapter = uwp_social_get_provider_adapter( $provider );
 
 	$hybridauth_user_email          = isset( $hybridauth_user_profile->email ) ? sanitize_email( $hybridauth_user_profile->email ) : '';
-	$hybridauth_user_email_verified = isset( $hybridauth_user_profile->emailVerified ) ? boolval( $hybridauth_user_profile->emailVerified ) : $hybridauth_user_email;
+	$hybridauth_user_email_verified = isset( $hybridauth_user_profile->emailVerified ) ? sanitize_email( $hybridauth_user_profile->emailVerified ) : $hybridauth_user_email;
 
 
 	// check if user already exist in uwp social profiles

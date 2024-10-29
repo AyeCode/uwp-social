@@ -4,7 +4,7 @@ Donate link: http://userswp.io/
 Tags: social login, facebook login, google login, twitter login, linkedIn login, vkontakte login, woocommerce login, facebook, twitter, google, social network login, social plugin, userswp
 Requires at least: 4.9
 Tested up to: 6.6
-Stable tag: 1.3.27
+Stable tag: 1.4.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -44,7 +44,7 @@ No questions so far, but don't hesitate to ask!
 
 == Changelog ==
 
-= 1.4.0 - TBD =
+= 1.4.0 - 2024-10-29 =
 * Login redirect should prompt to choose Google account - CHANGED
 
 = 1.3.27 =

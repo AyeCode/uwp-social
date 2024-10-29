@@ -44,6 +44,9 @@ No questions so far, but don't hesitate to ask!
 
 == Changelog ==
 
+= 1.4.0 - TBD =
+* Login redirect should prompt to choose Google account - CHANGED
+
 = 1.3.27 =
 * New user registration can fail if email IS verified as with Google - FIXED
 
@@ -182,7 +185,7 @@ No questions so far, but don't hesitate to ask!
 = 1.0.2 =
 * Major code refactoring - CHANGED
 * Docblocks added - ADDED
-* Linked in sometimes does not connect becasue of trailing slash missing in subdomain - FIXED
+* Linked in sometimes does not connect because of trailing slash missing in subdomain - FIXED
 * Delete social row when the user get deleted - ADDED
 
 = 1.0.1 =

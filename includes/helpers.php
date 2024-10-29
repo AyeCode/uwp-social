@@ -164,12 +164,18 @@ function uwp_social_build_provider_config( $provider )
         $config["providers"][$provider]["scope"] = "profile email openid w_member_social";
     }
 
-    // set custom config for google
-    if( $provider_key == "google" )
-    {
-        // set the default google scope
-        $config["providers"][$provider]["scope"] = "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email";
-    }
+	// Set custom config for Google.
+	if ( $provider_key == 'google' ) {
+		// Set the default Google scope.
+		$config['providers'][ $provider ]['scope'] = 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email';
+
+		if ( ! isset( $config['providers'][ $provider ]['authorize_url_parameters'] ) ) {
+			$config['providers'][ $provider ]['authorize_url_parameters'] = array();
+		}
+
+		// @see https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow#request-parameter-prompt
+		$config['providers'][ $provider ]['authorize_url_parameters']['prompt'] = 'select_account';
+	}
 
     if( $provider_key == "instagram" )
     {
@@ -257,18 +263,25 @@ function uwp_social_get_provider_name_by_id( $provider_id)
 }
 
 function uwp_social_destroy_session_data() {
-    if ( isset( $_SESSION['uwp_social'] ) ) {
-        unset( $_SESSION['uwp_social']);
-    }
+	if ( ! session_id() ) {
+		session_start();
+	}
 
-    if ( isset( $_SESSION['HA::STORE'] ) ) {
-        unset( $_SESSION['HA::STORE']);
-    }
+	if ( isset( $_SESSION['uwp_social'] ) ) {
+		unset( $_SESSION['uwp_social']);
+	}
 
-    if ( isset( $_SESSION['HA::CONFIG'] ) ) {
-        unset( $_SESSION['HA::CONFIG']);
-    }
+	if ( isset( $_SESSION['HA::STORE'] ) ) {
+		unset( $_SESSION['HA::STORE']);
+	}
 
+	if ( isset( $_SESSION['HA::CONFIG'] ) ) {
+		unset( $_SESSION['HA::CONFIG']);
+	}
+
+	if ( isset( $_SESSION['HYBRIDAUTH::STORAGE'] ) ) {
+		unset( $_SESSION['HYBRIDAUTH::STORAGE']);
+	}
 }
 
 function uwp_get_social_login_redirect_url($data = array(), $user = false){

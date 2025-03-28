@@ -44,6 +44,9 @@ No questions so far, but don't hesitate to ask!
 
 == Changelog ==
 
+= 1.4.0 - TBD =
+* Hybridauth library upgraded to v3.11.0 - CHANGED
+
 = 1.4.0 - 2024-10-29 =
 * Login redirect should prompt to choose Google account - CHANGED
 

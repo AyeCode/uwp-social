@@ -161,7 +161,7 @@ function uwp_social_build_provider_config( $provider )
 
     if( $provider_key == "linkedin" )
     {
-        $config["providers"][$provider]["scope"] = "profile email openid w_member_social";
+        $config["providers"][$provider]["scope"] = "profile email openid";
     }
 
 	// Set custom config for Google.

@@ -56,7 +56,7 @@ function uwp_social_authenticate_process() {
 	$adapter = '';
 
 	if ( ! class_exists( 'Hybridauth' ) ) {
-		require_once UWP_SOCIAL_PATH . '/vendor/hybridauth/autoload.php';
+		require_once UWP_SOCIAL_PATH . '/vendor/autoload.php';
 	}
 
 	try {
@@ -209,7 +209,7 @@ function uwp_social_get_provider_adapter( $provider_id ) {
 	}
 
 	if ( ! class_exists( 'Hybridauth' ) ) {
-		require_once UWP_SOCIAL_PATH . '/vendor/hybridauth/autoload.php';
+		require_once UWP_SOCIAL_PATH . '/vendor/autoload.php';
 	}
 
 	try {
@@ -861,7 +861,7 @@ function uwp_social_check_auth_done() {
 		$callback_url = isset( $config['current_page'] ) ? $config['current_page'] : home_url();
 
 		if ( ! class_exists( 'Hybridauth' ) ) {
-			require_once UWP_SOCIAL_PATH . '/vendor/hybridauth/autoload.php';
+			require_once UWP_SOCIAL_PATH . '/vendor/autoload.php';
 		}
 
 		$adapter = null;

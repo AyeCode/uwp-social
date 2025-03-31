@@ -3,7 +3,7 @@
         'name' => 'uswerwp/uwp-social',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '2eead8aae20c83c49ec1e0b12f4e534974b82318',
+        'reference' => '65527a22f956fd3184c2eb91580ec618461f7109',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'uswerwp/uwp-social' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '2eead8aae20c83c49ec1e0b12f4e534974b82318',
+            'reference' => '65527a22f956fd3184c2eb91580ec618461f7109',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

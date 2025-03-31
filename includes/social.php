@@ -247,7 +247,7 @@ function uwp_social_get_user_data( $provider, $redirect_to ) {
 	$adapter = uwp_social_get_provider_adapter( $provider );
 
 	$hybridauth_user_email          = isset( $hybridauth_user_profile->email ) ? sanitize_email( $hybridauth_user_profile->email ) : '';
-	$hybridauth_user_email_verified = isset( $hybridauth_user_profile->emailVerified ) ? sanitize_email( $hybridauth_user_profile->emailVerified ) : $hybridauth_user_email;
+	$hybridauth_user_email_verified = isset( $hybridauth_user_profile->emailVerified ) && is_email( $hybridauth_user_profile->emailVerified ) ? sanitize_email( $hybridauth_user_profile->emailVerified ) : $hybridauth_user_email;
 
 
 	// check if user already exist in uwp social profiles
@@ -559,7 +559,7 @@ function uwp_social_new_users_gateway( $provider, $redirect_to, $hybridauth_user
 	remove_action( 'register_form', 'uwp_render_auth_widget_in_wp_register_form' );
 
 	$hybridauth_user_email          = isset( $hybridauth_user_profile->email ) ? sanitize_email( $hybridauth_user_profile->email ) : '';
-	$hybridauth_user_email_verified = isset( $hybridauth_user_profile->emailVerified ) ? sanitize_email( $hybridauth_user_profile->emailVerified ) : $hybridauth_user_email;
+	$hybridauth_user_email_verified = isset( $hybridauth_user_profile->emailVerified ) && is_email($hybridauth_user_profile->emailVerified) ? sanitize_email( $hybridauth_user_profile->emailVerified ) : $hybridauth_user_email;
 	$hybridauth_user_login          = isset( $hybridauth_user_profile->displayName ) ? sanitize_user( $hybridauth_user_profile->displayName, true ) : '';
 	$hybridauth_user_avatar         = isset( $hybridauth_user_profile->photoURL ) ? esc_url( $hybridauth_user_profile->photoURL ) : '';
 
@@ -747,7 +747,7 @@ function uwp_social_render_error( $e, $config = null, $provider = null, $adapter
 		$message  = $e;
 		$apierror = $e;
 	} else {
-		$apierror = substr( $e->getMessage(), 0, 145 );
+		$apierror = substr( $e->getMessage(), 0, 1045 );
 	}
 
 	$provider_name = uwp_social_get_provider_name_by_id( $provider );

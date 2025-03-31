@@ -18,6 +18,11 @@ function uwp_get_social_profile( $provider, $provider_uid )
 {
     global $wpdb;
 
+    // keep compatibility with both versions
+    if($provider == 'linkedinopenid'){
+        $provider = 'linkedin';
+    }
+
     $sql = "SELECT user_id FROM `{$wpdb->base_prefix}uwp_social_profiles` WHERE provider = %s AND identifier = %s";
     return $wpdb->get_var( $wpdb->prepare( $sql, $provider, $provider_uid ) );
 }
@@ -159,7 +164,7 @@ function uwp_social_build_provider_config( $provider )
 
     }
 
-    if( $provider_key == "linkedin" )
+    if( $provider_key == "linkedin" ||  $provider_key == "linkedinopenid"  )
     {
         $config["providers"][$provider]["scope"] = "openid profile email";
     }
@@ -213,6 +218,11 @@ function uwp_get_available_social_providers() {
         ),
         "linkedin" => array(
             "provider_id"       => "linkedin",
+            "provider_name"     => "LinkedIn",
+            "require_client_id" => false,
+        ),
+        "linkedinopenid" => array(
+            "provider_id"       => "linkedinopenid",
             "provider_name"     => "LinkedIn",
             "require_client_id" => false,
         ),

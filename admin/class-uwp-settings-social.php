@@ -293,7 +293,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'desc_tip' => false,
                     ),
                     array(
-                        'id'   => 'enable_uwp_social_linkedin',
+                        'id'   => 'enable_uwp_social_linkedinopenid',
                         'name' => __('Enable LinkedIn', 'uwp-social'),
                         'desc' => '',
                         'type' => 'checkbox',

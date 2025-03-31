@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: UsersWP - Social 1.4.0\n"
+"Project-Id-Version: UsersWP - Social 1.5.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-29 19:38+0530\n"
-"PO-Revision-Date: 2024-10-29 19:38+0530\n"
+"POT-Creation-Date: 2025-03-31 17:33+0100\n"
+"PO-Revision-Date: 2025-03-31 17:33+0100\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -39,71 +39,65 @@ msgid "Twitter"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:73
-msgid "LinkedIn"
+msgid "LinkedIn (deprecated)"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:74
-msgid "Instagram"
+msgid "LinkedIn OpenID"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:75
-msgid "Yahoo"
+msgid "Instagram"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:76
-msgid "WordPress"
+msgid "Yahoo"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:77
+msgid "WordPress"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:78
 msgid "VKontakte"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:90
+#: admin/class-uwp-settings-social.php:91
 msgid "Google Settings"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:93
-#: admin/class-uwp-settings-social.php:141
-#: admin/class-uwp-settings-social.php:191
-#: admin/class-uwp-settings-social.php:241
-#: admin/class-uwp-settings-social.php:341
-#: admin/class-uwp-settings-social.php:391
-#: admin/class-uwp-settings-social.php:441
+#: admin/class-uwp-settings-social.php:94
+#: admin/class-uwp-settings-social.php:142
+#: admin/class-uwp-settings-social.php:192
+#: admin/class-uwp-settings-social.php:242
+#: admin/class-uwp-settings-social.php:292
+#: admin/class-uwp-settings-social.php:392
+#: admin/class-uwp-settings-social.php:442
+#: admin/class-uwp-settings-social.php:492
 #, php-format
 msgid ""
 "<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter "
 "below. Use %s for Authorized redirect URI. See %s Documentation %s"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:98
+#: admin/class-uwp-settings-social.php:99
 msgid "Enable Google"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:105
+#: admin/class-uwp-settings-social.php:106
 msgid "Google Client ID"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:108
+#: admin/class-uwp-settings-social.php:109
 msgid "Enter Google APP ID"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:112
+#: admin/class-uwp-settings-social.php:113
 msgid "Google Client Secret"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:115
+#: admin/class-uwp-settings-social.php:116
 msgid "Enter Google APP Secret"
-msgstr ""
-
-#: admin/class-uwp-settings-social.php:119
-#: admin/class-uwp-settings-social.php:168
-#: admin/class-uwp-settings-social.php:218
-#: admin/class-uwp-settings-social.php:268
-#: admin/class-uwp-settings-social.php:318
-#: admin/class-uwp-settings-social.php:368
-#: admin/class-uwp-settings-social.php:418
-#: admin/class-uwp-settings-social.php:468
-msgid "Let the user enter username?"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:120
@@ -114,20 +108,22 @@ msgstr ""
 #: admin/class-uwp-settings-social.php:369
 #: admin/class-uwp-settings-social.php:419
 #: admin/class-uwp-settings-social.php:469
+#: admin/class-uwp-settings-social.php:519
+msgid "Let the user enter username?"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:121
+#: admin/class-uwp-settings-social.php:170
+#: admin/class-uwp-settings-social.php:220
+#: admin/class-uwp-settings-social.php:270
+#: admin/class-uwp-settings-social.php:320
+#: admin/class-uwp-settings-social.php:370
+#: admin/class-uwp-settings-social.php:420
+#: admin/class-uwp-settings-social.php:470
+#: admin/class-uwp-settings-social.php:520
 msgid ""
 "By default, the username is auto generated. If this option enabled then we "
 "would ask the user to pick the username by displaying a form."
-msgstr ""
-
-#: admin/class-uwp-settings-social.php:127
-#: admin/class-uwp-settings-social.php:176
-#: admin/class-uwp-settings-social.php:226
-#: admin/class-uwp-settings-social.php:276
-#: admin/class-uwp-settings-social.php:326
-#: admin/class-uwp-settings-social.php:376
-#: admin/class-uwp-settings-social.php:426
-#: admin/class-uwp-settings-social.php:476
-msgid "Let the user enter email?"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:128
@@ -138,88 +134,111 @@ msgstr ""
 #: admin/class-uwp-settings-social.php:377
 #: admin/class-uwp-settings-social.php:427
 #: admin/class-uwp-settings-social.php:477
+#: admin/class-uwp-settings-social.php:527
+msgid "Let the user enter email?"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:129
+#: admin/class-uwp-settings-social.php:178
+#: admin/class-uwp-settings-social.php:228
+#: admin/class-uwp-settings-social.php:278
+#: admin/class-uwp-settings-social.php:328
+#: admin/class-uwp-settings-social.php:378
+#: admin/class-uwp-settings-social.php:428
+#: admin/class-uwp-settings-social.php:478
+#: admin/class-uwp-settings-social.php:528
 msgid ""
 "By default, the email returned by the provider is used. If this option "
 "enabled then we would ask the user to enter the email by displaying a form."
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:138
+#: admin/class-uwp-settings-social.php:139
 msgid "Facebook Settings"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:146
+#: admin/class-uwp-settings-social.php:147
 msgid "Enable Facebook"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:154
+#: admin/class-uwp-settings-social.php:155
 msgid "Facebook API ID"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:157
+#: admin/class-uwp-settings-social.php:158
 msgid "Enter Facebook API ID"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:161
+#: admin/class-uwp-settings-social.php:162
 msgid "Facebook API Secret"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:164
+#: admin/class-uwp-settings-social.php:165
 msgid "Enter Facebook API Secret"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:188
+#: admin/class-uwp-settings-social.php:189
 msgid "Twitter Settings"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:196
+#: admin/class-uwp-settings-social.php:197
 msgid "Enable Twitter"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:204
+#: admin/class-uwp-settings-social.php:205
 msgid "Twitter API Key"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:207
+#: admin/class-uwp-settings-social.php:208
 msgid "Enter Twitter API Key"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:211
+#: admin/class-uwp-settings-social.php:212
 msgid "Twitter API Secret"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:214
+#: admin/class-uwp-settings-social.php:215
 msgid "Enter Twitter API Secret"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:238
+#: admin/class-uwp-settings-social.php:239
+#: admin/class-uwp-settings-social.php:289
 msgid "Linkedin Settings"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:246
+#: admin/class-uwp-settings-social.php:242
+msgid "This API is deprecated, please use the LinkedIn OpenID option above."
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:247
+#: admin/class-uwp-settings-social.php:297
 msgid "Enable LinkedIn"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:254
+#: admin/class-uwp-settings-social.php:255
+#: admin/class-uwp-settings-social.php:305
 msgid "LinkedIn Client ID"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:257
+#: admin/class-uwp-settings-social.php:258
+#: admin/class-uwp-settings-social.php:308
 msgid "Enter LinkedIn Client ID"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:261
+#: admin/class-uwp-settings-social.php:262
+#: admin/class-uwp-settings-social.php:312
 msgid "LinkedIn Client Secret"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:264
+#: admin/class-uwp-settings-social.php:265
+#: admin/class-uwp-settings-social.php:315
 msgid "Enter LinkedIn Client Secret"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:288
+#: admin/class-uwp-settings-social.php:339
 msgid "Instagram Settings"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:291
+#: admin/class-uwp-settings-social.php:342
 msgid ""
 "As per the Facebook guideline, Data returned by the API cannot be used to "
 "authenticate your app users or log them into your app. If your app uses API "
@@ -228,107 +247,107 @@ msgid ""
 "Login."
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:291
+#: admin/class-uwp-settings-social.php:342
 #, php-format
 msgid ""
 "<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter "
 "below. Use %s for Authorized redirect URI."
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:296
+#: admin/class-uwp-settings-social.php:347
 msgid "Enable Instagram"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:304
+#: admin/class-uwp-settings-social.php:355
 msgid "Instagram APP ID"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:307
+#: admin/class-uwp-settings-social.php:358
 msgid "Enter Instagram APP ID"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:311
+#: admin/class-uwp-settings-social.php:362
 msgid "Instagram APP Secret"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:314
+#: admin/class-uwp-settings-social.php:365
 msgid "Enter Instagram APP Secret"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:338
-#: admin/class-uwp-settings-social.php:488
+#: admin/class-uwp-settings-social.php:389
+#: admin/class-uwp-settings-social.php:539
 msgid "Social Settings"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:346
+#: admin/class-uwp-settings-social.php:397
 msgid "Enable Yahoo"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:354
+#: admin/class-uwp-settings-social.php:405
 msgid "Yahoo Client ID"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:357
+#: admin/class-uwp-settings-social.php:408
 msgid "Enter Yahoo Client ID"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:361
+#: admin/class-uwp-settings-social.php:412
 msgid "Yahoo Client Secret"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:364
+#: admin/class-uwp-settings-social.php:415
 msgid "Enter Yahoo Client Secret"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:388
+#: admin/class-uwp-settings-social.php:439
 msgid "WordPress Settings"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:396
+#: admin/class-uwp-settings-social.php:447
 msgid "Enable WordPress"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:404
+#: admin/class-uwp-settings-social.php:455
 msgid "WordPress APP ID"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:407
+#: admin/class-uwp-settings-social.php:458
 msgid "Enter WordPress APP ID"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:411
+#: admin/class-uwp-settings-social.php:462
 msgid "WordPress APP Secret"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:414
+#: admin/class-uwp-settings-social.php:465
 msgid "Enter WordPress APP Secret"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:438
+#: admin/class-uwp-settings-social.php:489
 msgid "Vkontakte Settings"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:446
+#: admin/class-uwp-settings-social.php:497
 msgid "Enable Vkontakte"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:454
+#: admin/class-uwp-settings-social.php:505
 msgid "Vkontakte APP ID"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:457
+#: admin/class-uwp-settings-social.php:508
 msgid "Enter Vkontakte APP ID"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:461
+#: admin/class-uwp-settings-social.php:512
 msgid "Vkontakte APP Secret"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:464
+#: admin/class-uwp-settings-social.php:515
 msgid "Enter Vkontakte APP Secret"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:490
+#: admin/class-uwp-settings-social.php:541
 #, php-format
 msgid ""
 "You can allow users to login via several social networks, once enabled the "
@@ -336,35 +355,35 @@ msgid ""
 "widget to add a social login buttons to widget areas. See %s Documentation %s"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:496
+#: admin/class-uwp-settings-social.php:547
 msgid "Label for Social Login"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:499 templates/bootstrap/social.php:6
+#: admin/class-uwp-settings-social.php:550 templates/bootstrap/social.php:6
 msgid "Login via Social"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:504
+#: admin/class-uwp-settings-social.php:555
 msgid "Disable on admin login page?"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:512
+#: admin/class-uwp-settings-social.php:563
 msgid "Disable on admin register page?"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:520
+#: admin/class-uwp-settings-social.php:571
 msgid "User role to assign"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:521
+#: admin/class-uwp-settings-social.php:572
 msgid "User role to assign after social login."
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:541
+#: admin/class-uwp-settings-social.php:592
 msgid "UsersWP - Social"
 msgstr ""
 
-#: admin/class-uwp-settings-social.php:542
+#: admin/class-uwp-settings-social.php:593
 msgid "Remove all data when deleted?"
 msgstr ""
 
@@ -458,8 +477,8 @@ msgstr ""
 #: includes/social.php:609
 #, php-format
 msgid ""
-"<strong>ERROR</strong>: Invalid username or incorrect password. <a "
-"href=\"%s\">Lost your password</a>?"
+"<strong>ERROR</strong>: Invalid username or incorrect password. <a href=\"%s"
+"\">Lost your password</a>?"
 msgstr ""
 
 #: includes/social.php:630
@@ -528,15 +547,15 @@ msgstr ""
 
 #: includes/social.php:771
 msgid ""
-"<br />Instructions for use can be found in the <a href=\"#\" "
-"target=\"_blank\">User Manual</a>."
+"<br />Instructions for use can be found in the <a href=\"#\" target=\"_blank"
+"\">User Manual</a>."
 msgstr ""
 
 #: includes/social.php:774
 #, php-format
 msgid ""
-"Authentication failed. Either you have cancelled the authentication or "
-"<b>%s</b> refused the connection."
+"Authentication failed. Either you have cancelled the authentication or <b>"
+"%s</b> refused the connection."
 msgstr ""
 
 #: includes/social.php:777

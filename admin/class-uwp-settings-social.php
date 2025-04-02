@@ -70,7 +70,8 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                 'google' => __( 'Google', 'uwp-social' ),
                 'facebook' => __( 'Facebook', 'uwp-social' ),
                 'twitter' => __( 'Twitter', 'uwp-social' ),
-                'linkedin' => __( 'LinkedIn', 'uwp-social' ),
+                'linkedin' => __( 'LinkedIn (deprecated)', 'uwp-social' ),
+                'linkedinopenid' => __( 'LinkedIn OpenID', 'uwp-social' ),
                 'instagram' => __( 'Instagram', 'uwp-social' ),
                 'yahoo' => __( 'Yahoo', 'uwp-social' ),
                 'wordpress' => __( 'WordPress', 'uwp-social' ),
@@ -238,7 +239,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'title' => __('Linkedin Settings', 'uwp-social'),
                         'type' => 'title',
                         'id' => 'social_linkedin_settings_options',
-                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://www.linkedin.com/developer/apps" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://docs.userswp.io/article/354-linkedin-setup-guide" target="_blank">', '</a>'),
+                        'desc' => '<div class="bsui">'. aui()->alert(array( 'type'=> 'danger', 'content'=> __('This API is deprecated, please use the LinkedIn OpenID option above.','uwp-social') )) . sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://www.linkedin.com/developer/apps" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://docs.userswp.io/article/354-linkedin-setup-guide" target="_blank">', '</a>').'</div>',
                         'desc_tip' => false,
                     ),
                     array(
@@ -273,6 +274,56 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id'   => 'uwp_social_linkedin_pick_email',
+                        'name' => __('Let the user enter email?', 'uwp-social'),
+                        'desc' => __('By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.', 'uwp-social'),
+                        'type' => 'checkbox',
+                        'default'  => '0',
+                        'class' => 'uwp_label_inline',
+                    ),
+                ));
+
+            } elseif ( !empty( $current_section ) && 'linkedinopenid' === $current_section ) {
+                $callback = uwp_get_callback_url('linkedinopenid');
+                $settings = apply_filters('uwp_social_linkedinopenid_options', array(
+                    array(
+                        'title' => __('Linkedin Settings', 'uwp-social'),
+                        'type' => 'title',
+                        'id' => 'social_linkedinopenid_settings_options',
+                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://www.linkedin.com/developer/apps" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://docs.userswp.io/article/354-linkedin-setup-guide" target="_blank">', '</a>'),
+                        'desc_tip' => false,
+                    ),
+                    array(
+                        'id'   => 'enable_uwp_social_linkedinopenid',
+                        'name' => __('Enable LinkedIn', 'uwp-social'),
+                        'desc' => '',
+                        'type' => 'checkbox',
+                        'default'  => '0',
+                        'class' => 'uwp_label_inline',
+                    ),
+                    array(
+                        'id' => 'uwp_social_linkedinopenid_key',
+                        'name' => __( 'LinkedIn Client ID', 'uwp-social' ),
+                        'desc' => "",
+                        'type' => 'text',
+                        'placeholder' => __( 'Enter LinkedIn Client ID', 'uwp-social' )
+                    ),
+                    array(
+                        'id' => 'uwp_social_linkedinopenid_secret',
+                        'name' => __( 'LinkedIn Client Secret', 'uwp-social' ),
+                        'desc' => "",
+                        'type' => 'text',
+                        'placeholder' => __( 'Enter LinkedIn Client Secret', 'uwp-social' )
+                    ),
+                    array(
+                        'id'   => 'uwp_social_linkedinopenid_pick_username',
+                        'name' => __('Let the user enter username?', 'uwp-social'),
+                        'desc' => __('By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.', 'uwp-social'),
+                        'type' => 'checkbox',
+                        'default'  => '0',
+                        'class' => 'uwp_label_inline',
+                    ),
+                    array(
+                        'id'   => 'uwp_social_linkedinopenid_pick_email',
                         'name' => __('Let the user enter email?', 'uwp-social'),
                         'desc' => __('By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.', 'uwp-social'),
                         'type' => 'checkbox',

@@ -1,0 +1,25 @@
+{
+  "name": "uswerwp/uwp-social",
+  "type": "project",
+  "description": "Social login add-on for UsersWP.",
+  "keywords": ["social-login"],
+  "homepage": "https://userswp.io",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "AyeCode Ltd",
+      "email": "contact@ayecode.io",
+      "homepage": "https://ayecode.io/",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "hybridauth/hybridauth" : "~3.0"
+  },
+  "minimum-stability": "dev",
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  }
+}

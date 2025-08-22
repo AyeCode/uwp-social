@@ -130,6 +130,13 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'type' => 'checkbox',
                         'default'  => '0',
                     ),
+                    array(
+                        'id'   => 'uwp_social_google_pick_required_fields',
+                        'name' => __('Let the user enter required fields details?', 'uwp-social'),
+                        'desc' => __('Enable this option if you want to collect required registration fields from the user registering via social login by displaying a form.', 'uwp-social'),
+                        'type' => 'checkbox',
+                        'default'  => '0',
+                    ),
                 ));
 
             } elseif ( !empty( $current_section ) && 'facebook' === $current_section ) {
@@ -179,6 +186,13 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'type' => 'checkbox',
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
+                    ),
+                    array(
+                        'id'   => 'uwp_social_facebook_pick_required_fields',
+                        'name' => __('Let the user enter required fields details?', 'uwp-social'),
+                        'desc' => __('Enable this option if you want to collect required registration fields from the user registering via social login by displaying a form.', 'uwp-social'),
+                        'type' => 'checkbox',
+                        'default'  => '0',
                     ),
                 ));
 
@@ -230,6 +244,13 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
                     ),
+                    array(
+                        'id'   => 'uwp_social_twitter_pick_required_fields',
+                        'name' => __('Let the user enter required fields details?', 'uwp-social'),
+                        'desc' => __('Enable this option if you want to collect required registration fields from the user registering via social login by displaying a form.', 'uwp-social'),
+                        'type' => 'checkbox',
+                        'default'  => '0',
+                    ),
                 ));
 
             } elseif ( !empty( $current_section ) && 'linkedin' === $current_section ) {
@@ -279,6 +300,13 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'type' => 'checkbox',
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
+                    ),
+                    array(
+                        'id'   => 'uwp_social_linkedin_pick_required_fields',
+                        'name' => __('Let the user enter required fields details?', 'uwp-social'),
+                        'desc' => __('Enable this option if you want to collect required registration fields from the user registering via social login by displaying a form.', 'uwp-social'),
+                        'type' => 'checkbox',
+                        'default'  => '0',
                     ),
                 ));
 
@@ -330,6 +358,13 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
                     ),
+                    array(
+                        'id'   => 'uwp_social_linkedinopenid_pick_required_fields',
+                        'name' => __('Let the user enter required fields details?', 'uwp-social'),
+                        'desc' => __('Enable this option if you want to collect required registration fields from the user registering via social login by displaying a form.', 'uwp-social'),
+                        'type' => 'checkbox',
+                        'default'  => '0',
+                    ),
                 ));
 
             } elseif ( !empty( $current_section ) && 'instagram' === $current_section ) {
@@ -379,6 +414,13 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'type' => 'checkbox',
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
+                    ),
+                    array(
+                        'id'   => 'uwp_social_instagram_pick_required_fields',
+                        'name' => __('Let the user enter required fields details?', 'uwp-social'),
+                        'desc' => __('Enable this option if you want to collect required registration fields from the user registering via social login by displaying a form.', 'uwp-social'),
+                        'type' => 'checkbox',
+                        'default'  => '0',
                     ),
                 ));
 
@@ -430,6 +472,13 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
                     ),
+                    array(
+                        'id'   => 'uwp_social_yahoo_pick_required_fields',
+                        'name' => __('Let the user enter required fields details?', 'uwp-social'),
+                        'desc' => __('Enable this option if you want to collect required registration fields from the user registering via social login by displaying a form.', 'uwp-social'),
+                        'type' => 'checkbox',
+                        'default'  => '0',
+                    ),
                 ));
 
             } elseif ( !empty( $current_section ) && 'wordpress' === $current_section ) {
@@ -480,6 +529,13 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
                     ),
+                    array(
+                        'id'   => 'uwp_social_wordpress_pick_required_fields',
+                        'name' => __('Let the user enter required fields details?', 'uwp-social'),
+                        'desc' => __('Enable this option if you want to collect required registration fields from the user registering via social login by displaying a form.', 'uwp-social'),
+                        'type' => 'checkbox',
+                        'default'  => '0',
+                    ),
                 ));
 
             } elseif ( !empty( $current_section ) && 'vkontakte' === $current_section ) {
@@ -529,6 +585,13 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'type' => 'checkbox',
                         'default'  => '0',
                         'class' => 'uwp_label_inline',
+                    ),
+                    array(
+                        'id'   => 'uwp_social_vkontakte_pick_required_fields',
+                        'name' => __('Let the user enter required fields details?', 'uwp-social'),
+                        'desc' => __('Enable this option if you want to collect required registration fields from the user registering via social login by displaying a form.', 'uwp-social'),
+                        'type' => 'checkbox',
+                        'default'  => '0',
                     ),
                 ));
 

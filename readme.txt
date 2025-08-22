@@ -44,6 +44,11 @@ No questions so far, but don't hesitate to ask!
 
 == Changelog ==
 
+= 1.5.3 - TBD =
+* Remove authorisation if user email changed - FIXED
+* Option to get required info of register form when using social login - ADDED
+* Extensive logging/debugging for troubleshooting - ADDED
+
 = 1.5.2 - 2025-03-31 =
 * Hybridauth library upgraded to v3.11.0 - CHANGED
 * Hybridauth library removed VK, manually added back - ADDED

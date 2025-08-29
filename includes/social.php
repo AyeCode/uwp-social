@@ -971,13 +971,12 @@ function uwp_remove_social_login_authorisation($user_id){
         delete_user_meta( $user_id, 'uwp_social_user_image' );
 
         $meta_table = uwp_get_table_prefix() . 'uwp_usermeta';
-        $wpdb->delete(
+        $wpdb->update(
             $meta_table,
-            array(
-                'user_id'  => $user_id,
-                'meta_key' => 'avatar_thumb',
-            ),
-            array( '%d', '%s' )
+            array( 'avatar_thumb' => '' ),
+            array( 'user_id' => $user_id ),
+            array( '%s' ),
+            array( '%d' )
         );
     }
 

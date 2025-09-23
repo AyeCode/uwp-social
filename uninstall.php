@@ -17,6 +17,11 @@ if ( isset($settings[ 'uwp_uninstall_social_data' ]) && 1 == $settings[ 'uwp_uni
     $wpdb->hide_errors();
     
     $options = array(
+        'label_for_social_login',
+        'disable_admin_social_login',
+        'disable_admin_register_social_login',
+        'uwp_social_required_fields_redirect',
+        'uwp_social_default_role',
         'enable_uwp_social_google',
         'uwp_social_google_id',
         'uwp_social_google_secret',

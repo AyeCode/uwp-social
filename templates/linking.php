@@ -13,7 +13,6 @@ $requested_user_login      = isset($args['requested_user_login']) ? $args['reque
 $hybridauth_user_profile   = isset($args['hybridauth_user_profile']) ? $args['hybridauth_user_profile'] : '';
 $hybridauth_user_avatar    = isset($args['hybridauth_user_avatar']) ? $args['hybridauth_user_avatar'] : '';
 $redirect_to               = isset($args['redirect_to']) ? $args['redirect_to'] : '';
-$register_fields           = isset($args['register_fields']) ? $args['register_fields'] : '';
 ?>
 <!DOCTYPE html>
 <html>
@@ -118,7 +117,7 @@ $register_fields           = isset($args['register_fields']) ? $args['register_f
             color: #fff
         }
 
-        input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="url"] {
+        input[type="text"] {
             border: 1px solid #e5e5e5;
             box-shadow: 1px 1px 2px rgba(200, 200, 200, 0.2) inset;
             color: #555;
@@ -133,7 +132,7 @@ $register_fields           = isset($args['register_fields']) ? $args['register_f
             width: 100%;
         }
 
-        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="tel"]:focus, input[type="url"]:focus {
+        input[type="text"]:focus {
             border-color: #5b9dd9;
             -webkit-box-shadow: 0 0 2px rgba(30, 140, 190, .8);
             box-shadow: 0 0 2px rgba(30, 140, 190, .8)
@@ -428,16 +427,23 @@ $register_fields           = isset($args['register_fields']) ? $args['register_f
                 </tr>
                 <tr>
                     <td valign="bottom" width="50%" style="text-align:left;">
-
-                          <?php if ( !empty($register_fields ) ): ?>
-                            <p><?php _e( "Please fill all required fields.", 'uwp-social' ) ; ?></p>
+                        <?php if ( $change_username == 1 ): ?>
                             <label>
-                                <?php
-                                foreach ( $register_fields as $field ) {
-                                    $obj = new UsersWP_Templates();
-                                    $obj->template_fields_html( $field, 'account' );
-                                }
-                                ?>
+                                <?php echo __( "Username", 'uwp-social' ); ?>
+                                <br/>
+                                <input type="text" name="user_login" class="input"
+                                       value="<?php echo esc_attr( $requested_user_login ); ?>" size="25"
+                                       placeholder=""/>
+                            </label>
+                        <?php endif; ?>
+
+                        <?php if ( $require_email == 1 ): ?>
+                            <label>
+                                <?php _e( "E-mail", 'uwp-social' ); ?>
+                                <br/>
+                                <input type="text" name="user_email" class="input"
+                                       value="<?php echo esc_attr( $requested_user_email ); ?>" size="25"
+                                       placeholder=""/>
                             </label>
                         <?php endif; ?>
 

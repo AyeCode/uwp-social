@@ -67,7 +67,6 @@ function uwp_social_authenticate_process() {
 	} // if hybridauth fails to authenticate the user, then we display an error message
 	catch ( Exception $e ) {
 		echo uwp_social_render_error( $e, $config, $provider, $adapter );
-		uwp_error_log('Fails to authenticate the user provider. Data:'. print_r($provider), true);
 		die();
 	}
 
@@ -99,7 +98,6 @@ function uwp_social_authenticated_process() {
 		$provider = sanitize_text_field( $_REQUEST['provider'] );
 	} else {
 		echo uwp_social_render_error_page( array('message' => __( 'Invalid social login provider.', 'uwp-social' )) );
-		uwp_error_log('Invalid social login provider. Data:'. print_r($_REQUEST), true);
 		die();
 	}
 
@@ -117,7 +115,6 @@ function uwp_social_authenticated_process() {
 
 	if ( $enable != "1" ) {
 		$e = new Exception( __( "Unknown or disabled provider.", 'uwp-social' ), 3 );
-		uwp_error_log('Unknown or disabled provider. Data:'. print_r($provider), true);
 		echo uwp_social_render_error( $e );
 		die();
 	}
@@ -127,7 +124,7 @@ function uwp_social_authenticated_process() {
 
 		$data = uwp_social_get_user_data( $provider, $redirect_to );
 
-		// returns user data after he authenticate via hybridauth
+		// returns user data after authenticate via hybridauth
 		if ( is_string( $data ) ) {
 			echo $data;
 			die();
@@ -149,7 +146,7 @@ function uwp_social_authenticated_process() {
 		if ( ! $wordpress_user_id ) {
 
 			if ( is_string( $hybridauth_user_profile ) ) {
-				// its an error. so echo the template content.
+				// it's an error. so echo the template content.
 				echo $hybridauth_user_profile;
 				die();
 			} else {
@@ -187,7 +184,7 @@ function uwp_social_authenticated_process() {
 		$redirect_to = uwp_get_social_login_redirect_url( $_REQUEST, $wp_user );
 	}
 
-	// finally create a wordpress session for the user
+	// finally create a WordPress session for the user
 	uwp_social_authenticate_user( $user_id, $provider, $redirect_to, $adapter, $hybridauth_user_profile, $wp_user );
 }
 
@@ -219,7 +216,6 @@ function uwp_social_get_provider_adapter( $provider_id ) {
 		$adapter    = $hybridauth->getAdapter( $provider_id );
 	} catch ( Exception $e ) {
 		echo uwp_social_render_error( $e, $config, $provider_id, $adapter );
-		uwp_error_log('Adapter config error. Data:'. print_r($e), true);
 		die();
 	}
 
@@ -329,169 +325,143 @@ function uwp_social_get_user_data( $provider, $redirect_to ) {
 }
 
 function uwp_social_create_wp_user( $provider, $hybridauth_user_profile, $requested_user_login, $requested_user_email ) {
-	do_action( "uwp_social_create_wp_user_start", $provider, $hybridauth_user_profile, $requested_user_login, $requested_user_email );
+    do_action( "uwp_social_create_wp_user_start", $provider, $hybridauth_user_profile, $requested_user_login, $requested_user_email );
 
-	$user_login = '';
-	$user_email = '';
+    $user_login = '';
+    $user_email = '';
 
-	$register_fields    = get_register_form_fields( 1 );
-	$required_fields_updated_array=array();
-	$register_form_fields_default_keys = array('first_name','last_name','email','password','username');
-	foreach ( $register_fields as $field ) {
-		if(array_key_exists($field->htmlvar_name,$_POST)) {
-			$required_fields_updated_array[$field->htmlvar_name] = $_POST[$field->htmlvar_name];
-		}
-	}
+    // if coming from "complete registration form"
+    if ( $requested_user_login ) {
+        $user_login = $requested_user_login;
+    }
 
-	// if coming from "complete registration form"
-	if ( $requested_user_login ) {
-		$user_login = !empty($required_fields_updated_array['username']) ? $required_fields_updated_array['username'] : $requested_user_login;
-	}else{
-		$user_login = !empty($required_fields_updated_array['username']) ? $required_fields_updated_array['username'] : '';
-	}
+    if ( $requested_user_email ) {
+        $user_email = $requested_user_email;
+    }
 
-	if ( $requested_user_email ) {
-		$user_email = !empty($required_fields_updated_array['email']) ? $required_fields_updated_array['email'] : $requested_user_email;;
-	}else{
-		$user_email = !empty($required_fields_updated_array['email']) ? $required_fields_updated_array['email'] : '';
-	}
+    if ( ! $user_login ) {
+        // attempt to generate user_login from hybridauth user profile display name
+        $user_login = $hybridauth_user_profile->displayName;
 
-	$first_name = !empty($required_fields_updated_array['first_name']) ? $required_fields_updated_array['first_name'] : $hybridauth_user_profile->firstName;
-	$last_name = !empty($required_fields_updated_array['last_name']) ? $required_fields_updated_array['last_name'] : $hybridauth_user_profile->lastName;
+        // sanitize user login
+        $user_login = sanitize_user( $user_login, true );
 
+        // remove spaces and dots
+        $user_login = trim( str_replace( array( ' ', '.' ), '_', $user_login ) );
+        $user_login = trim( str_replace( '__', '_', $user_login ) );
 
-	if ( ! $user_login ) {
-		// attempt to generate user_login from hybridauth user profile display name
-		$user_login = $hybridauth_user_profile->displayName;
+        // if user profile display name is not provided
+        if ( empty( $user_login ) ) {
+            $user_login = sanitize_user( current( explode( '@', $user_email ) ), true );
+        }
 
-		// sanitize user login
-		$user_login = sanitize_user( $user_login, true );
+        // username should be unique
+        if ( username_exists( $user_login ) ) {
+            $i = 1;
 
-		// remove spaces and dots
-		$user_login = trim( str_replace( array( ' ', '.' ), '_', $user_login ) );
-		$user_login = trim( str_replace( '__', '_', $user_login ) );
+            do {
+                $user_login_tmp = $user_login . "_" . ( $i ++ );
+            } while ( username_exists( $user_login_tmp ) );
 
-		// if user profile display name is not provided
-		if ( empty( $user_login ) ) {
-			$user_login = sanitize_user( current( explode( '@', $user_email ) ), true );
-		}
-
-		// user name should be unique
-		if ( username_exists( $user_login ) ) {
-			$i = 1;
-
-			do {
-				$user_login_tmp = $user_login . "_" . ( $i ++ );
-			} while ( username_exists( $user_login_tmp ) );
-
-			$user_login = $user_login_tmp;
-		}
-	}
+            $user_login = $user_login_tmp;
+        }
+    }
 
 
-	if ( ! $user_email ) {
-		$user_email   = $hybridauth_user_profile->email;
-		$email_domain = 'example.com';
-		$email_domain = apply_filters( 'uwp_social_login_email_domain', $email_domain );
+    if ( ! $user_email ) {
+        $user_email   = $hybridauth_user_profile->email;
+        $email_domain = 'example.com';
+        $email_domain = apply_filters( 'uwp_social_login_email_domain', $email_domain );
 
-		// generate an email if none
-		if ( ! isset ( $user_email ) OR ! is_email( $user_email ) ) {
-			$user_email = strtolower( $provider . "_user_" . $user_login ) . '@' . $email_domain;
-		}
+        // generate an email if none
+        if ( ! isset ( $user_email ) OR ! is_email( $user_email ) ) {
+            $user_email = strtolower( $provider . "_user_" . $user_login ) . '@' . $email_domain;
+        }
 
-		// email should be unique
-		if ( uwp_email_exists( $user_email ) ) {
-			do {
-				$user_email = md5( uniqid( wp_rand( 10000, 99000 ) ) ) . '@' . $email_domain;
-			} while ( uwp_email_exists( $user_email ) );
-		}
-	}
+        // email should be unique
+        if ( uwp_email_exists( $user_email ) ) {
+            do {
+                $user_email = md5( uniqid( wp_rand( 10000, 99000 ) ) ) . '@' . $email_domain;
+            } while ( uwp_email_exists( $user_email ) );
+        }
+    }
 
-	$display_name = $hybridauth_user_profile->displayName;
+    $display_name = $hybridauth_user_profile->displayName;
 
-	if ( empty( $display_name ) ) {
-		$display_name = $hybridauth_user_profile->firstName;
-	}
+    if ( empty( $display_name ) ) {
+        $display_name = $hybridauth_user_profile->firstName;
+    }
 
-	if ( empty( $display_name ) ) {
-		$display_name = strtolower( $provider ) . "_user";
-	}
+    if ( empty( $display_name ) ) {
+        $display_name = strtolower( $provider ) . "_user";
+    }
 
 
-	// user name should be unique
-	if ( username_exists( $user_login ) ) {
-		$i = 1;
+    // user name should be unique
+    if ( username_exists( $user_login ) ) {
+        $i = 1;
 
-		do {
-			$user_login_tmp = $user_login . "_" . ( $i ++ );
-		} while ( username_exists( $user_login_tmp ) );
+        do {
+            $user_login_tmp = $user_login . "_" . ( $i ++ );
+        } while ( username_exists( $user_login_tmp ) );
 
-		$user_login = $user_login_tmp;
-	}
+        $user_login = $user_login_tmp;
+    }
 
-	$userdata = array(
-		'user_login' => sanitize_user( $user_login ),
-		'user_email' => sanitize_email( $user_email ),
+    $userdata = array(
+        'user_login' => sanitize_user( $user_login ),
+        'user_email' => sanitize_email( $user_email ),
 
-		'display_name' => sanitize_text_field( $display_name ),
+        'display_name' => sanitize_text_field( $display_name ),
 
-		'first_name'  => sanitize_text_field( $first_name ),
-		'last_name'   => sanitize_text_field( $last_name ),
-		'user_url'    => "'" . esc_url( $hybridauth_user_profile->profileURL ) . "'",
-		'description' => sanitize_textarea_field( $hybridauth_user_profile->description ),
+        'first_name'  => sanitize_text_field( $hybridauth_user_profile->firstName ),
+        'last_name'   => sanitize_text_field( $hybridauth_user_profile->lastName ),
+        'user_url'    => "'" . esc_url( $hybridauth_user_profile->profileURL ) . "'",
+        'description' => sanitize_textarea_field( $hybridauth_user_profile->description ),
 
-		'user_pass' => wp_generate_password()
-	);
+        'user_pass' => wp_generate_password()
+    );
 
-	$role             = uwp_get_option( 'uwp_social_default_role' );
-	$userdata['role'] = isset( $role ) && ! empty( $role ) ? $role : get_option( 'default_role' );
+    $role             = uwp_get_option( 'uwp_social_default_role' );
+    $userdata['role'] = isset( $role ) && ! empty( $role ) ? $role : get_option( 'default_role' );
 
-	$userdata = apply_filters( 'uwp_social_alter_wp_insert_user_data', $userdata, $provider, $hybridauth_user_profile );
+    $userdata = apply_filters( 'uwp_social_alter_wp_insert_user_data', $userdata, $provider, $hybridauth_user_profile );
 
-	do_action( 'uwp_social_before_wp_insert_user', $userdata, $provider, $hybridauth_user_profile );
+    do_action( 'uwp_social_before_wp_insert_user', $userdata, $provider, $hybridauth_user_profile );
 
-	$user_id = wp_insert_user( $userdata );
+    $user_id = wp_insert_user( $userdata );
 
-	$user_id = apply_filters( 'uwp_social_delegate_wp_insert_user', $user_id, $provider, $hybridauth_user_profile );
+    $user_id = apply_filters( 'uwp_social_delegate_wp_insert_user', $user_id, $provider, $hybridauth_user_profile );
 
-	// do not continue without user_id
-	if ( ! $user_id || ! is_integer( $user_id ) ) {
-		if ( is_wp_error( $user_id ) ) {
-			return uwp_social_render_notice( array('message' => __( "An error occurred while creating a new user: ", 'uwp-social' ) . $user_id->get_error_message()) );
-		}
+    // do not continue without user_id
+    if ( ! $user_id || ! is_integer( $user_id ) ) {
+        if ( is_wp_error( $user_id ) ) {
+            return uwp_social_render_notice( array('message' => __( "An error occurred while creating a new user: ", 'uwp-social' ) . $user_id->get_error_message()) );
+        }
 
-		return uwp_social_render_notice( array('message' => __( "An error occurred while creating a new user!", 'uwp-social' )) );
-	}
+        return uwp_social_render_notice( array('message' => __( "An error occurred while creating a new user!", 'uwp-social' )) );
+    }
 
-	// wp_insert_user may fail on first and last name meta, expliciting setting to correct.
-	update_user_meta( $user_id, 'first_name', apply_filters( 'uwp_social_pre_user_first_name', $userdata['first_name'] ) );
-	update_user_meta( $user_id, 'last_name', apply_filters( 'uwp_social_pre_user_last_name', $userdata['last_name'] ) );
-	update_user_meta( $user_id, 'is_uwp_social_login', 1 );
-	update_user_meta( $user_id, 'is_uwp_social_login_no_password', 1 );
-	update_user_meta( $user_id, 'uwp_social_login_provider', $provider );
+    // wp_insert_user may fail on first and last name meta, expliciting setting to correct.
+    update_user_meta( $user_id, 'first_name', apply_filters( 'uwp_social_pre_user_first_name', $userdata['first_name'] ) );
+    update_user_meta( $user_id, 'last_name', apply_filters( 'uwp_social_pre_user_last_name', $userdata['last_name'] ) );
+    update_user_meta( $user_id, 'is_uwp_social_login', 1 );
+    update_user_meta( $user_id, 'is_uwp_social_login_no_password', 1 );
+    update_user_meta( $user_id, 'uwp_social_login_provider', $provider );
 
-	if(!empty($required_fields_updated_array)) {
-		foreach($required_fields_updated_array as $meta_key => $required_fields_updated_item) {
-			if(!in_array($meta_key,$register_form_fields_default_keys)) {
-				uwp_update_usermeta( $user_id, $meta_key, $required_fields_updated_array[$meta_key] );
-			}
-		}
-	}
+    if ( 1 == uwp_get_option( 'uwp_social_require_moderation' ) ) {
+        update_user_meta( $user_id, 'uwp_mod', '1' );
+        do_action( 'uwp_require_admin_review', $user_id, array() );
+    }
 
-	if ( 1 == uwp_get_option( 'uwp_social_require_moderation' ) ) {
-		update_user_meta( $user_id, 'uwp_mod', '1' );
-		do_action( 'uwp_require_admin_review', $user_id, array() );
-	}
+    wp_new_user_notification( $user_id, null, 'both' );
 
-	wp_new_user_notification( $user_id, null, 'both' );
+    // Send notifications
+    do_action( 'uwp_social_after_wp_insert_user', $user_id, $provider, $hybridauth_user_profile );
 
-	// Send notifications
-	do_action( 'uwp_social_after_wp_insert_user', $user_id, $provider, $hybridauth_user_profile );
-
-	// returns the user created user id
-	return $user_id;
+    // returns the user created user id
+    return $user_id;
 }
-
 
 /**
  *  Grab the user profile from social network
@@ -499,7 +469,6 @@ function uwp_social_create_wp_user( $provider, $hybridauth_user_profile, $reques
 function uwp_request_user_social_profile( $provider ) {
 	$adapter                 = null;
 	$config                  = null;
-	$hybridauth_user_profile = null;
 
 	try {
 
@@ -514,14 +483,12 @@ function uwp_request_user_social_profile( $provider ) {
 			$hybridauth_user_profile = $adapter->getUserProfile();
 		} // if user not connected to provider (ie: session lost, url forged)
 		else {
-			uwp_error_log('Couldnt connect error. Data:'. print_r($provider), true);
 			return array(
 				uwp_social_render_notice( array('message' => sprintf( __( "Sorry, we couldn't connect you with <b>%s</b>. <a href=\"%s\">Please try again</a>.", 'uwp-social' ), $provider, site_url( 'wp-login.php', 'login_post' ) )) )
 			);
 		}
 	} // if things doesn't go as expected, we display the appropriate error message
 	catch ( Exception $e ) {
-		uwp_error_log('Config exception error. Data:'. print_r($config), true);
 		return array(
 			uwp_social_render_error( $e, $config, $provider, $adapter )
 		);
@@ -533,9 +500,7 @@ function uwp_request_user_social_profile( $provider ) {
 
 function uwp_social_update_user_data( $is_new_user, $user_id, $provider, $adapter, $hybridauth_user_profile, $wp_user ) {
 	do_action( "uwp_social_update_user_data_start", $is_new_user, $user_id, $provider, $adapter, $hybridauth_user_profile, $wp_user );
-
 	uwp_social_store_user_profile( $user_id, $provider, $hybridauth_user_profile );
-
 }
 
 /**
@@ -616,7 +581,6 @@ function uwp_social_new_users_gateway( $provider, $redirect_to, $hybridauth_user
 	$linking_enabled = apply_filters( 'uwp_social_linking_enabled', true, $provider );
 	$require_email   = apply_filters( 'uwp_social_require_email', false, $provider );
 	$change_username = apply_filters( 'uwp_social_change_username', false, $provider );
-	$required_fields = apply_filters( 'uwp_social_required_fields', false, $provider );
 
 	if ( isset( $_REQUEST["account_linking"] ) ) {
 		if ( ! $linking_enabled ) {
@@ -633,7 +597,7 @@ function uwp_social_new_users_gateway( $provider, $redirect_to, $hybridauth_user
 
 		// WP_Error object?
 		if ( is_wp_error( $user ) ) {
-			uwp_error_log('Invalid username or incorrect password. Data:'. print_r($_REQUEST), true);
+			uwp_error_log('Invalid username or incorrect password. Data:'. print_r($_REQUEST));
 			// we give no useful hint.
 			$account_linking_errors[] =
 				sprintf(
@@ -650,7 +614,7 @@ function uwp_social_new_users_gateway( $provider, $redirect_to, $hybridauth_user
 		}
 	} elseif ( isset( $_REQUEST["profile_completion"] ) ) {
 		// Profile Completion enabled?
-		if ( ! $require_email && ! $change_username  && ! $required_fields) {
+		if ( ! $require_email && ! $change_username) {
 			$shall_pass = true;
 		} // otherwise we request email &or username &or extra fields
 		else {
@@ -705,8 +669,7 @@ function uwp_social_new_users_gateway( $provider, $redirect_to, $hybridauth_user
 		}
 	}
 
-
-	if ( ! $require_email && ! $change_username  && ! $required_fields) {
+	if ( ! $require_email && ! $change_username) {
 		$shall_pass = true;
 	} else {;
 		$register_fields    = get_register_form_fields( 1 );
@@ -785,7 +748,6 @@ function uwp_social_render_error( $e, $config = null, $provider = null, $adapter
 	}
 
 	$provider_name = uwp_social_get_provider_name_by_id( $provider );
-	$notes         = $e->getMessage();
 
 	switch ( $e->getCode() ) {
 		case 0 :
@@ -817,8 +779,10 @@ function uwp_social_render_error( $e, $config = null, $provider = null, $adapter
 			$message = __( "Provider does not support this feature.", 'uwp-social' );
 			break;
 	}
-    uwp_error_log($message.'Data:'. print_r($provider), true);
+
 	$message = apply_filters('uwp_social_error_messages', $message, $e, $config, $provider, $adapter);
+
+    uwp_error_log($message.'Data:'. print_r($e, true));
 
 	if ( ! empty( $provider ) ) {
 		$config     = uwp_social_build_provider_config( $provider );
@@ -844,17 +808,6 @@ add_filter( 'uwp_social_change_username', 'uwp_social_change_username_value', 10
 function uwp_social_change_username_value( $value, $provider ) {
 	$provider = strtolower( $provider );
 	$enabled  = uwp_get_option( 'uwp_social_' . $provider . '_pick_username', "0" );
-	if ( $enabled == '1' ) {
-		$value = true;
-	}
-
-	return $value;
-}
-
-add_filter( 'uwp_social_required_fields', 'uwp_social_required_fields_value', 10, 2 );
-function uwp_social_required_fields_value( $value, $provider ) {
-	$provider = strtolower( $provider );
-	$enabled  = uwp_get_option( 'uwp_social_' . $provider . '_pick_required_fields', "0" );
 	if ( $enabled == '1' ) {
 		$value = true;
 	}

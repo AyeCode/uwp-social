@@ -34,6 +34,7 @@ class UsersWP_Social {
         add_action('register_form', array($this, 'admin_register_form'));
         add_action('uwp_options_for_translation', array($this, 'uwp_add_options_for_translation'));
         add_action('template_redirect', array($this, 'required_fields_redirect'));
+        add_action('uwp_after_process_account', array($this, 'remove_transient_on_account_submission'), 10, 2);
         add_action('uwp_template_display_notices', array($this, 'template_display_notices'));
 
         add_action('uwp_clear_user_php_session', 'uwp_social_destroy_session_data');
@@ -294,8 +295,6 @@ class UsersWP_Social {
         $user = wp_get_current_user();
 
         if( $user && $this->is_social_login($user->ID)){
-            $account_url = uwp_get_account_page_url();
-
             $social_profile = uwp_get_social_profile_by_email_verified( $user->user_email );
             if($social_profile){
                 $form_id         = uwp_get_register_form_id( $user->ID );
@@ -310,8 +309,9 @@ class UsersWP_Social {
                     }
 
                     if(!$this->user_has_completed_required_fields($user->ID, $required_fields)){
-                        $redirect_url = add_query_arg('profile_incomplete', '1', $account_url);
-                        wp_safe_redirect($redirect_url);
+                        set_transient('uwp_social_profile_incomplete_' . $user->ID, true, HOUR_IN_SECONDS);
+                        $account_url = uwp_get_account_page_url();
+                        wp_safe_redirect($account_url);
                     }
                 }
             }
@@ -370,7 +370,7 @@ class UsersWP_Social {
             }
 
             // If any required field is empty, return false
-            if (empty($field_value) || trim($field_value) === '') {
+            if (empty($field_value)) {
                 return false;
             }
         }
@@ -378,18 +378,25 @@ class UsersWP_Social {
         return true;
     }
 
+    // Remove the notice after successful form submission
+    function remove_transient_on_account_submission($data, $user_id){
+        delete_transient('uwp_social_profile_incomplete_' . $user_id);
+    }
+
     /**
      * Display notice on account page for incomplete profiles
      */
     public function template_display_notices($type){
-        if ( $type == 'account' && isset($_GET['profile_incomplete']) && $_GET['profile_incomplete'] == '1' ) {
-            echo aui()->alert(
-                array(
-                    'type'    => 'error',
-                    'content' => __( 'Please complete all required fields below to finish setting up your profile.', 'userswp' ),
-                )
-            );
-
+        if ( $type == 'account' && empty($_GET['type']) && is_user_logged_in() ) {
+            $user_id = get_current_user_id();
+            if (get_transient('uwp_social_profile_incomplete_' . $user_id)) {
+                echo aui()->alert(
+                    array(
+                        'type' => 'error',
+                        'content' => __('Please complete all required fields below to finish setting up your profile.', 'uwp-social'),
+                    )
+                );
+            }
         }
     }
 

@@ -566,6 +566,14 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
 		                'default'  => 0,
 		                'class' => '',
 	                ),
+                    array(
+                        'id'   => 'uwp_social_required_fields_redirect',
+                        'name' => __( 'Disable redirect to account page after social login?', 'uwp-social' ),
+                        'desc' => '',
+                        'type' => 'checkbox',
+                        'default'  => 0,
+                        'class' => '',
+                    ),
 	                array(
 		                'id' => 'uwp_social_default_role',
 		                'name' => __( 'User role to assign', 'uwp-social' ),

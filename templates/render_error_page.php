@@ -99,6 +99,7 @@
             <tr>
                 <td>
                     <div class="error-message">
+                        <?php uwp_error_log( $args['message'].' Data:'. print_r($args), true); ?>
 						<?php echo esc_html( $args['message'] ); ?>
                     </div>
                 </td>

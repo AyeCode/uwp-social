@@ -33,6 +33,9 @@ class UsersWP_Social {
         add_action('login_form', array($this, 'admin_login_form'));
         add_action('register_form', array($this, 'admin_register_form'));
         add_action('uwp_options_for_translation', array($this, 'uwp_add_options_for_translation'));
+        add_action('template_redirect', array($this, 'required_fields_redirect'));
+        add_action('uwp_after_process_account', array($this, 'remove_transient_on_account_submission'), 10, 2);
+        add_action('uwp_template_display_notices', array($this, 'template_display_notices'));
 
         add_action('uwp_clear_user_php_session', 'uwp_social_destroy_session_data');
         add_action('wp_logout', 'uwp_social_destroy_session_data');
@@ -261,5 +264,140 @@ class UsersWP_Social {
 
 		return array_merge($uwp_options, $add_uwp_options);
 	}
+
+    /**
+     * Redirect users to account page if they have incomplete profiles after social login
+     */
+    public function required_fields_redirect(){
+        if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+            return;
+        }
+
+        if ( ! is_user_logged_in() ) {
+            return;
+        }
+
+        // Don't redirect if already on account page
+        if (is_page() && is_uwp_account_page()) {
+            return;
+        }
+
+        // Don't redirect admin users or on admin pages
+        if (is_admin() || current_user_can('manage_options')) {
+            return;
+        }
+
+        // return if required fields redirect disabled
+        if(1 == uwp_get_option('uwp_social_required_fields_redirect')){
+            return;
+        }
+
+        $user = wp_get_current_user();
+
+        if( $user && $this->is_social_login($user->ID)){
+            $social_profile = uwp_get_social_profile_by_email_verified( $user->user_email );
+            if($social_profile){
+                $form_id         = uwp_get_register_form_id( $user->ID );
+                $fields = get_register_form_fields($form_id);
+                $excluded = uwp_get_excluded_fields();
+
+                if ( ! empty( $fields ) ) {
+                    foreach ( $fields as $field ) {
+                        if (!in_array( $field->htmlvar_name, $excluded ) && isset($field->is_required) && $field->is_required == '1') {
+                            $required_fields[] = $field->htmlvar_name;
+                        }
+                    }
+
+                    if(!$this->user_has_completed_required_fields($user->ID, $required_fields)){
+                        set_transient('uwp_social_profile_incomplete_' . $user->ID, true, HOUR_IN_SECONDS);
+                        $account_url = uwp_get_account_page_url();
+                        wp_safe_redirect($account_url);
+                    }
+                }
+            }
+        }
+
+    }
+
+    /**
+     * Check if user logged in via social login
+     */
+    public function is_social_login($user_id) {
+        // Check for social login meta keys that might be set by UsersWP Social Login addon
+        $social_login = get_user_meta($user_id, 'is_uwp_social_login', true);
+        if (!empty($social_login)) {
+            return true;
+        }
+
+        // Alternative: Check if user was just created (within last 5 minutes) and has minimal profile data
+        $user_registered = get_user_meta($user_id, 'user_registered', true);
+        if (empty($user_registered)) {
+            $user = get_user_by('ID', $user_id);
+            $user_registered = $user->user_registered;
+        }
+
+        $registration_time = strtotime($user_registered);
+        $current_time = current_time('timestamp');
+
+        // If user registered within last 5 minutes, likely a social login
+        if (($current_time - $registration_time) < 300) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Check if user has completed all required fields
+     */
+    public function user_has_completed_required_fields($user_id, $required_fields) {
+        if (empty($required_fields)) {
+            return true;
+        }
+
+        foreach ($required_fields as $field) {
+            $field_value = '';
+
+            // Check if it's a standard user field
+            if (in_array($field, array('first_name', 'last_name', 'display_name', 'user_email'))) {
+                $user = get_user_by('ID', $user_id);
+                if ($user) {
+                    $field_value = $user->{$field};
+                }
+            } else {
+                // Check user meta
+                $field_value = uwp_get_usermeta($user_id, $field, true);
+            }
+
+            // If any required field is empty, return false
+            if (empty($field_value)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    // Remove the notice after successful form submission
+    function remove_transient_on_account_submission($data, $user_id){
+        delete_transient('uwp_social_profile_incomplete_' . $user_id);
+    }
+
+    /**
+     * Display notice on account page for incomplete profiles
+     */
+    public function template_display_notices($type){
+        if ( $type == 'account' && empty($_GET['type']) && is_user_logged_in() ) {
+            $user_id = get_current_user_id();
+            if (get_transient('uwp_social_profile_incomplete_' . $user_id)) {
+                echo aui()->alert(
+                    array(
+                        'type' => 'error',
+                        'content' => __('Please complete all required fields below to finish setting up your profile.', 'uwp-social'),
+                    )
+                );
+            }
+        }
+    }
 
 }

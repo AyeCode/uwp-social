@@ -2,9 +2,9 @@
 Contributors: stiofansisland, paoltaia, ayecode
 Donate link: http://userswp.io/
 Tags: social login, facebook login, google login, twitter login, linkedIn login, vkontakte login, woocommerce login, facebook, twitter, google, social network login, social plugin, userswp
-Requires at least: 4.9
+Requires at least: 6.1
 Tested up to: 6.8
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -43,6 +43,11 @@ No questions so far, but don't hesitate to ask!
 2. WP Login (brand icons removed in screenshots due to WP rules).
 
 == Changelog ==
+
+= 1.5.3 - 2025-09-24 =
+* Remove authorisation if user email changed - FIXED
+* Redirect to account page to get all required data of register form when using social login - ADDED
+* Extensive logging/debugging for troubleshooting - ADDED
 
 = 1.5.2 - 2025-03-31 =
 * Hybridauth library upgraded to v3.11.0 - CHANGED

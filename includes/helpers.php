@@ -47,7 +47,7 @@ function uwp_social_store_user_profile( $user_id, $provider, $profile )
 
     $rs  = $wpdb->get_results( $wpdb->prepare( $sql, $user_id, $provider, $profile->identifier ) );
 
-    // we only sotre the user profile if it has changed since last login.
+    // we only store the user profile if it has changed since last login.
     $object_sha = sha1( serialize( $profile ) );
 
     // checksum

@@ -44,6 +44,9 @@ No questions so far, but don't hesitate to ask!
 
 == Changelog ==
 
+= 1.5.4 - 2025-TBD =
+* Use esc_attr__() instead of esc_attr_e() for social login title output - FIXED
+
 = 1.5.3 - 2025-09-24 =
 * Remove authorisation if user email changed - FIXED
 * Redirect to account page to get all required data of register form when using social login - ADDED

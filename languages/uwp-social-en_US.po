@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: UsersWP - Social 1.5.3\n"
+"Project-Id-Version: UsersWP - Social 1.5.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-24 15:21+0530\n"
-"PO-Revision-Date: 2025-09-24 15:21+0530\n"
+"POT-Creation-Date: 2025-11-20 20:03+0530\n"
+"PO-Revision-Date: 2025-11-20 20:03+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -15,7 +15,7 @@ msgstr ""
 "_nx:1,2;_x;_ex;esc_attr_e;esc_attr__\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: admin/class-uwp-settings-social.php:27
@@ -391,37 +391,37 @@ msgstr ""
 msgid "Remove all data when deleted?"
 msgstr ""
 
-#: includes/class-uwp-social.php:198
+#: includes/class-uwp-social.php:199
 #, php-format
 msgid "New user registration on your site: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:199
+#: includes/class-uwp-social.php:200
 #, php-format
 msgid "Username: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:200
+#: includes/class-uwp-social.php:201
 #, php-format
 msgid "Provider: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:201
+#: includes/class-uwp-social.php:202
 #, php-format
 msgid "Profile: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:202
+#: includes/class-uwp-social.php:203
 #, php-format
 msgid "Email: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:206
+#: includes/class-uwp-social.php:207
 #, php-format
 msgid "[%s] New User Registration"
 msgstr ""
 
-#: includes/class-uwp-social.php:212
+#: includes/class-uwp-social.php:213
 #, php-format
 msgid ""
 "<strong>Breaking change: </strong> Authorized Redirect URI for all social "
@@ -429,7 +429,7 @@ msgid ""
 "new URI."
 msgstr ""
 
-#: includes/class-uwp-social.php:389
+#: includes/class-uwp-social.php:396
 msgid ""
 "Please complete all required fields below to finish setting up your profile."
 msgstr ""

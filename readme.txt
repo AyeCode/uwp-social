@@ -4,7 +4,7 @@ Donate link: http://userswp.io/
 Tags: social login, facebook login, google login, twitter login, linkedIn login, vkontakte login, woocommerce login, facebook, twitter, google, social network login, social plugin, userswp
 Requires at least: 6.1
 Tested up to: 6.9
-Stable tag: 1.5.4
+Stable tag: 1.5.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -44,7 +44,7 @@ No questions so far, but don't hesitate to ask!
 
 == Changelog ==
 
-= 1.5.5 - TBD =
+= 1.5.5 - 2025-12-03 =
 * Update the documentation links for all providers in settings - CHANGED
 
 = 1.5.4 - 2025-11-20 =

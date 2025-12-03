@@ -91,7 +91,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'title' => __('Google Settings', 'uwp-social'),
                         'type' => 'title',
                         'id' => 'social_google_settings_options',
-                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://console.developers.google.com" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://docs.userswp.io/article/557-google-setup-guide" target="_blank">', '</a>'),
+                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://console.developers.google.com" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://userswp.io/documentation/article/social-login/google-setup-guide/" target="_blank">', '</a>'),
                         'desc_tip' => false,
                     ),
                     array(
@@ -139,7 +139,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'title' => __('Facebook Settings', 'uwp-social'),
                         'type' => 'title',
                         'id' => 'social_facebook_settings_options',
-                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://developers.facebook.com/apps" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="#" target="_blank">', '</a>'),
+                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://developers.facebook.com/apps" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://userswp.io/documentation/article/facebook-setup-guide/" target="_blank">', '</a>'),
                         'desc_tip' => false,
                     ),
                     array(
@@ -189,7 +189,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'title' => __('Twitter Settings', 'uwp-social'),
                         'type' => 'title',
                         'id' => 'social_twitter_settings_options',
-                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://dev.twitter.com/apps" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://docs.userswp.io/article/355-twitter-setup-guide" target="_blank">', '</a>'),
+                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://dev.twitter.com/apps" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://userswp.io/documentation/article/social-login/twitter-setup-guide/" target="_blank">', '</a>'),
                         'desc_tip' => false,
                     ),
                     array(
@@ -239,7 +239,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'title' => __('Linkedin Settings', 'uwp-social'),
                         'type' => 'title',
                         'id' => 'social_linkedin_settings_options',
-                        'desc' => '<div class="bsui">'. aui()->alert(array( 'type'=> 'danger', 'content'=> __('This API is deprecated, please use the LinkedIn OpenID option above.','uwp-social') )) . sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://www.linkedin.com/developer/apps" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://docs.userswp.io/article/354-linkedin-setup-guide" target="_blank">', '</a>').'</div>',
+                        'desc' => '<div class="bsui">'. aui()->alert(array( 'type'=> 'danger', 'content'=> __('This API is deprecated, please use the LinkedIn OpenID option above.','uwp-social') )) . sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://www.linkedin.com/developer/apps" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://userswp.io/documentation/article/social-login/linkedin-setup-guide/" target="_blank">', '</a>').'</div>',
                         'desc_tip' => false,
                     ),
                     array(
@@ -289,7 +289,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'title' => __('Linkedin Settings', 'uwp-social'),
                         'type' => 'title',
                         'id' => 'social_linkedinopenid_settings_options',
-                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://www.linkedin.com/developer/apps" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://docs.userswp.io/article/354-linkedin-setup-guide" target="_blank">', '</a>'),
+                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://www.linkedin.com/developer/apps" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://userswp.io/documentation/article/social-login/linkedin-setup-guide/" target="_blank">', '</a>'),
                         'desc_tip' => false,
                     ),
                     array(
@@ -389,7 +389,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'title' => __('Social Settings', 'uwp-social'),
                         'type' => 'title',
                         'id' => 'social_yahoo_settings_options',
-                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://developer.yahoo.com/apps" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://docs.userswp.io/article/353-yahoo-setup-guide" target="_blank">', '</a>'),
+                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://developer.yahoo.com/apps" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://userswp.io/documentation/article/social-login/yahoo-setup-guide/" target="_blank">', '</a>'),
                         'desc_tip' => false,
                     ),
                     array(
@@ -439,7 +439,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'title' => __('WordPress Settings', 'uwp-social'),
                         'type' => 'title',
                         'id' => 'social_wordpress_settings_options',
-                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://developer.wordpress.com/apps/" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://docs.userswp.io/article/352-wordpress-com-setup-guide" target="_blank">', '</a>'),
+                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://developer.wordpress.com/apps/" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://userswp.io/documentation/article/social-login/wordpress-com-setup-guide/" target="_blank">', '</a>'),
                         'desc_tip' => false,
                     ),
                     array(
@@ -489,7 +489,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'title' => __('Vkontakte Settings', 'uwp-social'),
                         'type' => 'title',
                         'id' => 'social_vkontakte_settings_options',
-                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://vk.com/apps?act=manage" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://docs.userswp.io/article/351-vkontakte-setup-guide" target="_blank">', '</a>'),
+                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://vk.com/apps?act=manage" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://userswp.io/documentation/article/social-login/vkontakte-setup-guide/" target="_blank">', '</a>'),
                         'desc_tip' => false,
                     ),
                     array(

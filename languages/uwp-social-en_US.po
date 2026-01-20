@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: UsersWP - Social 1.5.5\n"
+"Project-Id-Version: UsersWP - Social 1.5.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-03 12:17+0530\n"
-"PO-Revision-Date: 2025-12-03 12:17+0530\n"
+"POT-Creation-Date: 2026-01-20 17:29+0530\n"
+"PO-Revision-Date: 2026-01-20 17:29+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -391,37 +391,37 @@ msgstr ""
 msgid "Remove all data when deleted?"
 msgstr ""
 
-#: includes/class-uwp-social.php:199
+#: includes/class-uwp-social.php:209
 #, php-format
 msgid "New user registration on your site: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:200
+#: includes/class-uwp-social.php:210
 #, php-format
 msgid "Username: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:201
+#: includes/class-uwp-social.php:211
 #, php-format
 msgid "Provider: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:202
+#: includes/class-uwp-social.php:212
 #, php-format
 msgid "Profile: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:203
+#: includes/class-uwp-social.php:213
 #, php-format
 msgid "Email: %s"
 msgstr ""
 
-#: includes/class-uwp-social.php:207
+#: includes/class-uwp-social.php:217
 #, php-format
 msgid "[%s] New User Registration"
 msgstr ""
 
-#: includes/class-uwp-social.php:213
+#: includes/class-uwp-social.php:223
 #, php-format
 msgid ""
 "<strong>Breaking change: </strong> Authorized Redirect URI for all social "
@@ -429,7 +429,7 @@ msgid ""
 "new URI."
 msgstr ""
 
-#: includes/class-uwp-social.php:396
+#: includes/class-uwp-social.php:416
 msgid ""
 "Please complete all required fields below to finish setting up your profile."
 msgstr ""
@@ -722,4 +722,12 @@ msgstr ""
 
 #: widgets/social.php:45
 msgid "Enter the url you want to redirect after login."
+msgstr ""
+
+#: widgets/social.php:53
+msgid "Form ID:"
+msgstr ""
+
+#: widgets/social.php:54
+msgid "Registration form ID for user type assignment."
 msgstr ""

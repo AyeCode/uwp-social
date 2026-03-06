@@ -14,7 +14,7 @@ Social Login addon for UsersWP.
 
 Social Login addon for [UsersWP](https://wordpress.org/plugins/userswp/).
 
-This addon lets your user to register and login with popular sites like Facebook, Google, Twitter, LinkedIn, Instagram, Yahoo, WordPress, vkontakte etc.
+This addon lets your user to register and login with popular sites like Facebook, Google, Twitter, LinkedIn, Yahoo, WordPress, vkontakte etc.
 
 100% translatable.
 
@@ -43,6 +43,10 @@ No questions so far, but don't hesitate to ask!
 2. WP Login (brand icons removed in screenshots due to WP rules).
 
 == Changelog ==
+
+= 1.5.7 - 2026-03-TBD =
+* Remove LinkedIn old API support and Instagram social login support  - CHANGED
+* Hybridauth library upgraded to v3.12 - CHANGED
 
 = 1.5.6 - 2026-01-20 =
 * User type assignment support for social login registration - ADDED

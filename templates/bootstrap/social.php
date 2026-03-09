@@ -36,11 +36,9 @@ if ( isset( $providers ) && count( $providers ) > 0 ) {
 
             $icons = array(
                 'facebook' => 'fab fa-facebook-f',
-                'twitter' => 'fab fa-twitter',
+                'twitter' => 'fab fa-x',
                 'linkedin' => 'fab fa-linkedin-in',
                 'wordpress' => 'fab fa-wordpress-simple',
-                'vkontakte' => 'fab fa-vk',
-
             );
 
 			$icons = apply_filters('uwp_social_fa_icons', $icons, $provider, $args);

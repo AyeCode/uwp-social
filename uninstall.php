@@ -58,12 +58,6 @@ if ( isset($settings[ 'uwp_uninstall_social_data' ]) && 1 == $settings[ 'uwp_uni
         'uwp_social_wordpress_callback',
         'uwp_social_wordpress_pick_username',
         'uwp_social_wordpress_pick_email',
-        'enable_uwp_social_vkontakte',
-        'uwp_social_vkontakte_id',
-        'uwp_social_vkontakte_secret',
-        'uwp_social_vkontakte_callback',
-        'uwp_social_vkontakte_pick_username',
-        'uwp_social_vkontakte_pick_email',
         'uwp_uninstall_social_data',
     );
 

@@ -36,7 +36,7 @@ if ( isset( $providers ) && count( $providers ) > 0 ) {
 
             $icons = array(
                 'facebook' => 'fab fa-facebook-f',
-                'twitter' => 'fab fa-twitter',
+                'twitter' => 'fab fa-x-twitter',
                 'instagram' => 'fab fa-instagram',
                 'linkedin' => 'fab fa-linkedin-in',
                 'linkedinopenid' => 'fab fa-linkedin-in',

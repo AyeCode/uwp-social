@@ -213,7 +213,7 @@ function uwp_get_available_social_providers() {
         ),
         "twitter" => array(
             "provider_id"       => "twitter",
-            "provider_name"     => "Twitter",
+            "provider_name"     => "X",
             "require_client_id" => false,
         ),
         "linkedin" => array(

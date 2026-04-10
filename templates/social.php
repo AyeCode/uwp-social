@@ -32,8 +32,9 @@ if(isset($providers) && count($providers) > 0) {
 			//General |Facebook |X |LinkedIn |Yahoo |WordPress
 			$icons = array(
 				'facebook'  => 'fab fa-facebook-f',
-				'x'   => 'fab fa-x',
-                'linkedin'  => 'fab fa-linkedin-in',
+				'twitter'   => 'fab fa-x-twitter',
+				'instagram' => 'fab fa-instagram',
+         'linkedin'  => 'fab fa-linkedin-in',
 				'wordpress' => 'fab fa-wordpress-simple',
 
 			);

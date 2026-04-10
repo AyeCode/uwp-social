@@ -36,18 +36,14 @@ if ( isset( $providers ) && count( $providers ) > 0 ) {
 
             $icons = array(
                 'facebook' => 'fab fa-facebook-f',
-                'twitter' => 'fab fa-twitter',
-                'instagram' => 'fab fa-instagram',
+                'twitter' => 'fab fa-x',
                 'linkedin' => 'fab fa-linkedin-in',
-                'linkedinopenid' => 'fab fa-linkedin-in',
                 'wordpress' => 'fab fa-wordpress-simple',
-                'vkontakte' => 'fab fa-vk',
-
             );
 
 			$icons = apply_filters('uwp_social_fa_icons', $icons, $provider, $args);
 
-			$social_name_class =  $provider_id === 'linkedinopenid' ? 'linkedin' : strtolower( $provider_id );
+			$social_name_class =  strtolower( $provider_id );
 			$social_icon_class = isset( $icons[ $social_name_class ] ) ? $icons[ $social_name_class ] : "fab fa-" . $social_name_class;
 
 			if ( ! empty( $key ) && ! empty( $secret ) ) {

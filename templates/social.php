@@ -29,15 +29,12 @@ if(isset($providers) && count($providers) > 0) {
 
 			$url = apply_filters( 'uwp_social_login_button_url', $url, $provider_id, $args );
 
-			//General |Facebook |Twitter |LinkedIn |Instagram |Yahoo |WordPress |VKontakte
+			//General |Facebook |X |LinkedIn |Yahoo |WordPress
 			$icons = array(
 				'facebook'  => 'fab fa-facebook-f',
-				'twitter'   => 'fab fa-twitter',
-				'instagram' => 'fab fa-instagram',
+				'x'   => 'fab fa-x',
                 'linkedin'  => 'fab fa-linkedin-in',
-                'linkedinopenid'  => 'fab fa-linkedin-in',
 				'wordpress' => 'fab fa-wordpress-simple',
-				'vkontakte' => 'fab fa-vk',
 
 			);
 

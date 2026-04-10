@@ -69,13 +69,10 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                 '' => __( 'General', 'uwp-social' ),
                 'google' => __( 'Google', 'uwp-social' ),
                 'facebook' => __( 'Facebook', 'uwp-social' ),
-                'twitter' => __( 'Twitter', 'uwp-social' ),
-                'linkedin' => __( 'LinkedIn (deprecated)', 'uwp-social' ),
-                'linkedinopenid' => __( 'LinkedIn OpenID', 'uwp-social' ),
-                'instagram' => __( 'Instagram', 'uwp-social' ),
+                'x' => __( 'X (Twitter)', 'uwp-social' ),
+                'linkedin' => __( 'LinkedIn', 'uwp-social' ),
                 'yahoo' => __( 'Yahoo', 'uwp-social' ),
                 'wordpress' => __( 'WordPress', 'uwp-social' ),
-                'vkontakte' => __( 'VKontakte', 'uwp-social' ),
             );
 
             return apply_filters('uwp_get_sections_' . $this->id, $sections);
@@ -182,19 +179,19 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                 ));
 
-            } elseif ( !empty( $current_section ) && 'twitter' === $current_section ) {
+            } elseif ( !empty( $current_section ) && 'x' === $current_section ) {
                 $callback = uwp_get_callback_url('twitter');
                 $settings = apply_filters('uwp_social_twitter_options', array(
                     array(
-                        'title' => __('Twitter Settings', 'uwp-social'),
+                        'title' => __('X Settings', 'uwp-social'),
                         'type' => 'title',
                         'id' => 'social_twitter_settings_options',
-                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://dev.twitter.com/apps" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://userswp.io/documentation/article/social-login/twitter-setup-guide/" target="_blank">', '</a>'),
+                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://developer.x.com/" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://userswp.io/documentation/article/social-login/twitter-setup-guide/" target="_blank">', '</a>'),
                         'desc_tip' => false,
                     ),
                     array(
                         'id'   => 'enable_uwp_social_twitter',
-                        'name' => __('Enable Twitter', 'uwp-social'),
+                        'name' => __('Enable X', 'uwp-social'),
                         'desc' => '',
                         'type' => 'checkbox',
                         'default'  => '0',
@@ -202,17 +199,17 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id' => 'uwp_social_twitter_key',
-                        'name' => __( 'Twitter API Key', 'uwp-social' ),
+                        'name' => __( 'X API Key', 'uwp-social' ),
                         'desc' => "",
                         'type' => 'text',
-                        'placeholder' => __( 'Enter Twitter API Key', 'uwp-social' )
+                        'placeholder' => __( 'Enter X API Key', 'uwp-social' )
                     ),
                     array(
                         'id' => 'uwp_social_twitter_secret',
-                        'name' => __( 'Twitter API Secret', 'uwp-social' ),
+                        'name' => __( 'X API Secret', 'uwp-social' ),
                         'desc' => "",
                         'type' => 'text',
-                        'placeholder' => __( 'Enter Twitter API Secret', 'uwp-social' )
+                        'placeholder' => __( 'Enter X API Secret', 'uwp-social' )
                     ),
                     array(
                         'id'   => 'uwp_social_twitter_pick_username',
@@ -233,58 +230,8 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                 ));
 
             } elseif ( !empty( $current_section ) && 'linkedin' === $current_section ) {
-                $callback = uwp_get_callback_url('linkedin');
-                $settings = apply_filters('uwp_social_linkedin_options', array(
-                    array(
-                        'title' => __('Linkedin Settings', 'uwp-social'),
-                        'type' => 'title',
-                        'id' => 'social_linkedin_settings_options',
-                        'desc' => '<div class="bsui">'. aui()->alert(array( 'type'=> 'danger', 'content'=> __('This API is deprecated, please use the LinkedIn OpenID option above.','uwp-social') )) . sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://www.linkedin.com/developer/apps" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://userswp.io/documentation/article/social-login/linkedin-setup-guide/" target="_blank">', '</a>').'</div>',
-                        'desc_tip' => false,
-                    ),
-                    array(
-                        'id'   => 'enable_uwp_social_linkedin',
-                        'name' => __('Enable LinkedIn', 'uwp-social'),
-                        'desc' => '',
-                        'type' => 'checkbox',
-                        'default'  => '0',
-                        'class' => 'uwp_label_inline',
-                    ),
-                    array(
-                        'id' => 'uwp_social_linkedin_key',
-                        'name' => __( 'LinkedIn Client ID', 'uwp-social' ),
-                        'desc' => "",
-                        'type' => 'text',
-                        'placeholder' => __( 'Enter LinkedIn Client ID', 'uwp-social' )
-                    ),
-                    array(
-                        'id' => 'uwp_social_linkedin_secret',
-                        'name' => __( 'LinkedIn Client Secret', 'uwp-social' ),
-                        'desc' => "",
-                        'type' => 'text',
-                        'placeholder' => __( 'Enter LinkedIn Client Secret', 'uwp-social' )
-                    ),
-                    array(
-                        'id'   => 'uwp_social_linkedin_pick_username',
-                        'name' => __('Let the user enter username?', 'uwp-social'),
-                        'desc' => __('By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.', 'uwp-social'),
-                        'type' => 'checkbox',
-                        'default'  => '0',
-                        'class' => 'uwp_label_inline',
-                    ),
-                    array(
-                        'id'   => 'uwp_social_linkedin_pick_email',
-                        'name' => __('Let the user enter email?', 'uwp-social'),
-                        'desc' => __('By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.', 'uwp-social'),
-                        'type' => 'checkbox',
-                        'default'  => '0',
-                        'class' => 'uwp_label_inline',
-                    ),
-                ));
-
-            } elseif ( !empty( $current_section ) && 'linkedinopenid' === $current_section ) {
                 $callback = uwp_get_callback_url('linkedinopenid');
-                $settings = apply_filters('uwp_social_linkedinopenid_options', array(
+                $settings = apply_filters('uwp_social_linkedin_options', array(
                     array(
                         'title' => __('Linkedin Settings', 'uwp-social'),
                         'type' => 'title',
@@ -324,56 +271,6 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id'   => 'uwp_social_linkedinopenid_pick_email',
-                        'name' => __('Let the user enter email?', 'uwp-social'),
-                        'desc' => __('By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.', 'uwp-social'),
-                        'type' => 'checkbox',
-                        'default'  => '0',
-                        'class' => 'uwp_label_inline',
-                    ),
-                ));
-
-            } elseif ( !empty( $current_section ) && 'instagram' === $current_section ) {
-                $callback = uwp_get_callback_url('instagram');
-                $settings = apply_filters('uwp_social_instagram_options', array(
-                    array(
-                        'title' => __('Instagram Settings', 'uwp-social'),
-                        'type' => 'title',
-                        'id' => 'social_instagram_settings_options',
-                        'desc' => '<b style="color:red;">'.__('As per the Facebook guideline, Data returned by the API cannot be used to authenticate your app users or log them into your app. If your app uses API data to authenticate users, it will be rejected during App Review. If you need an authentication solution, use Facebook Login instead of Instagram Login.','uwp-social').'</b><br>'.sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI.','uwp-social'), '<a href="https://developers.facebook.com/apps" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>'),
-                        'desc_tip' => false,
-                    ),
-                    array(
-                        'id'   => 'enable_uwp_social_instagram',
-                        'name' => __('Enable Instagram', 'uwp-social'),
-                        'desc' => '',
-                        'type' => 'checkbox',
-                        'default'  => '0',
-                        'class' => 'uwp_label_inline',
-                    ),
-                    array(
-                        'id' => 'uwp_social_instagram_id',
-                        'name' => __( 'Instagram APP ID', 'uwp-social' ),
-                        'desc' => "",
-                        'type' => 'text',
-                        'placeholder' => __( 'Enter Instagram APP ID', 'uwp-social' )
-                    ),
-                    array(
-                        'id' => 'uwp_social_instagram_secret',
-                        'name' => __( 'Instagram APP Secret', 'uwp-social' ),
-                        'desc' => "",
-                        'type' => 'text',
-                        'placeholder' => __( 'Enter Instagram APP Secret', 'uwp-social' )
-                    ),
-                    array(
-                        'id'   => 'uwp_social_instagram_pick_username',
-                        'name' => __('Let the user enter username?', 'uwp-social'),
-                        'desc' => __('By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.', 'uwp-social'),
-                        'type' => 'checkbox',
-                        'default'  => '0',
-                        'class' => 'uwp_label_inline',
-                    ),
-                    array(
-                        'id'   => 'uwp_social_instagram_pick_email',
                         'name' => __('Let the user enter email?', 'uwp-social'),
                         'desc' => __('By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.', 'uwp-social'),
                         'type' => 'checkbox',
@@ -474,56 +371,6 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id'   => 'uwp_social_wordpress_pick_email',
-                        'name' => __('Let the user enter email?', 'uwp-social'),
-                        'desc' => __('By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.', 'uwp-social'),
-                        'type' => 'checkbox',
-                        'default'  => '0',
-                        'class' => 'uwp_label_inline',
-                    ),
-                ));
-
-            } elseif ( !empty( $current_section ) && 'vkontakte' === $current_section ) {
-                $callback = uwp_get_callback_url('vkontakte');
-                $settings = apply_filters('uwp_social_vkontakte_options', array(
-                    array(
-                        'title' => __('Vkontakte Settings', 'uwp-social'),
-                        'type' => 'title',
-                        'id' => 'social_vkontakte_settings_options',
-                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://vk.com/apps?act=manage" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://userswp.io/documentation/article/social-login/vkontakte-setup-guide/" target="_blank">', '</a>'),
-                        'desc_tip' => false,
-                    ),
-                    array(
-                        'id'   => 'enable_uwp_social_vkontakte',
-                        'name' => __('Enable Vkontakte', 'uwp-social'),
-                        'desc' => '',
-                        'type' => 'checkbox',
-                        'default'  => '0',
-                        'class' => 'uwp_label_inline',
-                    ),
-                    array(
-                        'id' => 'uwp_social_vkontakte_id',
-                        'name' => __( 'Vkontakte APP ID', 'uwp-social' ),
-                        'desc' => "",
-                        'type' => 'text',
-                        'placeholder' => __( 'Enter Vkontakte APP ID', 'uwp-social' )
-                    ),
-                    array(
-                        'id' => 'uwp_social_vkontakte_secret',
-                        'name' => __( 'Vkontakte APP Secret', 'uwp-social' ),
-                        'desc' => "",
-                        'type' => 'text',
-                        'placeholder' => __( 'Enter Vkontakte APP Secret', 'uwp-social' )
-                    ),
-                    array(
-                        'id'   => 'uwp_social_vkontakte_pick_username',
-                        'name' => __('Let the user enter username?', 'uwp-social'),
-                        'desc' => __('By default, the username is auto generated. If this option enabled then we would ask the user to pick the username by displaying a form.', 'uwp-social'),
-                        'type' => 'checkbox',
-                        'default'  => '0',
-                        'class' => 'uwp_label_inline',
-                    ),
-                    array(
-                        'id'   => 'uwp_social_vkontakte_pick_email',
                         'name' => __('Let the user enter email?', 'uwp-social'),
                         'desc' => __('By default, the email returned by the provider is used. If this option enabled then we would ask the user to enter the email by displaying a form.', 'uwp-social'),
                         'type' => 'checkbox',

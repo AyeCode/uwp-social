@@ -19,14 +19,15 @@ if ( isset( $providers ) && count( $providers ) > 0 ) {
 		$provider_id   = isset( $provider["provider_id"] ) ? $provider["provider_id"] : '';
 		$provider_name = isset( $provider["provider_name"] ) ? $provider["provider_name"] : '';
 		$url           = '';
-		$enable        = uwp_get_option( 'enable_uwp_social_' . $array_key, "0" );
+        
+		$enable        = uwp_get_option( 'enable_uwp_social_' . $provider_id, "0" );
 		if ( $enable == "1" ) {
 			if ( isset( $provider["require_client_id"] ) && $provider["require_client_id"] ) {
-				$key = uwp_get_option( 'uwp_social_' . $array_key . '_id', "" );
+				$key = uwp_get_option( 'uwp_social_' . $provider_id . '_id', "" );
 			} else {
-				$key = uwp_get_option( 'uwp_social_' . $array_key . '_key', "" );
+				$key = uwp_get_option( 'uwp_social_' . $provider_id . '_key', "" );
 			}
-			$secret = uwp_get_option( 'uwp_social_' . $array_key . '_secret', "" );
+			$secret = uwp_get_option( 'uwp_social_' . $provider_id . '_secret', "" );
 			$url    = home_url() . "/?action=uwp_social_authenticate&provider=" . $provider_id . '&type=' . $type;
 			if ( isset( $redirect_to ) && ! empty( $redirect_to ) ) {
 				$url .= '&redirect_to=' . $redirect_to;
@@ -38,13 +39,19 @@ if ( isset( $providers ) && count( $providers ) > 0 ) {
                 'facebook' => 'fab fa-facebook-f',
                 'twitter' => 'fab fa-x-twitter',
                 'instagram' => 'fab fa-instagram',
-                'linkedin' => 'fab fa-linkedin-in',
+                'linkedinopenid' => 'fab fa-linkedin-in',
                 'wordpress' => 'fab fa-wordpress-simple',
             );
 
 			$icons = apply_filters('uwp_social_fa_icons', $icons, $provider, $args);
+            if('twitter' === $provider_id){
+                $social_name_class =  'x-twitter';
+            } elseif('linkedinopenid' === $provider_id){
+                $social_name_class = 'linkedin';
+            } else {
+                $social_name_class = strtolower( $provider_id );
+            }
 
-			$social_name_class =  strtolower( $provider_id );
 			$social_icon_class = isset( $icons[ $social_name_class ] ) ? $icons[ $social_name_class ] : "fab fa-" . $social_name_class;
 
 			if ( ! empty( $key ) && ! empty( $secret ) ) {

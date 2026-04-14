@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: UsersWP - Social 1.5.6\n"
+"Project-Id-Version: UsersWP - Social 1.5.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 15:50+0530\n"
-"PO-Revision-Date: 2026-03-09 15:50+0530\n"
+"POT-Creation-Date: 2026-04-14 19:06+0530\n"
+"PO-Revision-Date: 2026-04-14 19:06+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -35,7 +35,7 @@ msgid "Facebook"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:72
-msgid "Twitter"
+msgid "X (Twitter)"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:73
@@ -151,27 +151,27 @@ msgid "Enter Facebook API Secret"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:186
-msgid "Twitter Settings"
+msgid "X Settings"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:194
-msgid "Enable Twitter"
+msgid "Enable X"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:202
-msgid "Twitter API Key"
+msgid "X API Key"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:205
-msgid "Enter Twitter API Key"
+msgid "Enter X API Key"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:209
-msgid "Twitter API Secret"
+msgid "X API Secret"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:212
-msgid "Enter Twitter API Secret"
+msgid "Enter X API Secret"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:236

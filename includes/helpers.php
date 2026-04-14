@@ -159,7 +159,7 @@ function uwp_social_build_provider_config( $provider )
 
     }
 
-    if( $provider_key == "linkedin"  )
+    if( $provider_key == "linkedinopenid"  )
     {
         $config["providers"][$provider]["scope"] = "openid profile email";
     }
@@ -206,7 +206,7 @@ function uwp_get_available_social_providers() {
             "require_client_id" => false,
         ),
         "linkedin" => array(
-            "provider_id"       => "linkedin",
+            "provider_id"       => "linkedinopenid",
             "provider_name"     => "LinkedIn",
             "require_client_id" => false,
         ),

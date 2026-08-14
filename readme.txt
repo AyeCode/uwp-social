@@ -44,6 +44,9 @@ No questions so far, but don't hesitate to ask!
 
 == Changelog ==
 
+= 1.5.8 - 2026-08-17 =
+* Registration via social login will assign user role set in user type and assign global option as fallback - CHANGED
+
 = 1.5.7 - 2026-04-14 =
 * Remove VKontakte support, We will add it back if anyone has the ability to help us test - CHANGED
 * Remove LinkedIn API V1 support - CHANGED

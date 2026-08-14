@@ -458,6 +458,69 @@ class UsersWP_Social {
     }
 
     /**
+     * Recover the registration form ID for the in-progress social signup,
+     * from the request first, falling back to the value stashed in the
+     * session by store_form_id_in_transient().
+     *
+     * @param bool $unset Whether to remove the value from the session once read.
+     * @return int The recovered form ID, or 0 if none.
+     */
+    public static function get_pending_register_form_id( $unset = true ) {
+        if ( isset( $_REQUEST['uwp_register_form_id'] ) && ! empty( $_REQUEST['uwp_register_form_id'] ) ) {
+            return absint( $_REQUEST['uwp_register_form_id'] );
+        }
+
+        if ( ! session_id() ) {
+            session_start();
+        }
+
+        if ( isset( $_SESSION['uwp_social']['uwp_register_form_id'] ) ) {
+            $form_id = absint( $_SESSION['uwp_social']['uwp_register_form_id'] );
+
+            if ( $unset ) {
+                unset( $_SESSION['uwp_social']['uwp_register_form_id'] );
+            }
+
+            return $form_id;
+        }
+
+        return 0;
+    }
+
+    /**
+     * Resolve the WP role assigned to a registration form's user type.
+     *
+     * @param int $form_id The registration form ID.
+     * @return string The validated role slug, or '' if the form has none/invalid.
+     */
+    public static function resolve_registration_role( $form_id ) {
+        if ( empty( $form_id ) || $form_id <= 0 || ! function_exists( 'uwp_get_register_form_by' ) ) {
+            return '';
+        }
+
+        $form_role = uwp_get_register_form_by( $form_id, 'user_role' );
+
+        if ( empty( $form_role ) ) {
+            return '';
+        }
+
+        $chosen_role = strtolower( $form_role );
+        $user_roles  = function_exists( 'uwp_get_user_roles' ) ? uwp_get_user_roles() : array();
+
+        if ( empty( $user_roles ) ) {
+            return '';
+        }
+
+        $wp_roles = wp_roles();
+
+        if ( $wp_roles->is_role( $chosen_role ) && in_array( $chosen_role, array_keys( $user_roles ), true ) ) {
+            return $chosen_role;
+        }
+
+        return '';
+    }
+
+    /**
      * Set user type from form_id when user is created via social login.
      *
      * @param int $user_id The newly created user ID.
@@ -470,20 +533,7 @@ class UsersWP_Social {
             return;
         }
 
-        $form_id = 0;
-
-        if ( isset( $_REQUEST['uwp_register_form_id'] ) && ! empty( $_REQUEST['uwp_register_form_id'] ) ) {
-            $form_id = absint( $_REQUEST['uwp_register_form_id'] );
-        } else {
-            if ( ! session_id() ) {
-                session_start();
-            }
-            
-            if ( isset( $_SESSION['uwp_social']['uwp_register_form_id'] ) ) {
-                $form_id = absint( $_SESSION['uwp_social']['uwp_register_form_id'] );
-                unset( $_SESSION['uwp_social']['uwp_register_form_id'] );
-            }
-        }
+        $form_id = self::get_pending_register_form_id( true );
 
         if ( ! empty( $form_id ) && $form_id > 0 ) {
             if ( function_exists( 'uwp_get_user_register_form' ) ) {

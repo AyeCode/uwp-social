@@ -422,8 +422,19 @@ function uwp_social_create_wp_user( $provider, $hybridauth_user_profile, $reques
         'user_pass' => wp_generate_password()
     );
 
-    $role             = uwp_get_option( 'uwp_social_default_role' );
-    $userdata['role'] = isset( $role ) && ! empty( $role ) ? $role : get_option( 'default_role' );
+    $role = '';
+
+    if ( class_exists( 'UsersWP_Social' ) ) {
+        $pending_form_id = UsersWP_Social::get_pending_register_form_id( false );
+        $role            = UsersWP_Social::resolve_registration_role( $pending_form_id );
+    }
+
+    if ( empty( $role ) ) {
+        $default_role = uwp_get_option( 'uwp_social_default_role' );
+        $role         = ! empty( $default_role ) ? $default_role : get_option( 'default_role' );
+    }
+
+    $userdata['role'] = $role;
 
     $userdata = apply_filters( 'uwp_social_alter_wp_insert_user_data', $userdata, $provider, $hybridauth_user_profile );
 

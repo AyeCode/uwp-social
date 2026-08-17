@@ -4,7 +4,7 @@ Donate link: http://userswp.io/
 Tags: social login, facebook login, google login, twitter login, linkedIn login, login, woocommerce login, facebook, twitter, google, social network login, social plugin, userswp
 Requires at least: 6.1
 Tested up to: 7.0
-Stable tag: 1.5.7
+Stable tag: 1.5.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 

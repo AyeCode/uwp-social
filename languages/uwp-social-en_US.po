@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: UsersWP - Social 1.5.7\n"
+"Project-Id-Version: UsersWP - Social 1.5.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-14 19:06+0530\n"
-"PO-Revision-Date: 2026-04-14 19:06+0530\n"
+"POT-Creation-Date: 2026-08-17 15:34+0530\n"
+"PO-Revision-Date: 2026-08-17 15:34+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -338,7 +338,7 @@ msgstr ""
 msgid "Invalid social login provider."
 msgstr ""
 
-#: includes/social.php:117 includes/social.php:763
+#: includes/social.php:117 includes/social.php:774
 msgid "Unknown or disabled provider."
 msgstr ""
 
@@ -360,92 +360,92 @@ msgstr ""
 msgid "The email address isn&#8217;t correct."
 msgstr ""
 
-#: includes/social.php:439
+#: includes/social.php:450
 msgid "An error occurred while creating a new user: "
 msgstr ""
 
-#: includes/social.php:442
+#: includes/social.php:453
 msgid "An error occurred while creating a new user!"
 msgstr ""
 
-#: includes/social.php:487
+#: includes/social.php:498
 #, php-format
 msgid ""
 "Sorry, we couldn't connect you with <b>%s</b>. <a href=\"%s\">Please try "
 "again</a>."
 msgstr ""
 
-#: includes/social.php:525
+#: includes/social.php:536
 msgid "Your account is under moderation. We will email you once its approved."
 msgstr ""
 
-#: includes/social.php:587
+#: includes/social.php:598
 msgid "Linking is not enabled. Please check the social login add on settings."
 msgstr ""
 
-#: includes/social.php:605
+#: includes/social.php:616
 #, php-format
 msgid ""
 "<strong>ERROR</strong>: Invalid username or incorrect password. <a "
 "href=\"%s\">Lost your password</a>?"
 msgstr ""
 
-#: includes/social.php:626
+#: includes/social.php:637
 msgid "<strong>ERROR</strong>: Please type your e-mail address."
 msgstr ""
 
-#: includes/social.php:630
+#: includes/social.php:641
 msgid "<strong>ERROR</strong>: Please enter a valid email address."
 msgstr ""
 
-#: includes/social.php:634
+#: includes/social.php:645
 msgid "<strong>ERROR</strong>: Sorry, that email address is already used!"
 msgstr ""
 
-#: includes/social.php:645
+#: includes/social.php:656
 msgid "<strong>ERROR</strong>: That username is not allowed."
 msgstr ""
 
-#: includes/social.php:652
+#: includes/social.php:663
 #, php-format
 msgid "<strong>ERROR</strong>: Username must be at least %s characters."
 msgstr ""
 
-#: includes/social.php:656
+#: includes/social.php:667
 msgid "<strong>ERROR</strong>: Sorry, usernames must have letters too!"
 msgstr ""
 
-#: includes/social.php:660
+#: includes/social.php:671
 msgid "<strong>ERROR</strong>: Sorry, that username already exists!"
 msgstr ""
 
-#: includes/social.php:741
+#: includes/social.php:752
 msgid "Unspecified error!"
 msgstr ""
 
-#: includes/social.php:754
+#: includes/social.php:765
 msgid "Unspecified error."
 msgstr ""
 
-#: includes/social.php:757
+#: includes/social.php:768
 msgid "UsersWP Social Login is not properly configured."
 msgstr ""
 
-#: includes/social.php:760
+#: includes/social.php:771
 #, php-format
 msgid ""
 "UsersWP Social Login is not properly configured.<br /> <b>%s</b> need to be "
 "properly configured."
 msgstr ""
 
-#: includes/social.php:766
+#: includes/social.php:777
 #, php-format
 msgid ""
 "UsersWP Social Login is not properly configured.<br /> <b>%s</b> requires "
 "your application credentials."
 msgstr ""
 
-#: includes/social.php:767
+#: includes/social.php:778
 #, php-format
 msgid ""
 "<b>What does this error mean ?</b><br />Most likely, you didn't setup the "
@@ -454,31 +454,31 @@ msgid ""
 "Social Login to work."
 msgstr ""
 
-#: includes/social.php:767
+#: includes/social.php:778
 msgid ""
 "<br />Instructions for use can be found in the <a href=\"#\" "
 "target=\"_blank\">User Manual</a>."
 msgstr ""
 
-#: includes/social.php:770
+#: includes/social.php:781
 #, php-format
 msgid ""
 "Authentication failed. Either you have cancelled the authentication or "
 "<b>%s</b> refused the connection."
 msgstr ""
 
-#: includes/social.php:773
+#: includes/social.php:784
 #, php-format
 msgid ""
 "Request failed. Either you have cancelled the authentication or <b>%s</b> "
 "refused the connection."
 msgstr ""
 
-#: includes/social.php:776
+#: includes/social.php:787
 msgid "You're not connected to the provider."
 msgstr ""
 
-#: includes/social.php:779
+#: includes/social.php:790
 msgid "Provider does not support this feature."
 msgstr ""
 

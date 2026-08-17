@@ -4,7 +4,7 @@ Donate link: http://userswp.io/
 Tags: social login, facebook login, google login, twitter login, linkedIn login, login, woocommerce login, facebook, twitter, google, social network login, social plugin, userswp
 Requires at least: 6.1
 Tested up to: 7.0
-Stable tag: 1.5.7
+Stable tag: 1.5.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -43,6 +43,9 @@ No questions so far, but don't hesitate to ask!
 2. WP Login (brand icons removed in screenshots due to WP rules).
 
 == Changelog ==
+
+= 1.5.8 - 2026-08-17 =
+* Registration via social login will assign user role set in user type and assign global option as fallback - CHANGED
 
 = 1.5.7 - 2026-04-14 =
 * Remove VKontakte support, We will add it back if anyone has the ability to help us test - CHANGED

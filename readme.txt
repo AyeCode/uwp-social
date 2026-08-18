@@ -44,6 +44,10 @@ No questions so far, but don't hesitate to ask!
 
 == Changelog ==
 
+= 1.5.9 - 2026-08-TBD =
+* Hybridauth library upgraded to v3.13 - CHANGED
+* Update Facebook Meta Graph API version to latest 26.0 - CHANGED
+
 = 1.5.8 - 2026-08-17 =
 * Registration via social login will assign user role set in user type and assign global option as fallback - CHANGED
 

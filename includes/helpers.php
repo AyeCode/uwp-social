@@ -180,6 +180,16 @@ function uwp_social_build_provider_config( $provider )
 	if( $provider_key == "twitter" )
 	{
 		$config["providers"][$provider]["includeEmail"] = true;
+
+		// Use Hybridauth's OAuth2 "X" adapter instead of the legacy OAuth1
+		// "Twitter" adapter. X.php expects an OAuth 2.0 Client ID/Secret
+		// (from the app's "OAuth 2.0 Client ID and Client Secret" section),
+		// not the OAuth 1.0a API Key/Secret. The Client ID is read from the
+		// 'uwp_social_twitter_id' option if set, otherwise it falls back to
+		// the existing 'uwp_social_twitter_key' field so no new setting is
+		// required - re-enter your OAuth 2.0 Client ID there.
+		$config["providers"][$provider]["adapter"] = 'Hybridauth\\Provider\\X';
+		$config["providers"][$provider]["scope"]   = 'tweet.read users.read users.email offline.access';
 	}
 
     $provider_scope = isset( $config["providers"][$provider]["scope"] ) ? $config["providers"][$provider]["scope"] : '' ;

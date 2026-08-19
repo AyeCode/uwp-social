@@ -186,7 +186,7 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                         'title' => __('X Settings', 'uwp-social'),
                         'type' => 'title',
                         'id' => 'social_twitter_settings_options',
-                        'desc' => sprintf(__('<b>Note:</b> Create API key and secret from %sDeveloper site%s and enter below. Use %s for Authorized redirect URI. See %s Documentation %s','uwp-social'), '<a href="https://developer.x.com/" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://userswp.io/documentation/article/social-login/twitter-setup-guide/" target="_blank">', '</a>'),
+                        'desc' => sprintf(__('<b>Note:</b> This uses X\'s OAuth 2.0 login. In your app\'s "User authentication settings" on the %sDeveloper site%s, enable OAuth 2.0 and add %s as the Callback URI / Redirect URL, then enter the app\'s OAuth 2.0 Client ID and Client Secret below (not the OAuth 1.0a API Key/Secret). See %s Documentation %s','uwp-social'), '<a href="https://developer.x.com/" target="_blank">', '</a>', '<span class="uwp-custom-desc"><code class="social_setting_title">'.$callback.'</code></span>', '<a href="https://userswp.io/documentation/article/social-login/twitter-setup-guide/" target="_blank">', '</a>'),
                         'desc_tip' => false,
                     ),
                     array(
@@ -199,17 +199,17 @@ if (!class_exists('UsersWP_Settings_Social', false)) :
                     ),
                     array(
                         'id' => 'uwp_social_twitter_key',
-                        'name' => __( 'X API Key', 'uwp-social' ),
-                        'desc' => "",
+                        'name' => __( 'X OAuth 2.0 Client ID', 'uwp-social' ),
+                        'desc' => __( 'From your app\'s "OAuth 2.0 Client ID and Client Secret" section, not the OAuth 1.0a API Key.', 'uwp-social' ),
                         'type' => 'text',
-                        'placeholder' => __( 'Enter X API Key', 'uwp-social' )
+                        'placeholder' => __( 'Enter X OAuth 2.0 Client ID', 'uwp-social' )
                     ),
                     array(
                         'id' => 'uwp_social_twitter_secret',
-                        'name' => __( 'X API Secret', 'uwp-social' ),
-                        'desc' => "",
+                        'name' => __( 'X OAuth 2.0 Client Secret', 'uwp-social' ),
+                        'desc' => __( 'From your app\'s "OAuth 2.0 Client ID and Client Secret" section, not the OAuth 1.0a API Secret.', 'uwp-social' ),
                         'type' => 'text',
-                        'placeholder' => __( 'Enter X API Secret', 'uwp-social' )
+                        'placeholder' => __( 'Enter X OAuth 2.0 Client Secret', 'uwp-social' )
                     ),
                     array(
                         'id'   => 'uwp_social_twitter_pick_username',

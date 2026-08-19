@@ -1,10 +1,10 @@
 === UsersWP - Social Login ===
 Contributors: stiofansisland, paoltaia, ayecode
 Donate link: http://userswp.io/
-Tags: social login, facebook login, google login, twitter login, linkedIn login, login, woocommerce login, facebook, twitter, google, social network login, social plugin, userswp
+Tags: social login, facebook login, google login, twitter login, X login, linkedIn login, login, woocommerce login, facebook, twitter, X, google, social network login, social plugin, userswp
 Requires at least: 6.1
 Tested up to: 7.0
-Stable tag: 1.5.8
+Stable tag: 1.5.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -14,7 +14,7 @@ Social Login addon for UsersWP.
 
 Social Login addon for [UsersWP](https://wordpress.org/plugins/userswp/).
 
-This addon lets your user to register and login with popular sites like Facebook, Google, Twitter, LinkedIn, Yahoo, WordPress etc.
+This addon lets your user to register and login with popular sites like Facebook, Google, X, LinkedIn, Yahoo, WordPress etc.
 
 100% translatable.
 
@@ -43,6 +43,11 @@ No questions so far, but don't hesitate to ask!
 2. WP Login (brand icons removed in screenshots due to WP rules).
 
 == Changelog ==
+
+= 1.5.9 - 2026-08-19 =
+* Hybridauth library upgraded to v3.13 - CHANGED
+* Update Facebook Meta Graph API version to a latest 26.0 - CHANGED
+* X (Twitter) login now uses OAuth 2.0 instead of the legacy OAuth 1.0. Replace your API keys with OAuth 2.0 keys. - BREAKING CHANGE
 
 = 1.5.8 - 2026-08-17 =
 * Registration via social login will assign user role set in user type and assign global option as fallback - CHANGED

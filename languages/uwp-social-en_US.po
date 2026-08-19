@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: UsersWP - Social 1.5.8\n"
+"Project-Id-Version: UsersWP - Social 1.5.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-17 15:34+0530\n"
-"PO-Revision-Date: 2026-08-17 15:34+0530\n"
+"POT-Creation-Date: 2026-08-19 15:25+0530\n"
+"PO-Revision-Date: 2026-08-19 15:25+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -56,7 +56,6 @@ msgstr ""
 
 #: admin/class-uwp-settings-social.php:91
 #: admin/class-uwp-settings-social.php:139
-#: admin/class-uwp-settings-social.php:189
 #: admin/class-uwp-settings-social.php:239
 #: admin/class-uwp-settings-social.php:289
 #: admin/class-uwp-settings-social.php:339
@@ -154,24 +153,46 @@ msgstr ""
 msgid "X Settings"
 msgstr ""
 
+#: admin/class-uwp-settings-social.php:189
+#, php-format
+msgid ""
+"<b>Note:</b> This uses X's OAuth 2.0 login. In your app's \"User "
+"authentication settings\" on the %sDeveloper site%s, enable OAuth 2.0 and "
+"add %s as the Callback URI / Redirect URL, then enter the app's OAuth 2.0 "
+"Client ID and Client Secret below (not the OAuth 1.0a API Key/Secret). See "
+"%s Documentation %s"
+msgstr ""
+
 #: admin/class-uwp-settings-social.php:194
 msgid "Enable X"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:202
-msgid "X API Key"
+msgid "X OAuth 2.0 Client ID"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:203
+msgid ""
+"From your app's \"OAuth 2.0 Client ID and Client Secret\" section, not the "
+"OAuth 1.0a API Key."
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:205
-msgid "Enter X API Key"
+msgid "Enter X OAuth 2.0 Client ID"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:209
-msgid "X API Secret"
+msgid "X OAuth 2.0 Client Secret"
+msgstr ""
+
+#: admin/class-uwp-settings-social.php:210
+msgid ""
+"From your app's \"OAuth 2.0 Client ID and Client Secret\" section, not the "
+"OAuth 1.0a API Secret."
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:212
-msgid "Enter X API Secret"
+msgid "Enter X OAuth 2.0 Client Secret"
 msgstr ""
 
 #: admin/class-uwp-settings-social.php:236
@@ -338,7 +359,7 @@ msgstr ""
 msgid "Invalid social login provider."
 msgstr ""
 
-#: includes/social.php:117 includes/social.php:774
+#: includes/social.php:117 includes/social.php:786
 msgid "Unknown or disabled provider."
 msgstr ""
 
@@ -360,92 +381,92 @@ msgstr ""
 msgid "The email address isn&#8217;t correct."
 msgstr ""
 
-#: includes/social.php:450
+#: includes/social.php:462
 msgid "An error occurred while creating a new user: "
 msgstr ""
 
-#: includes/social.php:453
+#: includes/social.php:465
 msgid "An error occurred while creating a new user!"
 msgstr ""
 
-#: includes/social.php:498
+#: includes/social.php:510
 #, php-format
 msgid ""
 "Sorry, we couldn't connect you with <b>%s</b>. <a href=\"%s\">Please try "
 "again</a>."
 msgstr ""
 
-#: includes/social.php:536
+#: includes/social.php:548
 msgid "Your account is under moderation. We will email you once its approved."
 msgstr ""
 
-#: includes/social.php:598
+#: includes/social.php:610
 msgid "Linking is not enabled. Please check the social login add on settings."
 msgstr ""
 
-#: includes/social.php:616
+#: includes/social.php:628
 #, php-format
 msgid ""
 "<strong>ERROR</strong>: Invalid username or incorrect password. <a "
 "href=\"%s\">Lost your password</a>?"
 msgstr ""
 
-#: includes/social.php:637
+#: includes/social.php:649
 msgid "<strong>ERROR</strong>: Please type your e-mail address."
 msgstr ""
 
-#: includes/social.php:641
+#: includes/social.php:653
 msgid "<strong>ERROR</strong>: Please enter a valid email address."
 msgstr ""
 
-#: includes/social.php:645
+#: includes/social.php:657
 msgid "<strong>ERROR</strong>: Sorry, that email address is already used!"
 msgstr ""
 
-#: includes/social.php:656
+#: includes/social.php:668
 msgid "<strong>ERROR</strong>: That username is not allowed."
 msgstr ""
 
-#: includes/social.php:663
+#: includes/social.php:675
 #, php-format
 msgid "<strong>ERROR</strong>: Username must be at least %s characters."
 msgstr ""
 
-#: includes/social.php:667
+#: includes/social.php:679
 msgid "<strong>ERROR</strong>: Sorry, usernames must have letters too!"
 msgstr ""
 
-#: includes/social.php:671
+#: includes/social.php:683
 msgid "<strong>ERROR</strong>: Sorry, that username already exists!"
 msgstr ""
 
-#: includes/social.php:752
+#: includes/social.php:764
 msgid "Unspecified error!"
 msgstr ""
 
-#: includes/social.php:765
+#: includes/social.php:777
 msgid "Unspecified error."
 msgstr ""
 
-#: includes/social.php:768
+#: includes/social.php:780
 msgid "UsersWP Social Login is not properly configured."
 msgstr ""
 
-#: includes/social.php:771
+#: includes/social.php:783
 #, php-format
 msgid ""
 "UsersWP Social Login is not properly configured.<br /> <b>%s</b> need to be "
 "properly configured."
 msgstr ""
 
-#: includes/social.php:777
+#: includes/social.php:789
 #, php-format
 msgid ""
 "UsersWP Social Login is not properly configured.<br /> <b>%s</b> requires "
 "your application credentials."
 msgstr ""
 
-#: includes/social.php:778
+#: includes/social.php:790
 #, php-format
 msgid ""
 "<b>What does this error mean ?</b><br />Most likely, you didn't setup the "
@@ -454,31 +475,31 @@ msgid ""
 "Social Login to work."
 msgstr ""
 
-#: includes/social.php:778
+#: includes/social.php:790
 msgid ""
 "<br />Instructions for use can be found in the <a href=\"#\" "
 "target=\"_blank\">User Manual</a>."
 msgstr ""
 
-#: includes/social.php:781
+#: includes/social.php:793
 #, php-format
 msgid ""
 "Authentication failed. Either you have cancelled the authentication or "
 "<b>%s</b> refused the connection."
 msgstr ""
 
-#: includes/social.php:784
+#: includes/social.php:796
 #, php-format
 msgid ""
 "Request failed. Either you have cancelled the authentication or <b>%s</b> "
 "refused the connection."
 msgstr ""
 
-#: includes/social.php:787
+#: includes/social.php:799
 msgid "You're not connected to the provider."
 msgstr ""
 
-#: includes/social.php:790
+#: includes/social.php:802
 msgid "Provider does not support this feature."
 msgstr ""
 

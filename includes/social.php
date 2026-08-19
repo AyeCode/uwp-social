@@ -396,6 +396,18 @@ function uwp_social_create_wp_user( $provider, $hybridauth_user_profile, $reques
         $display_name = strtolower( $provider ) . "_user";
     }
 
+    $first_name = $hybridauth_user_profile->firstName;
+    $last_name  = $hybridauth_user_profile->lastName;
+
+    // Some providers (e.g. X/Twitter's OAuth2 API) only return a single
+    // "name" field via displayName, without firstName/lastName. Fall back
+    // to splitting the display name so first_name isn't left blank.
+    if ( empty( $first_name ) && ! empty( $display_name ) ) {
+        $name_parts = explode( ' ', trim( $display_name ), 2 );
+        $first_name = $name_parts[0];
+        $last_name  = isset( $name_parts[1] ) ? $name_parts[1] : $last_name;
+    }
+
 
     // user name should be unique
     if ( username_exists( $user_login ) ) {
@@ -414,8 +426,8 @@ function uwp_social_create_wp_user( $provider, $hybridauth_user_profile, $reques
 
         'display_name' => sanitize_text_field( $display_name ),
 
-        'first_name'  => sanitize_text_field( $hybridauth_user_profile->firstName ),
-        'last_name'   => sanitize_text_field( $hybridauth_user_profile->lastName ),
+        'first_name'  => sanitize_text_field( $first_name ),
+        'last_name'   => sanitize_text_field( $last_name ),
         'user_url'    => "'" . esc_url( $hybridauth_user_profile->profileURL ) . "'",
         'description' => sanitize_textarea_field( $hybridauth_user_profile->description ),
 

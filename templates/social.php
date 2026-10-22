@@ -4,7 +4,7 @@ $providers = uwp_get_available_social_providers();
 if(isset($providers) && count($providers) > 0) {
 
 	$redirect_to = ! empty( $args['redirect_to'] ) ? esc_url_raw( wp_specialchars_decode( $args['redirect_to'] ) ) : ''; // may arrive escaped for HTML (&#038;)
-	$type = ! empty( $args['type'] ) ? esc_url( $args['type'] ) : '';
+	$type = ! empty( $args['type'] ) ? sanitize_text_field( $args['type'] ) : '';
 
 	echo '<ul class="uwp_social_login_ul">';
 
@@ -21,11 +21,12 @@ if(isset($providers) && count($providers) > 0) {
 				$key = uwp_get_option( 'uwp_social_' . $array_key . '_key', "" );
 			}
 			$secret      = uwp_get_option( 'uwp_social_' . $array_key . '_secret', "" );
-			$url         = home_url() . "/?action=uwp_social_authenticate&provider=" . $provider_id. '&type=' . $type;
-
-			if ( isset( $redirect_to ) && ! empty( $redirect_to ) ) {
-				$url .= '&redirect_to=' . urlencode( $redirect_to );
-			}
+			$url         = add_query_arg( urlencode_deep( array_filter( array( // add_query_arg() does not encode values
+				'action'      => 'uwp_social_authenticate',
+				'provider'    => $provider_id,
+				'type'        => $type,
+				'redirect_to' => $redirect_to,
+			) ) ), home_url( '/' ) );
 
 			$url = apply_filters( 'uwp_social_login_button_url', $url, $provider_id, $args );
 

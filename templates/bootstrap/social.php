@@ -28,10 +28,12 @@ if ( isset( $providers ) && count( $providers ) > 0 ) {
 				$key = uwp_get_option( 'uwp_social_' . $provider_id . '_key', "" );
 			}
 			$secret = uwp_get_option( 'uwp_social_' . $provider_id . '_secret', "" );
-			$url    = home_url() . "/?action=uwp_social_authenticate&provider=" . $provider_id . '&type=' . $type;
-			if ( isset( $redirect_to ) && ! empty( $redirect_to ) ) {
-				$url .= '&redirect_to=' . urlencode( $redirect_to );
-			}
+			$url    = add_query_arg( urlencode_deep( array_filter( array( // add_query_arg() does not encode values
+				'action'      => 'uwp_social_authenticate',
+				'provider'    => $provider_id,
+				'type'        => $type,
+				'redirect_to' => $redirect_to,
+			) ) ), home_url( '/' ) );
 
 			$url = apply_filters( 'uwp_social_login_button_url', $url, $provider_id, $args );
 
@@ -64,7 +66,7 @@ if ( isset( $providers ) && count( $providers ) > 0 ) {
 
 				} else {
 					$btn_output .= aui()->button( array(
-						'href'        => $url,
+						'href'        => esc_url( $url ),
 						'class'       => 'ml-1 ms-1 mb-1 border-0 btn  btn-' . $social_name_class . ' btn-sm btn-circle',
 						'content'     => '<i class="' . $social_icon_class . '  fa-fw fa-lg"></i>',
 						'data-toggle' => 'tooltip',

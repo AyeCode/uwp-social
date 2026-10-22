@@ -3,7 +3,7 @@ $providers = uwp_get_available_social_providers();
 
 if(isset($providers) && count($providers) > 0) {
 
-	$redirect_to = ! empty( $args['redirect_to'] ) ? esc_url( $args['redirect_to'] ) : '';
+	$redirect_to = ! empty( $args['redirect_to'] ) ? esc_url_raw( wp_specialchars_decode( $args['redirect_to'] ) ) : ''; // may arrive escaped for HTML (&#038;)
 	$type = ! empty( $args['type'] ) ? esc_url( $args['type'] ) : '';
 
 	echo '<ul class="uwp_social_login_ul">';
@@ -24,7 +24,7 @@ if(isset($providers) && count($providers) > 0) {
 			$url         = home_url() . "/?action=uwp_social_authenticate&provider=" . $provider_id. '&type=' . $type;
 
 			if ( isset( $redirect_to ) && ! empty( $redirect_to ) ) {
-				$url .= '&redirect_to=' . $redirect_to;
+				$url .= '&redirect_to=' . urlencode( $redirect_to );
 			}
 
 			$url = apply_filters( 'uwp_social_login_button_url', $url, $provider_id, $args );
@@ -51,13 +51,13 @@ if(isset($providers) && count($providers) > 0) {
 				if ( 'google' == strtolower( $provider_id ) ) {
 					$btn_output .= "<br/>";
 					$btn_output .= '<li class="uwp_social_login_icon uwp_social_login_icon_'.$social_name_class.'">';
-					$btn_output .= "<a href=\"$url\">";
+					$btn_output .= "<a href=\"" . esc_url( $url ) . "\">";
 					$btn_output .= '<img src="' . esc_url( UWP_SOCIAL_PLUGIN_URL . 'assets/images/btn_google_signin_dark_normal_web.png' ) . '" alt="Sign in with Google" class="w-auto">';
 					$btn_output .= "</a>";
 					$btn_output .= "</li>";
 				} else {
 					$btn_output .= '<li class="uwp_social_login_icon uwp_social_login_icon_'.$social_name_class.'">';
-					$btn_output .= "<a href=\"$url\">";
+					$btn_output .= "<a href=\"" . esc_url( $url ) . "\">";
 					$btn_output .= '<i class="' . $social_icon_class . '  fa-fw fa-lg" title="' . $provider_name . '"></i>';
 					$btn_output .= "</a>";
 					$btn_output .= "</li>";

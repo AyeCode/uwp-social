@@ -48,6 +48,9 @@ No questions so far, but don't hesitate to ask!
 
 == Changelog ==
 
+= 1.5.11 - TBD =
+* Social login buttons lost the return URL when it had more than one query arg (the redirect_to was HTML escaped and not encoded), so the login could stall on "Processing, please wait..."; button URLs are now built with every arg encoded - FIXED
+
 = 1.5.10 - 2026-09-09 =
 * Social login could authenticate an existing WordPress account using a provider-asserted email address that the provider had not confirmed the user owned, allowing account takeover in some configurations. Email addresses are now only used to resolve an existing account when the provider positively confirms ownership; unconfirmed addresses are routed through account registration/linking instead. - FIXED/SECURITY
 * The cached provider profile is now cleared from the session immediately after a login completes, so a replayed request can no longer reissue an auth cookie without a fresh round trip to the provider. - FIXED/SECURITY

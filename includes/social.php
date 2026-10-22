@@ -70,7 +70,7 @@ function uwp_social_authenticate_process() {
 		die();
 	}
 
-	$redirect_to = isset( $_REQUEST['redirect_to'] ) ? esc_url($_REQUEST['redirect_to']) : home_url();
+	$redirect_to = isset( $_REQUEST['redirect_to'] ) ? esc_url_raw( wp_unslash( $_REQUEST['redirect_to'] ) ) : home_url();
 
 	$authenticated_url = add_query_arg(
 		array(

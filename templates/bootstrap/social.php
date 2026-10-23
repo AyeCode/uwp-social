@@ -5,7 +5,7 @@ if ( isset( $providers ) && count( $providers ) > 0 ) {
 
 	$title       = uwp_get_option( 'label_for_social_login', __( 'Login via Social', 'uwp-social' ) );
 	$title       = apply_filters( 'uwp_social_login_buttons_label', $title );
-	$redirect_to = ! empty( $args['redirect_to'] ) ? esc_url( $args['redirect_to'] ) : '';
+	$redirect_to = ! empty( $args['redirect_to'] ) ? esc_url_raw( wp_specialchars_decode( $args['redirect_to'] ) ) : ''; // may arrive escaped for HTML (&#038;)
 	$type = ! empty( $args['type'] ) ? sanitize_text_field( $args['type'] ) : '';
 
 	echo '<div class="bsui"><hr />';
@@ -28,10 +28,12 @@ if ( isset( $providers ) && count( $providers ) > 0 ) {
 				$key = uwp_get_option( 'uwp_social_' . $provider_id . '_key', "" );
 			}
 			$secret = uwp_get_option( 'uwp_social_' . $provider_id . '_secret', "" );
-			$url    = home_url() . "/?action=uwp_social_authenticate&provider=" . $provider_id . '&type=' . $type;
-			if ( isset( $redirect_to ) && ! empty( $redirect_to ) ) {
-				$url .= '&redirect_to=' . $redirect_to;
-			}
+			$url    = add_query_arg( urlencode_deep( array_filter( array( // add_query_arg() does not encode values
+				'action'      => 'uwp_social_authenticate',
+				'provider'    => $provider_id,
+				'type'        => $type,
+				'redirect_to' => $redirect_to,
+			) ) ), home_url( '/' ) );
 
 			$url = apply_filters( 'uwp_social_login_button_url', $url, $provider_id, $args );
 
@@ -58,13 +60,13 @@ if ( isset( $providers ) && count( $providers ) > 0 ) {
 				if ( 'google' == strtolower( $provider_id ) ) {
 
 					$btn_output .= "<br/>";
-					$btn_output .= "<a href=\"$url\" class='uwp_social_login_icon_google'>";
+					$btn_output .= "<a href=\"" . esc_url( $url ) . "\" class='uwp_social_login_icon_google'>";
 					$btn_output .= '<img src="' . esc_url( UWP_SOCIAL_PLUGIN_URL . 'assets/images/btn_google_signin_dark_normal_web.png' ) . '" alt="Sign in with Google" class="w-auto">';
 					$btn_output .= "</a>";
 
 				} else {
 					$btn_output .= aui()->button( array(
-						'href'        => $url,
+						'href'        => esc_url( $url ),
 						'class'       => 'ml-1 ms-1 mb-1 border-0 btn  btn-' . $social_name_class . ' btn-sm btn-circle',
 						'content'     => '<i class="' . $social_icon_class . '  fa-fw fa-lg"></i>',
 						'data-toggle' => 'tooltip',

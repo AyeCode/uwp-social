@@ -4,7 +4,7 @@ Donate link: http://userswp.io/
 Tags: social login, facebook login, google login, twitter login, X login, linkedIn login, login, woocommerce login, facebook, twitter, X, google, social network login, social plugin, userswp
 Requires at least: 6.1
 Tested up to: 7.1
-Stable tag: 1.5.10
+Stable tag: 1.5.11
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,7 +48,7 @@ No questions so far, but don't hesitate to ask!
 
 == Changelog ==
 
-= 1.5.11 - TBD =
+= 1.5.11 - 2026-10-28 =
 * Social login buttons lost the return URL when it had more than one query arg (the redirect_to was HTML escaped and not encoded), so the login could stall on "Processing, please wait..."; button URLs are now built with every arg encoded - FIXED
 
 = 1.5.10 - 2026-09-09 =

@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: UsersWP - Social 1.5.10\n"
+"Project-Id-Version: UsersWP - Social 1.5.11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-09 11:19+0530\n"
-"PO-Revision-Date: 2026-09-09 11:19+0530\n"
+"POT-Creation-Date: 2026-10-28 19:45+0530\n"
+"PO-Revision-Date: 2026-10-28 19:45+0530\n"
 "Last-Translator: \n"
 "Language-Team: AyeCode Ltd <contact@ayecode.io>\n"
 "Language: en_US\n"
@@ -15,7 +15,7 @@ msgstr ""
 "_nx:1,2;_x;_ex;esc_attr_e;esc_attr__\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: admin/class-uwp-settings-social.php:27
@@ -359,7 +359,7 @@ msgstr ""
 msgid "Invalid social login provider."
 msgstr ""
 
-#: includes/social.php:117 includes/social.php:828
+#: includes/social.php:117 includes/social.php:842
 msgid "Unknown or disabled provider."
 msgstr ""
 
@@ -373,100 +373,100 @@ msgstr ""
 msgid "Invalid session data. Please try again."
 msgstr ""
 
-#: includes/social.php:309
+#: includes/social.php:323
 msgid "Registration is now closed."
 msgstr ""
 
-#: includes/social.php:317
+#: includes/social.php:331
 msgid "The email address isn&#8217;t correct."
 msgstr ""
 
-#: includes/social.php:499
+#: includes/social.php:513
 msgid "An error occurred while creating a new user: "
 msgstr ""
 
-#: includes/social.php:502
+#: includes/social.php:516
 msgid "An error occurred while creating a new user!"
 msgstr ""
 
-#: includes/social.php:547
+#: includes/social.php:561
 #, php-format
 msgid ""
 "Sorry, we couldn't connect you with <b>%s</b>. <a href=\"%s\">Please try "
 "again</a>."
 msgstr ""
 
-#: includes/social.php:585
+#: includes/social.php:599
 msgid "Your account is under moderation. We will email you once its approved."
 msgstr ""
 
-#: includes/social.php:652
+#: includes/social.php:666
 msgid "Linking is not enabled. Please check the social login add on settings."
 msgstr ""
 
-#: includes/social.php:670
+#: includes/social.php:684
 #, php-format
 msgid ""
 "<strong>ERROR</strong>: Invalid username or incorrect password. <a "
 "href=\"%s\">Lost your password</a>?"
 msgstr ""
 
-#: includes/social.php:691
+#: includes/social.php:705
 msgid "<strong>ERROR</strong>: Please type your e-mail address."
 msgstr ""
 
-#: includes/social.php:695
+#: includes/social.php:709
 msgid "<strong>ERROR</strong>: Please enter a valid email address."
 msgstr ""
 
-#: includes/social.php:699
+#: includes/social.php:713
 msgid "<strong>ERROR</strong>: Sorry, that email address is already used!"
 msgstr ""
 
-#: includes/social.php:710
+#: includes/social.php:724
 msgid "<strong>ERROR</strong>: That username is not allowed."
 msgstr ""
 
-#: includes/social.php:717
+#: includes/social.php:731
 #, php-format
 msgid "<strong>ERROR</strong>: Username must be at least %s characters."
 msgstr ""
 
-#: includes/social.php:721
+#: includes/social.php:735
 msgid "<strong>ERROR</strong>: Sorry, usernames must have letters too!"
 msgstr ""
 
-#: includes/social.php:725
+#: includes/social.php:739
 msgid "<strong>ERROR</strong>: Sorry, that username already exists!"
 msgstr ""
 
-#: includes/social.php:806
+#: includes/social.php:820
 msgid "Unspecified error!"
 msgstr ""
 
-#: includes/social.php:819
+#: includes/social.php:833
 msgid "Unspecified error."
 msgstr ""
 
-#: includes/social.php:822
+#: includes/social.php:836
 msgid "UsersWP Social Login is not properly configured."
 msgstr ""
 
-#: includes/social.php:825
+#: includes/social.php:839
 #, php-format
 msgid ""
 "UsersWP Social Login is not properly configured.<br /> <b>%s</b> need to be "
 "properly configured."
 msgstr ""
 
-#: includes/social.php:831
+#: includes/social.php:845
 #, php-format
 msgid ""
 "UsersWP Social Login is not properly configured.<br /> <b>%s</b> requires "
 "your application credentials."
 msgstr ""
 
-#: includes/social.php:832
+#: includes/social.php:846
 #, php-format
 msgid ""
 "<b>What does this error mean ?</b><br />Most likely, you didn't setup the "
@@ -475,31 +475,31 @@ msgid ""
 "Social Login to work."
 msgstr ""
 
-#: includes/social.php:832
+#: includes/social.php:846
 msgid ""
 "<br />Instructions for use can be found in the <a href=\"#\" "
 "target=\"_blank\">User Manual</a>."
 msgstr ""
 
-#: includes/social.php:835
+#: includes/social.php:849
 #, php-format
 msgid ""
 "Authentication failed. Either you have cancelled the authentication or "
 "<b>%s</b> refused the connection."
 msgstr ""
 
-#: includes/social.php:838
+#: includes/social.php:852
 #, php-format
 msgid ""
 "Request failed. Either you have cancelled the authentication or <b>%s</b> "
 "refused the connection."
 msgstr ""
 
-#: includes/social.php:841
+#: includes/social.php:855
 msgid "You're not connected to the provider."
 msgstr ""
 
-#: includes/social.php:844
+#: includes/social.php:858
 msgid "Provider does not support this feature."
 msgstr ""
 
